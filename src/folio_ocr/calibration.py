@@ -29,7 +29,7 @@ def checked_table(table: Mapping[str, float]) -> Mapping[str, float]:
 
 
 # Setup key -> frozen tau. No threshold is frozen yet; calibration fills it later.
-TAUS: Mapping[str, float] = checked_table({})
+TAUS: Mapping[str, float] = checked_table({"tesseract|lstm|ab9d157d8e38ca00e7e39c7d5363a5239e053f5b0dbdb3167dde9d8124335896+8280aed0782fe27257a68ea10fe7ef324ca0f8d85bd2fd145d1c2b560bcb66ba|min|5.4|-l ara+eng --psm 13 --oem 1|2603f2951dfdde7bf673852f7cce32910a508d22b466bcbf30f977868e2e0b91": 0.968})
 
 
 def table_sha256(table: Mapping[str, float] = TAUS) -> str:

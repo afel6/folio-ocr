@@ -153,7 +153,7 @@ def test_checked_table_read_only_copy():
 
 # sha256 of the frozen tau table (canonical JSON); it changes only with a new calibration, which
 # also records it in the results JSON. The empty table hashes to EMPTY_TABLE_SHA256.
-FROZEN_TABLE_SHA256 = "44136fa355b3678a1146ad16f7e8649e94fb4fc21fe77e8310c060f61caaff8a"
+FROZEN_TABLE_SHA256 = "e02f6fe92a8ee259efa213be0bf781b67a724322501153be8b6a2df3a6b6003a"
 EMPTY_TABLE_SHA256 = "44136fa355b3678a1146ad16f7e8649e94fb4fc21fe77e8310c060f61caaff8a"
 
 

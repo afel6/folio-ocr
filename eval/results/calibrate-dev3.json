@@ -1,0 +1,481 @@
+{
+  "schema": "folio-accuracy/1",
+  "mode": "calibrate",
+  "status": "finished",
+  "started_at": "2026-11-20T14:32:28Z",
+  "finished_at": "2026-11-20T14:47:09Z",
+  "host": {
+    "python": "3.12.10",
+    "platform": "Windows-11-10.0.26300-SP0",
+    "cpu_count": 24,
+    "jobs": 8
+  },
+  "versions": {
+    "folio_ocr": "0.1.0",
+    "onnxtr": "0.9.0",
+    "onnxruntime": "1.32.0",
+    "tesseract": "5.4.0.20240606"
+  },
+  "tau_table_sha256": "44136fa355b3678a1146ad16f7e8649e94fb4fc21fe77e8310c060f61caaff8a",
+  "uncertain_margins": {
+    "pair": 0.13,
+    "four": 0.41
+  },
+  "osd_floor": 1.5,
+  "heldout_manifest_sha256": null,
+  "dev_manifest_sha256": "527465d31901ade4590706f3bf6dab86dcd174f3c3e46adc0ae0620bbc7f6cc9",
+  "cells": [
+    {
+      "cell": "onnxtr-en-osd",
+      "reader": "onnxtr",
+      "document_language": "en",
+      "setup_key": "onnxtr|crnn_vgg16_bn|743599aa33cb4d254e14f3fe013f1c2a49eaff1329a7ec451844a0caa4f84bc5|min;split=min|0.9||8650601719ff75586c215ed13693e058729e220d8fb1342c0278850cf68989aa",
+      "tau": null,
+      "cell_tau": null,
+      "status": "not measured",
+      "reason": "not measured (miss floor 3.8 %)",
+      "documents_used": 57,
+      "stopped_by": "minimums",
+      "uncertain_margins": {
+        "pair": 0.13,
+        "four": 0.41
+      },
+      "osd_floor": 1.5,
+      "pages": 57,
+      "orientation_uncertain_pages": 2,
+      "orientation_uncertain_share": 0.03508771929824561,
+      "orientation": {
+        "osd": {
+          "pages": 53,
+          "flagged": 0,
+          "flagged_share": 0.0,
+          "wrong": 0,
+          "wrong_180": 0,
+          "wrong_90_270": 0,
+          "wrong_flagged": 0,
+          "wrong_unflagged": 0,
+          "largest_wrong_margin": null
+        },
+        "vote-pair": {
+          "pages": 2,
+          "flagged": 0,
+          "flagged_share": 0.0,
+          "wrong": 0,
+          "wrong_180": 0,
+          "wrong_90_270": 0,
+          "wrong_flagged": 0,
+          "wrong_unflagged": 0,
+          "largest_wrong_margin": null
+        },
+        "vote-four": {
+          "pages": 2,
+          "flagged": 2,
+          "flagged_share": 1.0,
+          "wrong": 0,
+          "wrong_180": 0,
+          "wrong_90_270": 0,
+          "wrong_flagged": 0,
+          "wrong_unflagged": 0,
+          "largest_wrong_margin": null
+        },
+        "vote-after-osd-failure": {
+          "pages": 0,
+          "flagged": 0,
+          "flagged_share": null,
+          "wrong": 0,
+          "wrong_180": 0,
+          "wrong_90_270": 0,
+          "wrong_flagged": 0,
+          "wrong_unflagged": 0,
+          "largest_wrong_margin": null
+        },
+        "none": {
+          "pages": 0,
+          "flagged": 0,
+          "flagged_share": null,
+          "wrong": 0,
+          "wrong_180": 0,
+          "wrong_90_270": 0,
+          "wrong_flagged": 0,
+          "wrong_unflagged": 0,
+          "largest_wrong_margin": null
+        }
+      },
+      "documents": 57,
+      "documents_with_bad_lines": 40,
+      "ocr_read_lines": 1384,
+      "good_lines": 1254,
+      "bad_lines": 288,
+      "missed": 11,
+      "fail_closed_lines": 0,
+      "fail_closed_share": 0.0,
+      "flag_rate_all": 1.0,
+      "flag_rate_good": 1.0,
+      "low_confidence_share": 1.0,
+      "pure_deletions": 11,
+      "grouping": 92,
+      "caught_unread": 111,
+      "pure_deletion_share": 1.0,
+      "auto_accepted_unmatched": 0,
+      "not_read_lines": 0,
+      "split_word_lines": 90,
+      "split_word_good_flag_rate": 1.0,
+      "split_word_missed": 0,
+      "flags_every_line": false,
+      "missed_error_rate": {
+        "point": 0.03819444444444445,
+        "low": 0.0,
+        "high": 0.13376347753586082,
+        "bound_95": 0.10943776847370996,
+        "resamples": 2000,
+        "unit": "document"
+      }
+    },
+    {
+      "cell": "onnxtr-en-vote",
+      "reader": "onnxtr",
+      "document_language": "en",
+      "setup_key": "onnxtr|crnn_vgg16_bn|743599aa33cb4d254e14f3fe013f1c2a49eaff1329a7ec451844a0caa4f84bc5|min;split=min|0.9||c208ceaf3e66097f3a0ddb74dc228fd37d83039c7cb1e27d733c8bcd2c415f9f",
+      "tau": null,
+      "cell_tau": null,
+      "status": "not measured",
+      "reason": "not measured (miss floor 3.8 %)",
+      "documents_used": 57,
+      "stopped_by": "minimums",
+      "uncertain_margins": {
+        "pair": 0.13,
+        "four": 0.41
+      },
+      "osd_floor": 1.5,
+      "pages": 57,
+      "orientation_uncertain_pages": 10,
+      "orientation_uncertain_share": 0.17543859649122806,
+      "orientation": {
+        "osd": {
+          "pages": 0,
+          "flagged": 0,
+          "flagged_share": null,
+          "wrong": 0,
+          "wrong_180": 0,
+          "wrong_90_270": 0,
+          "wrong_flagged": 0,
+          "wrong_unflagged": 0,
+          "largest_wrong_margin": null
+        },
+        "vote-pair": {
+          "pages": 47,
+          "flagged": 0,
+          "flagged_share": 0.0,
+          "wrong": 0,
+          "wrong_180": 0,
+          "wrong_90_270": 0,
+          "wrong_flagged": 0,
+          "wrong_unflagged": 0,
+          "largest_wrong_margin": null
+        },
+        "vote-four": {
+          "pages": 10,
+          "flagged": 10,
+          "flagged_share": 1.0,
+          "wrong": 0,
+          "wrong_180": 0,
+          "wrong_90_270": 0,
+          "wrong_flagged": 0,
+          "wrong_unflagged": 0,
+          "largest_wrong_margin": null
+        },
+        "vote-after-osd-failure": {
+          "pages": 0,
+          "flagged": 0,
+          "flagged_share": null,
+          "wrong": 0,
+          "wrong_180": 0,
+          "wrong_90_270": 0,
+          "wrong_flagged": 0,
+          "wrong_unflagged": 0,
+          "largest_wrong_margin": null
+        },
+        "none": {
+          "pages": 0,
+          "flagged": 0,
+          "flagged_share": null,
+          "wrong": 0,
+          "wrong_180": 0,
+          "wrong_90_270": 0,
+          "wrong_flagged": 0,
+          "wrong_unflagged": 0,
+          "largest_wrong_margin": null
+        }
+      },
+      "documents": 57,
+      "documents_with_bad_lines": 40,
+      "ocr_read_lines": 1384,
+      "good_lines": 1254,
+      "bad_lines": 288,
+      "missed": 11,
+      "fail_closed_lines": 0,
+      "fail_closed_share": 0.0,
+      "flag_rate_all": 1.0,
+      "flag_rate_good": 1.0,
+      "low_confidence_share": 1.0,
+      "pure_deletions": 11,
+      "grouping": 92,
+      "caught_unread": 111,
+      "pure_deletion_share": 1.0,
+      "auto_accepted_unmatched": 0,
+      "not_read_lines": 0,
+      "split_word_lines": 90,
+      "split_word_good_flag_rate": 1.0,
+      "split_word_missed": 0,
+      "flags_every_line": false,
+      "missed_error_rate": {
+        "point": 0.03819444444444445,
+        "low": 0.0,
+        "high": 0.13376347753586082,
+        "bound_95": 0.10943776847370996,
+        "resamples": 2000,
+        "unit": "document"
+      }
+    },
+    {
+      "cell": "tesseract-en",
+      "reader": "tesseract",
+      "document_language": "en",
+      "setup_key": "tesseract|lstm|ab9d157d8e38ca00e7e39c7d5363a5239e053f5b0dbdb3167dde9d8124335896+8280aed0782fe27257a68ea10fe7ef324ca0f8d85bd2fd145d1c2b560bcb66ba|min|5.4|-l ara+eng --psm 13 --oem 1|2603f2951dfdde7bf673852f7cce32910a508d22b466bcbf30f977868e2e0b91",
+      "tau": 0.968,
+      "cell_tau": 0.968,
+      "status": "calibrated",
+      "reason": null,
+      "documents_used": 53,
+      "stopped_by": "minimums",
+      "uncertain_margins": {
+        "pair": 0.13,
+        "four": 0.41
+      },
+      "osd_floor": 1.5,
+      "pages": 53,
+      "orientation_uncertain_pages": 2,
+      "orientation_uncertain_share": 0.03773584905660377,
+      "orientation": {
+        "osd": {
+          "pages": 49,
+          "flagged": 0,
+          "flagged_share": 0.0,
+          "wrong": 0,
+          "wrong_180": 0,
+          "wrong_90_270": 0,
+          "wrong_flagged": 0,
+          "wrong_unflagged": 0,
+          "largest_wrong_margin": null
+        },
+        "vote-pair": {
+          "pages": 2,
+          "flagged": 0,
+          "flagged_share": 0.0,
+          "wrong": 0,
+          "wrong_180": 0,
+          "wrong_90_270": 0,
+          "wrong_flagged": 0,
+          "wrong_unflagged": 0,
+          "largest_wrong_margin": null
+        },
+        "vote-four": {
+          "pages": 2,
+          "flagged": 2,
+          "flagged_share": 1.0,
+          "wrong": 0,
+          "wrong_180": 0,
+          "wrong_90_270": 0,
+          "wrong_flagged": 0,
+          "wrong_unflagged": 0,
+          "largest_wrong_margin": null
+        },
+        "vote-after-osd-failure": {
+          "pages": 0,
+          "flagged": 0,
+          "flagged_share": null,
+          "wrong": 0,
+          "wrong_180": 0,
+          "wrong_90_270": 0,
+          "wrong_flagged": 0,
+          "wrong_unflagged": 0,
+          "largest_wrong_margin": null
+        },
+        "none": {
+          "pages": 0,
+          "flagged": 0,
+          "flagged_share": null,
+          "wrong": 0,
+          "wrong_180": 0,
+          "wrong_90_270": 0,
+          "wrong_flagged": 0,
+          "wrong_unflagged": 0,
+          "largest_wrong_margin": null
+        }
+      },
+      "documents": 53,
+      "documents_with_bad_lines": 40,
+      "ocr_read_lines": 1302,
+      "good_lines": 1122,
+      "bad_lines": 334,
+      "missed": 11,
+      "fail_closed_lines": 4,
+      "fail_closed_share": 0.0030721966205837174,
+      "flag_rate_all": 0.9654377880184332,
+      "flag_rate_good": 0.9598930481283422,
+      "low_confidence_share": 1.0,
+      "pure_deletions": 11,
+      "grouping": 86,
+      "caught_unread": 111,
+      "pure_deletion_share": 1.0,
+      "auto_accepted_unmatched": 0,
+      "not_read_lines": 0,
+      "split_word_lines": 0,
+      "split_word_good_flag_rate": null,
+      "split_word_missed": 0,
+      "flags_every_line": false,
+      "missed_error_rate": {
+        "point": 0.03293413173652695,
+        "low": 0.0,
+        "high": 0.10688046561960744,
+        "bound_95": 0.09178743961352658,
+        "resamples": 2000,
+        "unit": "document"
+      }
+    },
+    {
+      "cell": "tesseract-ar",
+      "reader": "tesseract",
+      "document_language": "ar",
+      "setup_key": "tesseract|lstm|ab9d157d8e38ca00e7e39c7d5363a5239e053f5b0dbdb3167dde9d8124335896+8280aed0782fe27257a68ea10fe7ef324ca0f8d85bd2fd145d1c2b560bcb66ba|min|5.4|-l ara+eng --psm 13 --oem 1|2603f2951dfdde7bf673852f7cce32910a508d22b466bcbf30f977868e2e0b91",
+      "tau": 0.968,
+      "cell_tau": 0.908,
+      "status": "calibrated",
+      "reason": null,
+      "documents_used": 41,
+      "stopped_by": "minimums",
+      "uncertain_margins": {
+        "pair": 0.13,
+        "four": 0.41
+      },
+      "osd_floor": 1.5,
+      "pages": 41,
+      "orientation_uncertain_pages": 1,
+      "orientation_uncertain_share": 0.024390243902439025,
+      "orientation": {
+        "osd": {
+          "pages": 39,
+          "flagged": 0,
+          "flagged_share": 0.0,
+          "wrong": 0,
+          "wrong_180": 0,
+          "wrong_90_270": 0,
+          "wrong_flagged": 0,
+          "wrong_unflagged": 0,
+          "largest_wrong_margin": null
+        },
+        "vote-pair": {
+          "pages": 1,
+          "flagged": 1,
+          "flagged_share": 1.0,
+          "wrong": 1,
+          "wrong_180": 1,
+          "wrong_90_270": 0,
+          "wrong_flagged": 1,
+          "wrong_unflagged": 0,
+          "largest_wrong_margin": 0.02893196791410446
+        },
+        "vote-four": {
+          "pages": 0,
+          "flagged": 0,
+          "flagged_share": null,
+          "wrong": 0,
+          "wrong_180": 0,
+          "wrong_90_270": 0,
+          "wrong_flagged": 0,
+          "wrong_unflagged": 0,
+          "largest_wrong_margin": null
+        },
+        "vote-after-osd-failure": {
+          "pages": 0,
+          "flagged": 0,
+          "flagged_share": null,
+          "wrong": 0,
+          "wrong_180": 0,
+          "wrong_90_270": 0,
+          "wrong_flagged": 0,
+          "wrong_unflagged": 0,
+          "largest_wrong_margin": null
+        },
+        "none": {
+          "pages": 1,
+          "flagged": 0,
+          "flagged_share": 0.0,
+          "wrong": 0,
+          "wrong_180": 0,
+          "wrong_90_270": 0,
+          "wrong_flagged": 0,
+          "wrong_unflagged": 0,
+          "largest_wrong_margin": null
+        }
+      },
+      "documents": 41,
+      "documents_with_bad_lines": 40,
+      "ocr_read_lines": 1003,
+      "good_lines": 509,
+      "bad_lines": 571,
+      "missed": 17,
+      "fail_closed_lines": 0,
+      "fail_closed_share": 0.0,
+      "flag_rate_all": 0.9710867397806581,
+      "flag_rate_good": 0.9430255402750491,
+      "low_confidence_share": 1.0,
+      "pure_deletions": 17,
+      "grouping": 5,
+      "caught_unread": 149,
+      "pure_deletion_share": 1.0,
+      "auto_accepted_unmatched": 0,
+      "not_read_lines": 0,
+      "split_word_lines": 0,
+      "split_word_good_flag_rate": null,
+      "split_word_missed": 0,
+      "flags_every_line": false,
+      "missed_error_rate": {
+        "point": 0.0297723292469352,
+        "low": 0.011263772049802055,
+        "high": 0.06018518518518518,
+        "bound_95": 0.0544800175969539,
+        "resamples": 2000,
+        "unit": "document"
+      }
+    }
+  ],
+  "pages": {
+    "count": 208,
+    "seconds_p50": 10.109586399994441,
+    "seconds_p90": 24.73347165000451
+  },
+  "taus": {
+    "tesseract|lstm|ab9d157d8e38ca00e7e39c7d5363a5239e053f5b0dbdb3167dde9d8124335896+8280aed0782fe27257a68ea10fe7ef324ca0f8d85bd2fd145d1c2b560bcb66ba|min|5.4|-l ara+eng --psm 13 --oem 1|2603f2951dfdde7bf673852f7cce32910a508d22b466bcbf30f977868e2e0b91": 0.968
+  },
+  "split_word_share_en": 0.06502890173410404,
+  "measures": {
+    "arabic_in_en": {
+      "vote": {
+        "documents": 100,
+        "arabic_gt_lines": 1082,
+        "auto_accepted": null,
+        "share": null,
+        "reason": "no OnnxTR tau"
+      },
+      "osd": {
+        "documents": 100,
+        "arabic_gt_lines": 1082,
+        "auto_accepted": null,
+        "share": null,
+        "reason": "no OnnxTR tau"
+      },
+      "share": null
+    }
+  }
+}
