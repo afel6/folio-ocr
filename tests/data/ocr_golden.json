@@ -1,0 +1,47 @@
+{
+ "file": "en-invoice-clean.png",
+ "lines": [
+  {
+   "id": "p1-l1",
+   "text": "Invoice: Northwind Office Supply Ltd",
+   "confidence": 0.908692,
+   "low_confidence": true
+  },
+  {
+   "id": "p1-l2",
+   "text": "Invoice number: INV-2026-3706",
+   "confidence": 0.895536,
+   "low_confidence": true
+  },
+  {
+   "id": "p1-l5",
+   "text": "Phone: +44 20 7946 9818",
+   "confidence": 0.871294,
+   "low_confidence": true
+  },
+  {
+   "id": "p1-l8",
+   "text": "Unit price",
+   "confidence": 0.932933,
+   "low_confidence": true
+  },
+  {
+   "id": "p1-l11",
+   "text": "2",
+   "confidence": 0.999854,
+   "low_confidence": true
+  },
+  {
+   "id": "p1-l14",
+   "text": "Ballpoint pens (box of 50) 2",
+   "confidence": 0.668809,
+   "low_confidence": true
+  },
+  {
+   "id": "p1-l16",
+   "text": "280.00",
+   "confidence": 0.987604,
+   "low_confidence": true
+  }
+ ]
+}

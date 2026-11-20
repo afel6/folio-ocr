@@ -1,0 +1,333 @@
+{
+  "file": "mixed-letter-clean.png",
+  "condition": "clean",
+  "language": "en+ar",
+  "layout": "letter",
+  "direction": "rtl",
+  "width": 1751,
+  "height": 2480,
+  "homography": [
+    [
+      1.0,
+      0.0,
+      0.0
+    ],
+    [
+      0.0,
+      1.0,
+      0.0
+    ],
+    [
+      0.0,
+      0.0,
+      1.0
+    ]
+  ],
+  "lines": [
+    {
+      "text": "مذكرة داخلية",
+      "box": [
+        1404,
+        154,
+        1616,
+        195
+      ],
+      "clean_box": [
+        1404,
+        154,
+        1616,
+        195
+      ],
+      "direction": "rtl",
+      "entities": []
+    },
+    {
+      "text": "إلى: Tomas Okafor",
+      "box": [
+        1247,
+        241,
+        1616,
+        289
+      ],
+      "clean_box": [
+        1247,
+        241,
+        1616,
+        289
+      ],
+      "direction": "rtl",
+      "entities": [
+        {
+          "type": "name",
+          "start": 5,
+          "end": 17
+        }
+      ]
+    },
+    {
+      "text": "من: Marcus Lindqvist",
+      "box": [
+        1192,
+        333,
+        1616,
+        380
+      ],
+      "clean_box": [
+        1192,
+        333,
+        1616,
+        380
+      ],
+      "direction": "rtl",
+      "entities": [
+        {
+          "type": "name",
+          "start": 4,
+          "end": 20
+        }
+      ]
+    },
+    {
+      "text": "التاريخ: ١٣/٠٥/٢٠٢٦",
+      "box": [
+        1292,
+        427,
+        1615,
+        473
+      ],
+      "clean_box": [
+        1292,
+        427,
+        1615,
+        473
+      ],
+      "direction": "rtl",
+      "entities": [
+        {
+          "type": "date",
+          "start": 9,
+          "end": 19
+        }
+      ]
+    },
+    {
+      "text": "المرجع: REF-2026-8710",
+      "box": [
+        1180,
+        518,
+        1615,
+        564
+      ],
+      "clean_box": [
+        1180,
+        518,
+        1615,
+        564
+      ],
+      "direction": "rtl",
+      "entities": [
+        {
+          "type": "id",
+          "start": 8,
+          "end": 21
+        }
+      ]
+    },
+    {
+      "text": "الموضوع: مراجعة التوريدات الفصلية",
+      "box": [
+        1033,
+        612,
+        1615,
+        656
+      ],
+      "clean_box": [
+        1033,
+        612,
+        1615,
+        656
+      ],
+      "direction": "rtl",
+      "entities": []
+    },
+    {
+      "text": "نود إبلاغكم بأن اجتماع المراجعة سيعقد بتاريخ ٢٥/٠٨/٢٠٢٦",
+      "box": [
+        664,
+        692,
+        1615,
+        749
+      ],
+      "clean_box": [
+        664,
+        692,
+        1615,
+        749
+      ],
+      "direction": "rtl",
+      "entities": [
+        {
+          "type": "date",
+          "start": 45,
+          "end": 55
+        }
+      ]
+    },
+    {
+      "text": "الميزانية المعتمدة لهذا الربع هي 200.25",
+      "box": [
+        974,
+        794,
+        1615,
+        846
+      ],
+      "clean_box": [
+        974,
+        794,
+        1615,
+        846
+      ],
+      "direction": "rtl",
+      "entities": [
+        {
+          "type": "amount",
+          "start": 33,
+          "end": 39
+        }
+      ]
+    },
+    {
+      "text": "العقد رقم CT-2026-3587 يغطي توريد الورق والأقلام",
+      "box": [
+        730,
+        881,
+        1615,
+        938
+      ],
+      "clean_box": [
+        730,
+        881,
+        1615,
+        938
+      ],
+      "direction": "rtl",
+      "entities": [
+        {
+          "type": "id",
+          "start": 10,
+          "end": 22
+        }
+      ]
+    },
+    {
+      "text": "الدفعة الثانية بقيمة ١٠٠٫١٢ تستحق بعد التسليم",
+      "box": [
+        865,
+        979,
+        1615,
+        1024
+      ],
+      "clean_box": [
+        865,
+        979,
+        1615,
+        1024
+      ],
+      "direction": "rtl",
+      "entities": [
+        {
+          "type": "amount",
+          "start": 21,
+          "end": 27
+        }
+      ]
+    },
+    {
+      "text": "تم استلام دفعة مقدمة بقيمة ٥٠٫٠٦",
+      "box": [
+        1064,
+        1071,
+        1616,
+        1116
+      ],
+      "clean_box": [
+        1064,
+        1071,
+        1616,
+        1116
+      ],
+      "direction": "rtl",
+      "entities": [
+        {
+          "type": "amount",
+          "start": 27,
+          "end": 32
+        }
+      ]
+    },
+    {
+      "text": "Phone: +966 50 820 3703",
+      "box": [
+        137,
+        1158,
+        670,
+        1193
+      ],
+      "clean_box": [
+        137,
+        1158,
+        670,
+        1193
+      ],
+      "direction": "ltr",
+      "entities": [
+        {
+          "type": "phone",
+          "start": 7,
+          "end": 23
+        }
+      ]
+    },
+    {
+      "text": "مع خالص التحية",
+      "box": [
+        1352,
+        1254,
+        1616,
+        1298
+      ],
+      "clean_box": [
+        1352,
+        1254,
+        1616,
+        1298
+      ],
+      "direction": "rtl",
+      "entities": []
+    },
+    {
+      "text": "Daniel Mercer",
+      "box": [
+        137,
+        1342,
+        434,
+        1377
+      ],
+      "clean_box": [
+        137,
+        1342,
+        434,
+        1377
+      ],
+      "direction": "ltr",
+      "entities": [
+        {
+          "type": "name",
+          "start": 0,
+          "end": 13
+        }
+      ]
+    }
+  ],
+  "dpi": 300
+}

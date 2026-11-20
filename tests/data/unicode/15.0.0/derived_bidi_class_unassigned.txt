@@ -1,0 +1,54 @@
+# DerivedBidiClass-15.0.0.txt
+# Date: 2022-08-05, 17:39:24 GMT
+# © 2022 Unicode®, Inc.
+# Unicode and the Unicode Logo are registered trademarks of Unicode, Inc. in the U.S. and other countries.
+# Sample of https://www.unicode.org/Public/15.0.0/ucd/extracted/DerivedBidiClass.txt
+# Source sha256: 4841f2090c2dbc592d3ce43bb74c2191b3da50fb9a0d00274f1448c202851b02
+# Kept: the @missing lines and the lines of unassigned code points (general category Cn)
+# @missing: 0000..10FFFF; Left_To_Right
+# @missing: 0590..05FF; Right_To_Left
+# @missing: 0600..07BF; Arabic_Letter
+# @missing: 07C0..085F; Right_To_Left
+# @missing: 0860..08FF; Arabic_Letter
+# @missing: 20A0..20CF; European_Terminator
+# @missing: FB1D..FB4F; Right_To_Left
+# @missing: FB50..FDCF; Arabic_Letter
+# @missing: FDF0..FDFF; Arabic_Letter
+# @missing: FE70..FEFF; Arabic_Letter
+# @missing: 10800..10CFF; Right_To_Left
+# @missing: 10D00..10D3F; Arabic_Letter
+# @missing: 10D40..10EBF; Right_To_Left
+# @missing: 10EC0..10EFF; Arabic_Letter
+# @missing: 10F00..10F2F; Right_To_Left
+# @missing: 10F30..10F6F; Arabic_Letter
+# @missing: 10F70..10FFF; Right_To_Left
+# @missing: 1E800..1EC6F; Right_To_Left
+# @missing: 1EC70..1ECBF; Arabic_Letter
+# @missing: 1ECC0..1ECFF; Right_To_Left
+# @missing: 1ED00..1ED4F; Arabic_Letter
+# @missing: 1ED50..1EDFF; Right_To_Left
+# @missing: 1EE00..1EEFF; Arabic_Letter
+# @missing: 1EF00..1EFFF; Right_To_Left
+2065          ; BN # Cn       <reserved-2065>
+FDD0..FDEF    ; BN # Cn  [32] <noncharacter-FDD0>..<noncharacter-FDEF>
+FFF0..FFF8    ; BN # Cn   [9] <reserved-FFF0>..<reserved-FFF8>
+FFFE..FFFF    ; BN # Cn   [2] <noncharacter-FFFE>..<noncharacter-FFFF>
+1FFFE..1FFFF  ; BN # Cn   [2] <noncharacter-1FFFE>..<noncharacter-1FFFF>
+2FFFE..2FFFF  ; BN # Cn   [2] <noncharacter-2FFFE>..<noncharacter-2FFFF>
+3FFFE..3FFFF  ; BN # Cn   [2] <noncharacter-3FFFE>..<noncharacter-3FFFF>
+4FFFE..4FFFF  ; BN # Cn   [2] <noncharacter-4FFFE>..<noncharacter-4FFFF>
+5FFFE..5FFFF  ; BN # Cn   [2] <noncharacter-5FFFE>..<noncharacter-5FFFF>
+6FFFE..6FFFF  ; BN # Cn   [2] <noncharacter-6FFFE>..<noncharacter-6FFFF>
+7FFFE..7FFFF  ; BN # Cn   [2] <noncharacter-7FFFE>..<noncharacter-7FFFF>
+8FFFE..8FFFF  ; BN # Cn   [2] <noncharacter-8FFFE>..<noncharacter-8FFFF>
+9FFFE..9FFFF  ; BN # Cn   [2] <noncharacter-9FFFE>..<noncharacter-9FFFF>
+AFFFE..AFFFF  ; BN # Cn   [2] <noncharacter-AFFFE>..<noncharacter-AFFFF>
+BFFFE..BFFFF  ; BN # Cn   [2] <noncharacter-BFFFE>..<noncharacter-BFFFF>
+CFFFE..CFFFF  ; BN # Cn   [2] <noncharacter-CFFFE>..<noncharacter-CFFFF>
+DFFFE..E0000  ; BN # Cn   [3] <noncharacter-DFFFE>..<reserved-E0000>
+E0002..E001F  ; BN # Cn  [30] <reserved-E0002>..<reserved-E001F>
+E0080..E00FF  ; BN # Cn [128] <reserved-E0080>..<reserved-E00FF>
+E01F0..E0FFF  ; BN # Cn [3600] <reserved-E01F0>..<reserved-E0FFF>
+EFFFE..EFFFF  ; BN # Cn   [2] <noncharacter-EFFFE>..<noncharacter-EFFFF>
+FFFFE..FFFFF  ; BN # Cn   [2] <noncharacter-FFFFE>..<noncharacter-FFFFF>
+10FFFE..10FFFF; BN # Cn   [2] <noncharacter-10FFFE>..<noncharacter-10FFFF>

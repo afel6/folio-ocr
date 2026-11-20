@@ -1,0 +1,92 @@
+{
+  "schema": "folio-heldout/1",
+  "name": "heldout-1",
+  "generator": "scripts/make_fixtures.py --seed",
+  "generator_files": {
+    "scripts/make_fixtures.py": "6794603af958e4a86e24989763eb3e2bf071b309c8753d2b2497e895c8056479",
+    "scripts/fixture_extra.py": "1886ded8c49003e279d31cf89bf9f1f06fb6131bdd14ebdcef577bd35b2e51f7",
+    "scripts/fixture_fonts.py": "9bfbb53f4c4a18e5e0ae04951181330622e9436af635aa3da9faa7b8678956b8",
+    "scripts/fixture_images.py": "0f51fbdfbbfd026cc2335d4f5031e8174e6588e135c1611defd690c0cbd752f4",
+    "scripts/fixture_output.py": "acc6fcf56a2f15e6c0e2d5c11b89e4a51a08cf91610c2daf905831a9c0c6506e",
+    "scripts/fixture_pages.py": "3b3d3ff8123107222b0c062cde0e1909d0a4aa5e405da3e98257973c67926681",
+    "scripts/fixture_text.py": "1a3400e24e209731c3f55f6a9be06be3397a904f32b0d85cf6591c2b16e99712"
+  },
+  "fonts": {
+    "tests/fixtures/fonts/Amiri-Regular.ttf": "cd2550c0f4c05eb341bf97958211aaa39382bca96577ba3a67d4a3b4912c43c0",
+    "tests/fixtures/fonts/NotoNaskhArabic-Regular.ttf": "6f0a92031367b2f5a2078fe9d24f3433122b61a0bad57c423aad8f3c39aa2e6e",
+    "tests/fixtures/fonts/NotoSans-Regular.ttf": "478c558ea716033cd60c03438f628dfa75694dcf6b5f6d505a2f05fd2b4f3823"
+  },
+  "seeds": {
+    "first": 3000001,
+    "last": 3000300
+  },
+  "excluded_seeds": [
+    20261119
+  ],
+  "documents": [
+    [
+      "en",
+      "en",
+      "invoice"
+    ],
+    [
+      "en",
+      "en",
+      "letter"
+    ],
+    [
+      "ar",
+      "ar",
+      "invoice"
+    ],
+    [
+      "ar",
+      "ar",
+      "letter"
+    ],
+    [
+      "mixed",
+      "en+ar",
+      "invoice"
+    ],
+    [
+      "mixed",
+      "en+ar",
+      "letter"
+    ]
+  ],
+  "conditions": [
+    "clean",
+    "scan",
+    "photo"
+  ],
+  "cells": {
+    "onnxtr-en": {
+      "tokens": [
+        "en"
+      ],
+      "languages": "en"
+    },
+    "tesseract-en": {
+      "tokens": [
+        "en"
+      ],
+      "languages": "en+ar"
+    },
+    "tesseract-ar": {
+      "tokens": [
+        "ar",
+        "mixed"
+      ],
+      "languages": "per document"
+    }
+  },
+  "stop_rule": "per cell, seeds in increasing order; the cell takes no more seeds after the first seed at which it holds >= 100 bad lines from >= 30 documents with a bad line; at the last seed it stops anyway",
+  "min_bad_lines": 100,
+  "min_documents": 30,
+  "resampling": {
+    "unit": "generated document (seed, token, layout) with its clean, scan and photo images",
+    "resamples": 2000,
+    "rng_seed": 20261119
+  }
+}

@@ -1,0 +1,52 @@
+{
+  "file": "ar-letter-broken_visual_order.pdf",
+  "condition": "broken_visual_order",
+  "language": "ar",
+  "layout": "letter",
+  "direction": "rtl",
+  "width": 1751,
+  "height": 2480,
+  "homography": [
+    [
+      1.0,
+      0.0,
+      0.0
+    ],
+    [
+      0.0,
+      1.0,
+      0.0
+    ],
+    [
+      0.0,
+      0.0,
+      1.0
+    ]
+  ],
+  "lines": [
+    {
+      "text": "نود إبلاغكم بأن اجتماع المراجعة سيعقد بتاريخ ١٨/٠٨/٢٠٢٦",
+      "box": [
+        343,
+        691,
+        1619,
+        761
+      ],
+      "clean_box": [
+        343,
+        691,
+        1619,
+        761
+      ],
+      "direction": "rtl",
+      "entities": [
+        {
+          "type": "date",
+          "start": 45,
+          "end": 55
+        }
+      ]
+    }
+  ],
+  "dpi": 300
+}

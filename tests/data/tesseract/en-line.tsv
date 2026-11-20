@@ -1,0 +1,10 @@
+level	page_num	block_num	par_num	line_num	word_num	left	top	width	height	conf	text
+1	1	0	0	0	0	0	0	793	58	-1	
+2	1	1	0	0	0	6	6	781	46	-1	
+3	1	1	1	0	0	6	6	781	46	-1	
+4	1	1	1	1	0	6	6	781	46	-1	
+5	1	1	1	1	1	6	7	161	34	96.309799	Invoice:
+5	1	1	1	1	2	186	6	224	35	95.169640	Northwind
+5	1	1	1	1	3	429	6	122	35	96.615585	Office
+5	1	1	1	1	4	567	6	143	46	96.798157	Supply
+5	1	1	1	1	5	726	6	61	35	96.447357	Ltd

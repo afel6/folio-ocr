@@ -1,0 +1,267 @@
+{
+  "file": "en-adversarial-2.pdf",
+  "condition": "born_digital",
+  "language": "en+ar",
+  "layout": "adversarial",
+  "direction": "ltr",
+  "width": 1751,
+  "height": 2480,
+  "homography": [
+    [
+      1.0,
+      0.0,
+      0.0
+    ],
+    [
+      0.0,
+      1.0,
+      0.0
+    ],
+    [
+      0.0,
+      0.0,
+      1.0
+    ]
+  ],
+  "lines": [
+    {
+      "text": "1) Pay the invoice (by",
+      "box": [
+        137,
+        150,
+        584,
+        196
+      ],
+      "clean_box": [
+        137,
+        150,
+        584,
+        196
+      ],
+      "direction": "ltr",
+      "entities": []
+    },
+    {
+      "text": "a) first item",
+      "box": [
+        135,
+        241,
+        375,
+        283
+      ],
+      "clean_box": [
+        135,
+        241,
+        375,
+        283
+      ],
+      "direction": "ltr",
+      "entities": []
+    },
+    {
+      "text": "see (page",
+      "box": [
+        135,
+        335,
+        339,
+        379
+      ],
+      "clean_box": [
+        135,
+        335,
+        339,
+        379
+      ],
+      "direction": "ltr",
+      "entities": []
+    },
+    {
+      "text": "Total: 350.75",
+      "box": [
+        133,
+        425,
+        403,
+        460
+      ],
+      "clean_box": [
+        133,
+        425,
+        403,
+        460
+      ],
+      "direction": "ltr",
+      "entities": []
+    },
+    {
+      "text": "+966 50 123 4567 for calls",
+      "box": [
+        135,
+        516,
+        688,
+        551
+      ],
+      "clean_box": [
+        135,
+        516,
+        688,
+        551
+      ],
+      "direction": "ltr",
+      "entities": []
+    },
+    {
+      "text": "Call +966 50 123 4567 today",
+      "box": [
+        136,
+        608,
+        734,
+        654
+      ],
+      "clean_box": [
+        136,
+        608,
+        734,
+        654
+      ],
+      "direction": "ltr",
+      "entities": []
+    },
+    {
+      "text": "50% of the amount",
+      "box": [
+        136,
+        700,
+        543,
+        735
+      ],
+      "clean_box": [
+        136,
+        700,
+        543,
+        735
+      ],
+      "direction": "ltr",
+      "entities": []
+    },
+    {
+      "text": "yes/no and/or 12/05/2026",
+      "box": [
+        133,
+        792,
+        689,
+        838
+      ],
+      "clean_box": [
+        133,
+        792,
+        689,
+        838
+      ],
+      "direction": "ltr",
+      "entities": []
+    },
+    {
+      "text": "He said \"yes\" to the offer",
+      "box": [
+        137,
+        883,
+        667,
+        929
+      ],
+      "clean_box": [
+        137,
+        883,
+        667,
+        929
+      ],
+      "direction": "ltr",
+      "entities": []
+    },
+    {
+      "text": "He said «yes» to the offer",
+      "box": [
+        137,
+        975,
+        677,
+        1021
+      ],
+      "clean_box": [
+        137,
+        975,
+        677,
+        1021
+      ],
+      "direction": "ltr",
+      "entities": []
+    },
+    {
+      "text": "Wait... then continue",
+      "box": [
+        134,
+        1067,
+        576,
+        1102
+      ],
+      "clean_box": [
+        134,
+        1067,
+        576,
+        1102
+      ],
+      "direction": "ltr",
+      "entities": []
+    },
+    {
+      "text": "Wait… then continue",
+      "box": [
+        134,
+        1158,
+        576,
+        1193
+      ],
+      "clean_box": [
+        134,
+        1158,
+        576,
+        1193
+      ],
+      "direction": "ltr",
+      "entities": []
+    },
+    {
+      "text": "pay - send – file — close",
+      "box": [
+        137,
+        1250,
+        643,
+        1296
+      ],
+      "clean_box": [
+        137,
+        1250,
+        643,
+        1296
+      ],
+      "direction": "ltr",
+      "entities": []
+    },
+    {
+      "text": "Name: أحمد الحسن",
+      "box": [
+        135,
+        1331,
+        436,
+        1393
+      ],
+      "clean_box": [
+        135,
+        1331,
+        436,
+        1393
+      ],
+      "direction": "ltr",
+      "entities": []
+    }
+  ],
+  "dpi": 300
+}

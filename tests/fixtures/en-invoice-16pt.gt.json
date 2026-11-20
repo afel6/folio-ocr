@@ -1,0 +1,515 @@
+{
+  "file": "en-invoice-16pt.pdf",
+  "condition": "born_digital",
+  "language": "en",
+  "layout": "invoice",
+  "direction": "ltr",
+  "width": 2546,
+  "height": 3607,
+  "homography": [
+    [
+      1.0,
+      0.0,
+      0.0
+    ],
+    [
+      0.0,
+      1.0,
+      0.0
+    ],
+    [
+      0.0,
+      0.0,
+      1.0
+    ]
+  ],
+  "lines": [
+    {
+      "text": "Invoice: Northwind Office Supply Ltd",
+      "box": [
+        197,
+        217,
+        1332,
+        285
+      ],
+      "clean_box": [
+        197,
+        217,
+        1332,
+        285
+      ],
+      "direction": "ltr",
+      "entities": []
+    },
+    {
+      "text": "Invoice number: INV-2026-3706",
+      "box": [
+        197,
+        351,
+        1181,
+        403
+      ],
+      "clean_box": [
+        197,
+        351,
+        1181,
+        403
+      ],
+      "direction": "ltr",
+      "entities": [
+        {
+          "type": "id",
+          "start": 16,
+          "end": 29
+        }
+      ]
+    },
+    {
+      "text": "Date: 23 August 2026",
+      "box": [
+        200,
+        487,
+        860,
+        551
+      ],
+      "clean_box": [
+        200,
+        487,
+        860,
+        551
+      ],
+      "direction": "ltr",
+      "entities": [
+        {
+          "type": "date",
+          "start": 6,
+          "end": 20
+        }
+      ]
+    },
+    {
+      "text": "Bill to: Daniel Mercer",
+      "box": [
+        200,
+        618,
+        843,
+        670
+      ],
+      "clean_box": [
+        200,
+        618,
+        843,
+        670
+      ],
+      "direction": "ltr",
+      "entities": [
+        {
+          "type": "name",
+          "start": 9,
+          "end": 22
+        }
+      ]
+    },
+    {
+      "text": "Phone: +44 20 7946 9818",
+      "box": [
+        200,
+        751,
+        975,
+        803
+      ],
+      "clean_box": [
+        200,
+        751,
+        975,
+        803
+      ],
+      "direction": "ltr",
+      "entities": [
+        {
+          "type": "phone",
+          "start": 7,
+          "end": 23
+        }
+      ]
+    },
+    {
+      "text": "Item",
+      "box": [
+        197,
+        888,
+        335,
+        936
+      ],
+      "clean_box": [
+        197,
+        888,
+        335,
+        936
+      ],
+      "direction": "ltr",
+      "entities": []
+    },
+    {
+      "text": "Qty",
+      "box": [
+        1107,
+        887,
+        1213,
+        951
+      ],
+      "clean_box": [
+        1107,
+        887,
+        1213,
+        951
+      ],
+      "direction": "ltr",
+      "entities": []
+    },
+    {
+      "text": "Unit price",
+      "box": [
+        1473,
+        886,
+        1768,
+        952
+      ],
+      "clean_box": [
+        1473,
+        886,
+        1768,
+        952
+      ],
+      "direction": "ltr",
+      "entities": []
+    },
+    {
+      "text": "Amount",
+      "box": [
+        1952,
+        887,
+        2202,
+        936
+      ],
+      "clean_box": [
+        1952,
+        887,
+        2202,
+        936
+      ],
+      "direction": "ltr",
+      "entities": []
+    },
+    {
+      "text": "Archive folders",
+      "box": [
+        194,
+        1018,
+        658,
+        1070
+      ],
+      "clean_box": [
+        194,
+        1018,
+        658,
+        1070
+      ],
+      "direction": "ltr",
+      "entities": []
+    },
+    {
+      "text": "2",
+      "box": [
+        1106,
+        1020,
+        1138,
+        1069
+      ],
+      "clean_box": [
+        1106,
+        1020,
+        1138,
+        1069
+      ],
+      "direction": "ltr",
+      "entities": []
+    },
+    {
+      "text": "82.25",
+      "box": [
+        1470,
+        1020,
+        1634,
+        1070
+      ],
+      "clean_box": [
+        1470,
+        1020,
+        1634,
+        1070
+      ],
+      "direction": "ltr",
+      "entities": [
+        {
+          "type": "amount",
+          "start": 0,
+          "end": 5
+        }
+      ]
+    },
+    {
+      "text": "164.50",
+      "box": [
+        1958,
+        1020,
+        2157,
+        1070
+      ],
+      "clean_box": [
+        1958,
+        1020,
+        2157,
+        1070
+      ],
+      "direction": "ltr",
+      "entities": [
+        {
+          "type": "amount",
+          "start": 0,
+          "end": 6
+        }
+      ]
+    },
+    {
+      "text": "Ballpoint pens (box of 50)",
+      "box": [
+        200,
+        1151,
+        986,
+        1218
+      ],
+      "clean_box": [
+        200,
+        1151,
+        986,
+        1218
+      ],
+      "direction": "ltr",
+      "entities": []
+    },
+    {
+      "text": "2",
+      "box": [
+        1106,
+        1154,
+        1138,
+        1202
+      ],
+      "clean_box": [
+        1106,
+        1154,
+        1138,
+        1202
+      ],
+      "direction": "ltr",
+      "entities": []
+    },
+    {
+      "text": "140.00",
+      "box": [
+        1473,
+        1154,
+        1672,
+        1203
+      ],
+      "clean_box": [
+        1473,
+        1154,
+        1672,
+        1203
+      ],
+      "direction": "ltr",
+      "entities": [
+        {
+          "type": "amount",
+          "start": 0,
+          "end": 6
+        }
+      ]
+    },
+    {
+      "text": "280.00",
+      "box": [
+        1955,
+        1154,
+        2157,
+        1203
+      ],
+      "clean_box": [
+        1955,
+        1154,
+        2157,
+        1203
+      ],
+      "direction": "ltr",
+      "entities": [
+        {
+          "type": "amount",
+          "start": 0,
+          "end": 6
+        }
+      ]
+    },
+    {
+      "text": "A4 paper ream",
+      "box": [
+        194,
+        1287,
+        652,
+        1352
+      ],
+      "clean_box": [
+        194,
+        1287,
+        652,
+        1352
+      ],
+      "direction": "ltr",
+      "entities": []
+    },
+    {
+      "text": "3",
+      "box": [
+        1106,
+        1287,
+        1138,
+        1336
+      ],
+      "clean_box": [
+        1106,
+        1287,
+        1138,
+        1336
+      ],
+      "direction": "ltr",
+      "entities": []
+    },
+    {
+      "text": "149.75",
+      "box": [
+        1473,
+        1287,
+        1672,
+        1337
+      ],
+      "clean_box": [
+        1473,
+        1287,
+        1672,
+        1337
+      ],
+      "direction": "ltr",
+      "entities": [
+        {
+          "type": "amount",
+          "start": 0,
+          "end": 6
+        }
+      ]
+    },
+    {
+      "text": "449.25",
+      "box": [
+        1953,
+        1287,
+        2157,
+        1337
+      ],
+      "clean_box": [
+        1953,
+        1287,
+        2157,
+        1337
+      ],
+      "direction": "ltr",
+      "entities": [
+        {
+          "type": "amount",
+          "start": 0,
+          "end": 6
+        }
+      ]
+    },
+    {
+      "text": "Total: 893.75",
+      "box": [
+        195,
+        1418,
+        586,
+        1470
+      ],
+      "clean_box": [
+        195,
+        1418,
+        586,
+        1470
+      ],
+      "direction": "ltr",
+      "entities": [
+        {
+          "type": "amount",
+          "start": 7,
+          "end": 13
+        }
+      ]
+    },
+    {
+      "text": "Due date: 24 May 2026",
+      "box": [
+        200,
+        1551,
+        907,
+        1618
+      ],
+      "clean_box": [
+        200,
+        1551,
+        907,
+        1618
+      ],
+      "direction": "ltr",
+      "entities": [
+        {
+          "type": "date",
+          "start": 10,
+          "end": 21
+        }
+      ]
+    },
+    {
+      "text": "Prepared by: Grace Whitlock",
+      "box": [
+        200,
+        1685,
+        1075,
+        1752
+      ],
+      "clean_box": [
+        200,
+        1685,
+        1075,
+        1752
+      ],
+      "direction": "ltr",
+      "entities": [
+        {
+          "type": "name",
+          "start": 13,
+          "end": 27
+        }
+      ]
+    }
+  ],
+  "dpi": 300
+}

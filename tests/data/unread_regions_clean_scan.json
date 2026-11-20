@@ -1,0 +1,65 @@
+{
+ "ar-invoice-clean.png": [
+  [
+   1239.0,
+   536.0,
+   1246.0,
+   545.0
+  ],
+  [
+   342.0,
+   658.0,
+   372.0,
+   668.0
+  ],
+  [
+   810.0,
+   894.0,
+   817.0,
+   922.0
+  ]
+ ],
+ "ar-invoice-scan.jpg": [
+  [
+   1405.0,
+   519.0,
+   1410.0,
+   533.0
+  ],
+  [
+   487.0,
+   669.0,
+   491.0,
+   698.0
+  ],
+  [
+   899.0,
+   978.0,
+   900.0,
+   980.0
+  ]
+ ],
+ "ar-letter-clean.png": [],
+ "ar-letter-scan.jpg": [],
+ "en-invoice-clean.png": [],
+ "en-invoice-scan.jpg": [],
+ "en-letter-clean.png": [],
+ "en-letter-scan.jpg": [],
+ "mixed-invoice-clean.png": [
+  [
+   1566.0,
+   298.0,
+   1568.0,
+   302.0
+  ],
+  [
+   342.0,
+   658.0,
+   372.0,
+   668.0
+  ]
+ ],
+ "mixed-invoice-scan.jpg": [],
+ "mixed-letter-clean.png": [],
+ "mixed-letter-scan.jpg": []
+}

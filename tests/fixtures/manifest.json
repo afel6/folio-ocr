@@ -1,0 +1,513 @@
+{
+  "seed": 20261119,
+  "fonts": [
+    {
+      "file": "fonts/Amiri-Regular.ttf",
+      "sha256": "cd2550c0f4c05eb341bf97958211aaa39382bca96577ba3a67d4a3b4912c43c0"
+    },
+    {
+      "file": "fonts/NotoNaskhArabic-Regular.ttf",
+      "sha256": "6f0a92031367b2f5a2078fe9d24f3433122b61a0bad57c423aad8f3c39aa2e6e"
+    },
+    {
+      "file": "fonts/NotoSans-Regular.ttf",
+      "sha256": "478c558ea716033cd60c03438f628dfa75694dcf6b5f6d505a2f05fd2b4f3823"
+    }
+  ],
+  "fixtures": [
+    {
+      "file": "ar-adversarial-1.pdf",
+      "sha256": "9c2e9a757ff11c932d88060b7274d5be8f64c46833bc16cc1957bfe972f6c9b8",
+      "gt": "ar-adversarial-1.gt.json",
+      "gt_sha256": "d4619ae07eb9ebd4965c18dc41fcebd0cabe489ca600c726f1d8505462d5326b",
+      "condition": "born_digital",
+      "language": "en+ar",
+      "layout": "adversarial",
+      "tags": [
+        "adversarial"
+      ]
+    },
+    {
+      "file": "ar-adversarial-2.pdf",
+      "sha256": "a3b4d43e66dc7cb0f07630f96ec9ea98f916404bd5fa17af488be4dac2e03db2",
+      "gt": "ar-adversarial-2.gt.json",
+      "gt_sha256": "56a1bbb746b415118330de1bb461961ba8d2f74969a452290e34063ae817a40d",
+      "condition": "born_digital",
+      "language": "en+ar",
+      "layout": "adversarial",
+      "tags": [
+        "adversarial"
+      ]
+    },
+    {
+      "file": "ar-adversarial-3.pdf",
+      "sha256": "555d075ec6339bf39e52ead2a2584548fecd17cd2e9f3f04cb94b34fa74cd30c",
+      "gt": "ar-adversarial-3.gt.json",
+      "gt_sha256": "c083b02e5a5380468e2853e3e219705241eb18e9b782e29d1e1e6ea74950b397",
+      "condition": "born_digital",
+      "language": "en+ar",
+      "layout": "adversarial",
+      "tags": [
+        "adversarial"
+      ]
+    },
+    {
+      "file": "ar-bulleted.pdf",
+      "sha256": "fc0ee43fa8a97cad1181160f15e0a3fa108eca34e6f4d9e071dde43e545dc6ef",
+      "gt": "ar-bulleted.gt.json",
+      "gt_sha256": "edc7ee917489ae9278f1625dd9625921278bd91e13e9849cbc529b09d6dcee06",
+      "condition": "born_digital",
+      "language": "ar",
+      "layout": "bulleted",
+      "tags": [
+        "bulleted"
+      ]
+    },
+    {
+      "file": "ar-invoice-16pt.pdf",
+      "sha256": "769ae932c3d71d7fce555fe0bb32b3d7f0edbde850ca42c6bd915ec6c09ca58f",
+      "gt": "ar-invoice-16pt.gt.json",
+      "gt_sha256": "98946d1917a4a5a3c5860ad1ba1b7d74fd96301b9554cc046d09d4f22c52ca99",
+      "condition": "born_digital",
+      "language": "ar",
+      "layout": "invoice",
+      "tags": [
+        "second_size"
+      ]
+    },
+    {
+      "file": "ar-invoice-clean.png",
+      "sha256": "3874deb20d92bb8c0bb81e5352eb5a62942c6ec99f035e18a76e4e3d5f9350f8",
+      "gt": "ar-invoice-clean.gt.json",
+      "gt_sha256": "961a5a8ee419453374da1b4873023a8b9b81a7c2e8fb39e4e5452e8f7c4ef620",
+      "condition": "clean",
+      "language": "ar",
+      "layout": "invoice",
+      "tags": []
+    },
+    {
+      "file": "ar-invoice-photo-exif.jpg",
+      "sha256": "659730c66158672a436229032c4b8ec8c2096e9c14d4009d0cdc15ecafc97f19",
+      "gt": "ar-invoice-photo-exif.gt.json",
+      "gt_sha256": "1d9130604b21a60011e11b15fb078948c8af12e49e36d9bfc33a9c34d9103090",
+      "condition": "photo_exif",
+      "language": "ar",
+      "layout": "invoice",
+      "tags": []
+    },
+    {
+      "file": "ar-invoice-photo.jpg",
+      "sha256": "6e6489a306e015d525c432a1302d4b986a6f17e4780834f3080dc5d626db2709",
+      "gt": "ar-invoice-photo.gt.json",
+      "gt_sha256": "1bbc2bfc8632e979a78e6a7f0dec5530f42dd8bf6192ae6af0739bcdf549dfcf",
+      "condition": "photo",
+      "language": "ar",
+      "layout": "invoice",
+      "tags": []
+    },
+    {
+      "file": "ar-invoice-scan.jpg",
+      "sha256": "005ece19f72e647bd3a7e89a89c99c2f0bd074e8aa32c321dfefbd4ac1ac6f8e",
+      "gt": "ar-invoice-scan.gt.json",
+      "gt_sha256": "b64f5a0589404f50a710d2ab270472ef48fbf0442d86e5872270c7d7ba21a7c1",
+      "condition": "scan",
+      "language": "ar",
+      "layout": "invoice",
+      "tags": []
+    },
+    {
+      "file": "ar-invoice-scanned.pdf",
+      "sha256": "89ad675d40db93f7ba9f78326502f7701138e4354eed62c704233b344ee210b6",
+      "gt": "ar-invoice-scanned.gt.json",
+      "gt_sha256": "e692bf5ce4edbd69031cf0a7fb777c673aa994a20c65c6cac401850b8242cc4d",
+      "condition": "scanned_pdf",
+      "language": "ar",
+      "layout": "invoice",
+      "tags": []
+    },
+    {
+      "file": "ar-invoice.pdf",
+      "sha256": "1cd16a7d162e0eb6daf060baaaac79bdde0095a9472c0d84a1f8b1f4a514118a",
+      "gt": "ar-invoice.gt.json",
+      "gt_sha256": "84d40f703a765c9592911265a0d386763698329ddb266421572d9ab873877627",
+      "condition": "born_digital",
+      "language": "ar",
+      "layout": "invoice",
+      "tags": []
+    },
+    {
+      "file": "ar-letter-broken_unmapped.pdf",
+      "sha256": "4543dd9b736c78dd2d986fce0694a04f02ab0a2818e661ea28ad4d95894bc8d4",
+      "gt": "ar-letter-broken_unmapped.gt.json",
+      "gt_sha256": "f18e2b99cb4940a1c871972b4209227c149538993b0f8ba28a1a8552a493bdd3",
+      "condition": "broken_unmapped",
+      "language": "ar",
+      "layout": "letter",
+      "tags": []
+    },
+    {
+      "file": "ar-letter-broken_visual_order.pdf",
+      "sha256": "1440378d68642489de169bde5a1d02c1fd1f3ec80b348b2842bd0d9f793fbe12",
+      "gt": "ar-letter-broken_visual_order.gt.json",
+      "gt_sha256": "b888942a369286da53591558bdf835b21485e3f10c10aadd24fa3fa259913f2c",
+      "condition": "broken_visual_order",
+      "language": "ar",
+      "layout": "letter",
+      "tags": []
+    },
+    {
+      "file": "ar-letter-clean.png",
+      "sha256": "ea36ae9e013432c6c9b34b3f1fb485edbb68b9a0009c3818a269f821d5d71aa8",
+      "gt": "ar-letter-clean.gt.json",
+      "gt_sha256": "d7aae3225844eabaa68c33cef1bd77d450c8fc59b63ebc29197586a804e203c2",
+      "condition": "clean",
+      "language": "ar",
+      "layout": "letter",
+      "tags": []
+    },
+    {
+      "file": "ar-letter-invisible_ocr.pdf",
+      "sha256": "625542d62f0159c4bee97be87a3bbab88221bf1db02ceecc58c29aa03de08320",
+      "gt": "ar-letter-invisible_ocr.gt.json",
+      "gt_sha256": "907ab8ab521bb2233441da6de9b292f3b9aef5774e0cb961827912774d7540a7",
+      "condition": "invisible_text",
+      "language": "ar",
+      "layout": "letter",
+      "tags": [
+        "planted_errors"
+      ]
+    },
+    {
+      "file": "ar-letter-per_char.pdf",
+      "sha256": "bf3eb082be83335312dfc3d3b2b0cfeeeb0540e43dd788d1f379576e17b69283",
+      "gt": "ar-letter-per_char.gt.json",
+      "gt_sha256": "f40025d3dbdca2c5aefcfc92c0aafee9898b20ad5fc37986ffd85517dcda0d93",
+      "condition": "per_character",
+      "language": "ar",
+      "layout": "letter",
+      "tags": [
+        "adversarial"
+      ]
+    },
+    {
+      "file": "ar-letter-photo-exif.jpg",
+      "sha256": "c7f20672e9fffd2d7bf6d252cd6865fd36fc5b0d9a3bff477e8ff8c8f128b276",
+      "gt": "ar-letter-photo-exif.gt.json",
+      "gt_sha256": "bd99d3a4bed1fa7770b47f4f972e7e66f631c151f955b82adc0015b3c581dc35",
+      "condition": "photo_exif",
+      "language": "ar",
+      "layout": "letter",
+      "tags": []
+    },
+    {
+      "file": "ar-letter-photo.jpg",
+      "sha256": "693123f04fb3447de6fcaa831a1ccd91f358adc7e7d8e840be3d4e48786c70af",
+      "gt": "ar-letter-photo.gt.json",
+      "gt_sha256": "a1bb18a6b0cbedc22db38ce056917ef7fd981de14f36c514d5b07d7ed00c7280",
+      "condition": "photo",
+      "language": "ar",
+      "layout": "letter",
+      "tags": []
+    },
+    {
+      "file": "ar-letter-scan.jpg",
+      "sha256": "0f8db54eb17b944e32325fcc78abf7ecfe1107809d25ba069d662694185bb7fa",
+      "gt": "ar-letter-scan.gt.json",
+      "gt_sha256": "601fd813da059f3456857ab028dc56040cd53511c36cab2a60a63e1645810560",
+      "condition": "scan",
+      "language": "ar",
+      "layout": "letter",
+      "tags": []
+    },
+    {
+      "file": "ar-letter.pdf",
+      "sha256": "811bcb2120a790cd93d11a73303cf4f369aa3089f6579bc359faef5cd6273564",
+      "gt": "ar-letter.gt.json",
+      "gt_sha256": "24b652fbddc8be76aab2c97da8d9bb3243ba3ebb9160ce7957e47da039a0ddef",
+      "condition": "born_digital",
+      "language": "ar",
+      "layout": "letter",
+      "tags": []
+    },
+    {
+      "file": "blank-scan.jpg",
+      "sha256": "8141c7fe6024393bd4e28e80177b4b59a75ee32a9cc3f6fe1de3e11d732d5b39",
+      "gt": "blank-scan.gt.json",
+      "gt_sha256": "1686eac97134bb362f52039c744957e43d525c7edde8225fc9e03a524b960377",
+      "condition": "blank",
+      "language": "en+ar",
+      "layout": "blank",
+      "tags": []
+    },
+    {
+      "file": "en-adversarial-2.pdf",
+      "sha256": "01ea8a7b9c03520dffe777fb057707d6ba59a63e6e9dd3dafccae3fa78a25208",
+      "gt": "en-adversarial-2.gt.json",
+      "gt_sha256": "ac855828bc87ae3efbceb9b8d901d9bf1e798279976c567ae4d1980dcf9b5d16",
+      "condition": "born_digital",
+      "language": "en+ar",
+      "layout": "adversarial",
+      "tags": [
+        "adversarial"
+      ]
+    },
+    {
+      "file": "en-adversarial.pdf",
+      "sha256": "d06d7aa2c0b55928b5505506ee8bc8cee7c4bad49ccbeb63d0ca0abc7ccc104d",
+      "gt": "en-adversarial.gt.json",
+      "gt_sha256": "fc37be8501c4dc8411c7af534589b9724b0c15ab8850d0e1591b363913b767ae",
+      "condition": "born_digital",
+      "language": "en+ar",
+      "layout": "adversarial",
+      "tags": [
+        "adversarial"
+      ]
+    },
+    {
+      "file": "en-bulleted.pdf",
+      "sha256": "834dfb01ae2f0a1cd61ae50d90b0e2d545880f925aa63a6c6f01b94d8e7dc30f",
+      "gt": "en-bulleted.gt.json",
+      "gt_sha256": "1f49141a7fab769a05b8b80946c2433a378d4be5cf3fb13ab5a4d322a84459cd",
+      "condition": "born_digital",
+      "language": "en",
+      "layout": "bulleted",
+      "tags": [
+        "bulleted"
+      ]
+    },
+    {
+      "file": "en-invoice-16pt.pdf",
+      "sha256": "9178e3399d6edb5f8724923a9391baff641029c7f8480cded99d3c0ebe87cff1",
+      "gt": "en-invoice-16pt.gt.json",
+      "gt_sha256": "f6be0beb8b8538f9a7fdcd9e4366b5efc2cc4473bbfb49e1bc2da106a9ee84e4",
+      "condition": "born_digital",
+      "language": "en",
+      "layout": "invoice",
+      "tags": [
+        "second_size"
+      ]
+    },
+    {
+      "file": "en-invoice-clean.png",
+      "sha256": "951e6fe45361eed04b3433c8cfca5ed08e41ed26f264123be4ded2d287bd9993",
+      "gt": "en-invoice-clean.gt.json",
+      "gt_sha256": "6e187993a3952eb6babea4ad5c90faf07cefbfc60333264bdc57112694163c89",
+      "condition": "clean",
+      "language": "en",
+      "layout": "invoice",
+      "tags": []
+    },
+    {
+      "file": "en-invoice-photo-exif.jpg",
+      "sha256": "4053f9297938b98c1d2a9fb5b25e78f940dc3149dfbbc2b8b7d3f56136a2e770",
+      "gt": "en-invoice-photo-exif.gt.json",
+      "gt_sha256": "8629fb853506f27e1f3996609e3586caa51fe262be00898c6ff6b4d87c73145c",
+      "condition": "photo_exif",
+      "language": "en",
+      "layout": "invoice",
+      "tags": []
+    },
+    {
+      "file": "en-invoice-photo.jpg",
+      "sha256": "0e1d2d14a07cf5f3c97a444c8952c96e956b441a9b3fa0493854750eaca3b7dc",
+      "gt": "en-invoice-photo.gt.json",
+      "gt_sha256": "7a8453deee5fc31fbb1350f6c3f6cedb7821ef9559fd69a1265f661a6f5ce744",
+      "condition": "photo",
+      "language": "en",
+      "layout": "invoice",
+      "tags": []
+    },
+    {
+      "file": "en-invoice-scan.jpg",
+      "sha256": "34b545a92b0cfb332b5fb92938eb0899aeb07cc1c5d6c2c5deef29c40171871d",
+      "gt": "en-invoice-scan.gt.json",
+      "gt_sha256": "cfeeaa49396dc7df636d92c30955e8eb1a57394e4b0e29edff467727668151fd",
+      "condition": "scan",
+      "language": "en",
+      "layout": "invoice",
+      "tags": []
+    },
+    {
+      "file": "en-invoice-upside_down.png",
+      "sha256": "94a339fde6e19d27b504ace6e7379b70eeaa8cf216a1e7c20ce926cd824327bb",
+      "gt": "en-invoice-upside_down.gt.json",
+      "gt_sha256": "62c3f5fd2049b604af995469cdb5472c88bcf6c648b40e2f9d4adadbfc093929",
+      "condition": "upside_down",
+      "language": "en",
+      "layout": "invoice",
+      "tags": []
+    },
+    {
+      "file": "en-invoice.pdf",
+      "sha256": "e954fa665727a04caa8eed492bdfcb66867378cacf3b10b8c07c6cd46bd0a92a",
+      "gt": "en-invoice.gt.json",
+      "gt_sha256": "351d6020b456df15f80fa1f58a3386519fd1ae2da27d41f22a8e59c3abc01995",
+      "condition": "born_digital",
+      "language": "en",
+      "layout": "invoice",
+      "tags": []
+    },
+    {
+      "file": "en-letter-clean.png",
+      "sha256": "8c3731309f0d19551b37adabd33b14c0b0730cc58c74171cbe5d44d3c0d6be07",
+      "gt": "en-letter-clean.gt.json",
+      "gt_sha256": "0e6913efc9a450ccf3897c0ae08bed075d369fbf1ce4e38ce990bd6903034384",
+      "condition": "clean",
+      "language": "en",
+      "layout": "letter",
+      "tags": []
+    },
+    {
+      "file": "en-letter-photo-exif.jpg",
+      "sha256": "75c16a6f99690bdc4ee91dec2c9718f9b173412a1aa9f954b03d06c3a109236b",
+      "gt": "en-letter-photo-exif.gt.json",
+      "gt_sha256": "b3fd2f032c78fae7fb1ecc64ea6217d728cd23ea27ad75eac1a5219cc8a48333",
+      "condition": "photo_exif",
+      "language": "en",
+      "layout": "letter",
+      "tags": []
+    },
+    {
+      "file": "en-letter-photo.jpg",
+      "sha256": "20499e459779b22ff607ebb96dc3861141d9da8590717f9d415382299dfe1379",
+      "gt": "en-letter-photo.gt.json",
+      "gt_sha256": "5211fc71405cf253f025d4699fb065bcc0b5ce24bba0aeba1176ebf352c92ed1",
+      "condition": "photo",
+      "language": "en",
+      "layout": "letter",
+      "tags": []
+    },
+    {
+      "file": "en-letter-scan.jpg",
+      "sha256": "f03ac6dad90b7c568b1b6b39a89f8fbad8afe54cf3531c137825c007420fdfc5",
+      "gt": "en-letter-scan.gt.json",
+      "gt_sha256": "5824d22b503a855960e41a8962be902abba3559e666ca1783ad659a6d60c0450",
+      "condition": "scan",
+      "language": "en",
+      "layout": "letter",
+      "tags": []
+    },
+    {
+      "file": "en-letter.pdf",
+      "sha256": "3a6af936329d6b58a951d0156179f964bfc8fe64d2f3d89b00fce809f4bda9d0",
+      "gt": "en-letter.gt.json",
+      "gt_sha256": "80136273d5196dbe011f80be7d9439250f22212950df37d15cca7b5c514bd37d",
+      "condition": "born_digital",
+      "language": "en",
+      "layout": "letter",
+      "tags": []
+    },
+    {
+      "file": "mixed-invoice-16pt.pdf",
+      "sha256": "9d52d6114bf0b680676eba1c8c382e19ab9151ec0764f23ba27e38c7c6c522ac",
+      "gt": "mixed-invoice-16pt.gt.json",
+      "gt_sha256": "80ca3fee0014794102921ea91571914d46516e4064de1df7b4bdfe8fcd4c122e",
+      "condition": "born_digital",
+      "language": "en+ar",
+      "layout": "invoice",
+      "tags": [
+        "second_size"
+      ]
+    },
+    {
+      "file": "mixed-invoice-clean.png",
+      "sha256": "350f4d1497a3ec137e62b92ed54a7626e29be5f018f51cbaf3f1e068338e1a9a",
+      "gt": "mixed-invoice-clean.gt.json",
+      "gt_sha256": "987d62131cdb520ef997a8e8be63563508047198081c2e1baa872b6b8470107d",
+      "condition": "clean",
+      "language": "en+ar",
+      "layout": "invoice",
+      "tags": []
+    },
+    {
+      "file": "mixed-invoice-photo-exif.jpg",
+      "sha256": "4451495c5aba493fffa916b4c8d83fe2e537987e27e6bcf8f905feb6017fadc7",
+      "gt": "mixed-invoice-photo-exif.gt.json",
+      "gt_sha256": "0575648fd207061d79b7e4cf42f6263d20585e6f1eec27bdef83a643448e18bd",
+      "condition": "photo_exif",
+      "language": "en+ar",
+      "layout": "invoice",
+      "tags": []
+    },
+    {
+      "file": "mixed-invoice-photo.jpg",
+      "sha256": "c670521552437ded55876b89fb5f75cde4698fc7047e5ee9602eee782b37cedd",
+      "gt": "mixed-invoice-photo.gt.json",
+      "gt_sha256": "d63d38814fa4628764ff7e12b94b496c87054b8912b8634ce7e4d19e4c260780",
+      "condition": "photo",
+      "language": "en+ar",
+      "layout": "invoice",
+      "tags": []
+    },
+    {
+      "file": "mixed-invoice-scan.jpg",
+      "sha256": "9615de05ca2a97a279a401a86c8abf31bdd452804cdfd03da446c2ab4d0c4f14",
+      "gt": "mixed-invoice-scan.gt.json",
+      "gt_sha256": "3ca076835432d3c7741644796c43eda322791218412ab5fc20cec3dd95871c43",
+      "condition": "scan",
+      "language": "en+ar",
+      "layout": "invoice",
+      "tags": []
+    },
+    {
+      "file": "mixed-invoice.pdf",
+      "sha256": "51a623a03df72888c2fa68d28b83b9b041de3f1b9d1323c2e92b31c6564ccc16",
+      "gt": "mixed-invoice.gt.json",
+      "gt_sha256": "1fbb3b61a345aa24a0daab027213f400b389753842cc9a5ccddfb83b80252257",
+      "condition": "born_digital",
+      "language": "en+ar",
+      "layout": "invoice",
+      "tags": []
+    },
+    {
+      "file": "mixed-letter-clean.png",
+      "sha256": "eaedda44609a133d0c7ced5284de4a01d317b88cacecb6feefdf0e97fa7d6897",
+      "gt": "mixed-letter-clean.gt.json",
+      "gt_sha256": "730397f2486badeb34827dc74943516732e679db05363c2a6cb22b60f6eb0ca5",
+      "condition": "clean",
+      "language": "en+ar",
+      "layout": "letter",
+      "tags": []
+    },
+    {
+      "file": "mixed-letter-photo-exif.jpg",
+      "sha256": "22f5729451dc9685569f55814301ea0d66979a0f6356d63370e2c11cb88a3a97",
+      "gt": "mixed-letter-photo-exif.gt.json",
+      "gt_sha256": "2d3a6e167875315a5dd5a58c253b70aaf59f4157c61dd0b4baa26cd099a05ebc",
+      "condition": "photo_exif",
+      "language": "en+ar",
+      "layout": "letter",
+      "tags": []
+    },
+    {
+      "file": "mixed-letter-photo.jpg",
+      "sha256": "bbed75ced4504b08f6b66296407e0ca7e33ccfa0583654f89c288d1f89020159",
+      "gt": "mixed-letter-photo.gt.json",
+      "gt_sha256": "0c660013bba96772247a6637b9ec00917a6ce88a25365497bbd4310704a22ac7",
+      "condition": "photo",
+      "language": "en+ar",
+      "layout": "letter",
+      "tags": []
+    },
+    {
+      "file": "mixed-letter-scan.jpg",
+      "sha256": "e9ab4aa7b454a579421595f4782af42b38e122a00e47be7dd65127fcd198d4b4",
+      "gt": "mixed-letter-scan.gt.json",
+      "gt_sha256": "e915370552d6d5de78436f480687da613342d5896fcb7c8d0baf1410feb056f6",
+      "condition": "scan",
+      "language": "en+ar",
+      "layout": "letter",
+      "tags": []
+    },
+    {
+      "file": "mixed-letter.pdf",
+      "sha256": "0559358a1c5ffbf74ba86bca7ac33467a00a4a95ef8dcde593b200f4ca5ade75",
+      "gt": "mixed-letter.gt.json",
+      "gt_sha256": "03fe81e91131f87466e41221e5b1cf9fb70ff84f644594b4b426ed2e53f5bb79",
+      "condition": "born_digital",
+      "language": "en+ar",
+      "layout": "letter",
+      "tags": []
+    }
+  ]
+}

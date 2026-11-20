@@ -1,0 +1,333 @@
+{
+  "file": "en-letter-photo.jpg",
+  "condition": "photo",
+  "language": "en",
+  "layout": "letter",
+  "direction": "ltr",
+  "width": 2011,
+  "height": 2792,
+  "homography": [
+    [
+      0.946740881523696,
+      0.04215112048997904,
+      74.46443753759563
+    ],
+    [
+      -0.06083936141401117,
+      0.9435003694521914,
+      209.90193989903457
+    ],
+    [
+      0.0,
+      -2.0688026695749753e-05,
+      1.0
+    ]
+  ],
+  "lines": [
+    {
+      "text": "Internal memo",
+      "box": [
+        209,
+        324,
+        514,
+        378
+      ],
+      "clean_box": [
+        135,
+        150,
+        453,
+        185
+      ],
+      "direction": "ltr",
+      "entities": []
+    },
+    {
+      "text": "To: Daniel Mercer",
+      "box": [
+        211,
+        408,
+        571,
+        465
+      ],
+      "clean_box": [
+        133,
+        241,
+        508,
+        276
+      ],
+      "direction": "ltr",
+      "entities": [
+        {
+          "type": "name",
+          "start": 4,
+          "end": 17
+        }
+      ]
+    },
+    {
+      "text": "From: Grace Whitlock",
+      "box": [
+        219,
+        491,
+        656,
+        553
+      ],
+      "clean_box": [
+        137,
+        333,
+        592,
+        368
+      ],
+      "direction": "ltr",
+      "entities": [
+        {
+          "type": "name",
+          "start": 6,
+          "end": 20
+        }
+      ]
+    },
+    {
+      "text": "Date: 2026-07-21",
+      "box": [
+        224,
+        588,
+        562,
+        642
+      ],
+      "clean_box": [
+        137,
+        427,
+        488,
+        460
+      ],
+      "direction": "ltr",
+      "entities": [
+        {
+          "type": "date",
+          "start": 6,
+          "end": 16
+        }
+      ]
+    },
+    {
+      "text": "Ref: REF-2026-6611",
+      "box": [
+        228,
+        671,
+        612,
+        730
+      ],
+      "clean_box": [
+        137,
+        516,
+        535,
+        551
+      ],
+      "direction": "ltr",
+      "entities": [
+        {
+          "type": "id",
+          "start": 5,
+          "end": 18
+        }
+      ]
+    },
+    {
+      "text": "Subject: Quarterly supplies review",
+      "box": [
+        230,
+        740,
+        930,
+        830
+      ],
+      "clean_box": [
+        135,
+        608,
+        861,
+        654
+      ],
+      "direction": "ltr",
+      "entities": []
+    },
+    {
+      "text": "The review meeting is set for 27 December 2026.",
+      "box": [
+        233,
+        810,
+        1240,
+        920
+      ],
+      "clean_box": [
+        133,
+        700,
+        1177,
+        746
+      ],
+      "direction": "ltr",
+      "entities": [
+        {
+          "type": "date",
+          "start": 30,
+          "end": 46
+        }
+      ]
+    },
+    {
+      "text": "The approved budget is 418.00 for this quarter.",
+      "box": [
+        237,
+        902,
+        1210,
+        1010
+      ],
+      "clean_box": [
+        133,
+        792,
+        1139,
+        838
+      ],
+      "direction": "ltr",
+      "entities": [
+        {
+          "type": "amount",
+          "start": 23,
+          "end": 29
+        }
+      ]
+    },
+    {
+      "text": "Contract CT-2026-6636 covers the supply of paper and ink.",
+      "box": [
+        244,
+        976,
+        1451,
+        1100
+      ],
+      "clean_box": [
+        136,
+        883,
+        1383,
+        929
+      ],
+      "direction": "ltr",
+      "entities": [
+        {
+          "type": "id",
+          "start": 9,
+          "end": 21
+        }
+      ]
+    },
+    {
+      "text": "A second payment of 209.00 is due after delivery.",
+      "box": [
+        246,
+        1079,
+        1268,
+        1191
+      ],
+      "clean_box": [
+        133,
+        975,
+        1186,
+        1021
+      ],
+      "direction": "ltr",
+      "entities": [
+        {
+          "type": "amount",
+          "start": 20,
+          "end": 26
+        }
+      ]
+    },
+    {
+      "text": "A deposit of 104.50 has already been paid.",
+      "box": [
+        250,
+        1179,
+        1133,
+        1282
+      ],
+      "clean_box": [
+        133,
+        1067,
+        1040,
+        1113
+      ],
+      "direction": "ltr",
+      "entities": [
+        {
+          "type": "amount",
+          "start": 13,
+          "end": 19
+        }
+      ]
+    },
+    {
+      "text": "Phone: +44 20 7946 2228",
+      "box": [
+        259,
+        1292,
+        779,
+        1361
+      ],
+      "clean_box": [
+        137,
+        1158,
+        670,
+        1193
+      ],
+      "direction": "ltr",
+      "entities": [
+        {
+          "type": "phone",
+          "start": 7,
+          "end": 23
+        }
+      ]
+    },
+    {
+      "text": "Kind regards",
+      "box": [
+        263,
+        1400,
+        528,
+        1464
+      ],
+      "clean_box": [
+        137,
+        1250,
+        406,
+        1296
+      ],
+      "direction": "ltr",
+      "entities": []
+    },
+    {
+      "text": "Marcus Lindqvist",
+      "box": [
+        268,
+        1487,
+        622,
+        1556
+      ],
+      "clean_box": [
+        137,
+        1342,
+        497,
+        1388
+      ],
+      "direction": "ltr",
+      "entities": [
+        {
+          "type": "name",
+          "start": 0,
+          "end": 16
+        }
+      ]
+    }
+  ],
+  "dpi": 300
+}

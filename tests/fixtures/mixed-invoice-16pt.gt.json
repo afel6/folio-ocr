@@ -1,0 +1,515 @@
+{
+  "file": "mixed-invoice-16pt.pdf",
+  "condition": "born_digital",
+  "language": "en+ar",
+  "layout": "invoice",
+  "direction": "rtl",
+  "width": 2546,
+  "height": 3607,
+  "homography": [
+    [
+      1.0,
+      0.0,
+      0.0
+    ],
+    [
+      0.0,
+      1.0,
+      0.0
+    ],
+    [
+      0.0,
+      0.0,
+      1.0
+    ]
+  ],
+  "lines": [
+    {
+      "text": "فاتورة: مؤسسة النخبة للتوريدات",
+      "box": [
+        1670,
+        220,
+        2348,
+        287
+      ],
+      "clean_box": [
+        1670,
+        220,
+        2348,
+        287
+      ],
+      "direction": "rtl",
+      "entities": []
+    },
+    {
+      "text": "رقم الفاتورة: INV-2026-5658",
+      "box": [
+        1624,
+        354,
+        2348,
+        440
+      ],
+      "clean_box": [
+        1624,
+        354,
+        2348,
+        440
+      ],
+      "direction": "rtl",
+      "entities": [
+        {
+          "type": "id",
+          "start": 14,
+          "end": 27
+        }
+      ]
+    },
+    {
+      "text": "التاريخ: 2026/05/03",
+      "box": [
+        1865,
+        487,
+        2348,
+        569
+      ],
+      "clean_box": [
+        1865,
+        487,
+        2348,
+        569
+      ],
+      "direction": "rtl",
+      "entities": [
+        {
+          "type": "date",
+          "start": 9,
+          "end": 19
+        }
+      ]
+    },
+    {
+      "text": "العميل: Owen Calloway",
+      "box": [
+        1762,
+        621,
+        2348,
+        693
+      ],
+      "clean_box": [
+        1762,
+        621,
+        2348,
+        693
+      ],
+      "direction": "rtl",
+      "entities": [
+        {
+          "type": "name",
+          "start": 8,
+          "end": 21
+        }
+      ]
+    },
+    {
+      "text": "Phone: +966 50 687 1426",
+      "box": [
+        200,
+        751,
+        975,
+        803
+      ],
+      "clean_box": [
+        200,
+        751,
+        975,
+        803
+      ],
+      "direction": "ltr",
+      "entities": [
+        {
+          "type": "phone",
+          "start": 7,
+          "end": 23
+        }
+      ]
+    },
+    {
+      "text": "البند",
+      "box": [
+        2266,
+        888,
+        2348,
+        951
+      ],
+      "clean_box": [
+        2266,
+        888,
+        2348,
+        951
+      ],
+      "direction": "rtl",
+      "entities": []
+    },
+    {
+      "text": "الكمية",
+      "box": [
+        1325,
+        878,
+        1439,
+        949
+      ],
+      "clean_box": [
+        1325,
+        878,
+        1439,
+        949
+      ],
+      "direction": "rtl",
+      "entities": []
+    },
+    {
+      "text": "سعر الوحدة",
+      "box": [
+        833,
+        888,
+        1075,
+        954
+      ],
+      "clean_box": [
+        833,
+        888,
+        1075,
+        954
+      ],
+      "direction": "rtl",
+      "entities": []
+    },
+    {
+      "text": "المبلغ",
+      "box": [
+        498,
+        888,
+        590,
+        972
+      ],
+      "clean_box": [
+        498,
+        888,
+        590,
+        972
+      ],
+      "direction": "rtl",
+      "entities": []
+    },
+    {
+      "text": "حبر طابعة",
+      "box": [
+        2142,
+        1021,
+        2348,
+        1085
+      ],
+      "clean_box": [
+        2142,
+        1021,
+        2348,
+        1085
+      ],
+      "direction": "rtl",
+      "entities": []
+    },
+    {
+      "text": "1",
+      "box": [
+        1170,
+        1021,
+        1188,
+        1069
+      ],
+      "clean_box": [
+        1170,
+        1021,
+        1188,
+        1069
+      ],
+      "direction": "ltr",
+      "entities": []
+    },
+    {
+      "text": "155.00",
+      "box": [
+        685,
+        1020,
+        884,
+        1070
+      ],
+      "clean_box": [
+        685,
+        1020,
+        884,
+        1070
+      ],
+      "direction": "ltr",
+      "entities": [
+        {
+          "type": "amount",
+          "start": 0,
+          "end": 6
+        }
+      ]
+    },
+    {
+      "text": "١٥٥٫٠٠",
+      "box": [
+        208,
+        1033,
+        395,
+        1083
+      ],
+      "clean_box": [
+        208,
+        1033,
+        395,
+        1083
+      ],
+      "direction": "ltr",
+      "entities": [
+        {
+          "type": "amount",
+          "start": 0,
+          "end": 6
+        }
+      ]
+    },
+    {
+      "text": "ملفات حفظ",
+      "box": [
+        2077,
+        1151,
+        2348,
+        1203
+      ],
+      "clean_box": [
+        2077,
+        1151,
+        2348,
+        1203
+      ],
+      "direction": "rtl",
+      "entities": []
+    },
+    {
+      "text": "٢",
+      "box": [
+        1171,
+        1166,
+        1196,
+        1208
+      ],
+      "clean_box": [
+        1171,
+        1166,
+        1196,
+        1208
+      ],
+      "direction": "ltr",
+      "entities": []
+    },
+    {
+      "text": "234.25",
+      "box": [
+        682,
+        1154,
+        884,
+        1203
+      ],
+      "clean_box": [
+        682,
+        1154,
+        884,
+        1203
+      ],
+      "direction": "ltr",
+      "entities": [
+        {
+          "type": "amount",
+          "start": 0,
+          "end": 6
+        }
+      ]
+    },
+    {
+      "text": "٤٦٨٫٥٠",
+      "box": [
+        204,
+        1165,
+        395,
+        1217
+      ],
+      "clean_box": [
+        204,
+        1165,
+        395,
+        1217
+      ],
+      "direction": "ltr",
+      "entities": [
+        {
+          "type": "amount",
+          "start": 0,
+          "end": 6
+        }
+      ]
+    },
+    {
+      "text": "ورق طباعة",
+      "box": [
+        2114,
+        1287,
+        2348,
+        1351
+      ],
+      "clean_box": [
+        2114,
+        1287,
+        2348,
+        1351
+      ],
+      "direction": "rtl",
+      "entities": []
+    },
+    {
+      "text": "3",
+      "box": [
+        1167,
+        1287,
+        1198,
+        1336
+      ],
+      "clean_box": [
+        1167,
+        1287,
+        1198,
+        1336
+      ],
+      "direction": "ltr",
+      "entities": []
+    },
+    {
+      "text": "٣٢٫٠٠",
+      "box": [
+        683,
+        1299,
+        841,
+        1350
+      ],
+      "clean_box": [
+        683,
+        1299,
+        841,
+        1350
+      ],
+      "direction": "ltr",
+      "entities": [
+        {
+          "type": "amount",
+          "start": 0,
+          "end": 5
+        }
+      ]
+    },
+    {
+      "text": "٩٦٫٠٠",
+      "box": [
+        202,
+        1299,
+        356,
+        1350
+      ],
+      "clean_box": [
+        202,
+        1299,
+        356,
+        1350
+      ],
+      "direction": "ltr",
+      "entities": [
+        {
+          "type": "amount",
+          "start": 0,
+          "end": 5
+        }
+      ]
+    },
+    {
+      "text": "الإجمالي: 719.50",
+      "box": [
+        1954,
+        1420,
+        2348,
+        1499
+      ],
+      "clean_box": [
+        1954,
+        1420,
+        2348,
+        1499
+      ],
+      "direction": "rtl",
+      "entities": [
+        {
+          "type": "amount",
+          "start": 10,
+          "end": 16
+        }
+      ]
+    },
+    {
+      "text": "تاريخ الاستحقاق: 2026/03/19",
+      "box": [
+        1637,
+        1554,
+        2353,
+        1636
+      ],
+      "clean_box": [
+        1637,
+        1554,
+        2353,
+        1636
+      ],
+      "direction": "rtl",
+      "entities": [
+        {
+          "type": "date",
+          "start": 17,
+          "end": 27
+        }
+      ]
+    },
+    {
+      "text": "أعدها: Hannah Brightwell",
+      "box": [
+        1705,
+        1668,
+        2352,
+        1750
+      ],
+      "clean_box": [
+        1705,
+        1668,
+        2352,
+        1750
+      ],
+      "direction": "rtl",
+      "entities": [
+        {
+          "type": "name",
+          "start": 7,
+          "end": 24
+        }
+      ]
+    }
+  ],
+  "dpi": 300
+}

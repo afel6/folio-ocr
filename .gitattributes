@@ -1,0 +1,4 @@
+tests/fixtures/** -text
+tests/data/tesseract/** -text
+tests/dev_fonts/** -text
+eval/** -text

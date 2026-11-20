@@ -1,0 +1,267 @@
+{
+  "file": "en-bulleted.pdf",
+  "condition": "born_digital",
+  "language": "en",
+  "layout": "bulleted",
+  "direction": "ltr",
+  "width": 1751,
+  "height": 2480,
+  "homography": [
+    [
+      1.0,
+      0.0,
+      0.0
+    ],
+    [
+      0.0,
+      1.0,
+      0.0
+    ],
+    [
+      0.0,
+      0.0,
+      1.0
+    ]
+  ],
+  "lines": [
+    {
+      "text": "Office supplies update",
+      "box": [
+        136,
+        150,
+        614,
+        196
+      ],
+      "clean_box": [
+        136,
+        150,
+        614,
+        196
+      ],
+      "direction": "ltr",
+      "entities": []
+    },
+    {
+      "text": "The following items were checked at the Harborview store this week.",
+      "box": [
+        133,
+        241,
+        1605,
+        287
+      ],
+      "clean_box": [
+        133,
+        241,
+        1605,
+        287
+      ],
+      "direction": "ltr",
+      "entities": []
+    },
+    {
+      "text": "•",
+      "box": [
+        203,
+        346,
+        214,
+        357
+      ],
+      "clean_box": [
+        203,
+        346,
+        214,
+        357
+      ],
+      "direction": "ltr",
+      "entities": []
+    },
+    {
+      "text": "Ballpoint pens are in stock",
+      "box": [
+        279,
+        333,
+        841,
+        379
+      ],
+      "clean_box": [
+        279,
+        333,
+        841,
+        379
+      ],
+      "direction": "ltr",
+      "entities": []
+    },
+    {
+      "text": "•",
+      "box": [
+        203,
+        438,
+        214,
+        449
+      ],
+      "clean_box": [
+        203,
+        438,
+        214,
+        449
+      ],
+      "direction": "ltr",
+      "entities": []
+    },
+    {
+      "text": "A4 paper needs reordering",
+      "box": [
+        275,
+        425,
+        850,
+        471
+      ],
+      "clean_box": [
+        275,
+        425,
+        850,
+        471
+      ],
+      "direction": "ltr",
+      "entities": []
+    },
+    {
+      "text": "•",
+      "box": [
+        203,
+        529,
+        214,
+        540
+      ],
+      "clean_box": [
+        203,
+        529,
+        214,
+        540
+      ],
+      "direction": "ltr",
+      "entities": []
+    },
+    {
+      "text": "Printer toner arrives on Friday",
+      "box": [
+        279,
+        516,
+        923,
+        562
+      ],
+      "clean_box": [
+        279,
+        516,
+        923,
+        562
+      ],
+      "direction": "ltr",
+      "entities": []
+    },
+    {
+      "text": "Two actions remain before the end of the month.",
+      "box": [
+        133,
+        608,
+        1186,
+        643
+      ],
+      "clean_box": [
+        133,
+        608,
+        1186,
+        643
+      ],
+      "direction": "ltr",
+      "entities": []
+    },
+    {
+      "text": "•",
+      "box": [
+        203,
+        713,
+        214,
+        724
+      ],
+      "clean_box": [
+        203,
+        713,
+        214,
+        724
+      ],
+      "direction": "ltr",
+      "entities": []
+    },
+    {
+      "text": "Confirm the new paper supplier",
+      "box": [
+        278,
+        700,
+        959,
+        746
+      ],
+      "clean_box": [
+        278,
+        700,
+        959,
+        746
+      ],
+      "direction": "ltr",
+      "entities": []
+    },
+    {
+      "text": "•",
+      "box": [
+        203,
+        805,
+        214,
+        816
+      ],
+      "clean_box": [
+        203,
+        805,
+        214,
+        816
+      ],
+      "direction": "ltr",
+      "entities": []
+    },
+    {
+      "text": "Archive the old delivery notes",
+      "box": [
+        275,
+        792,
+        908,
+        838
+      ],
+      "clean_box": [
+        275,
+        792,
+        908,
+        838
+      ],
+      "direction": "ltr",
+      "entities": []
+    },
+    {
+      "text": "Thank you for your help",
+      "box": [
+        133,
+        883,
+        646,
+        929
+      ],
+      "clean_box": [
+        133,
+        883,
+        646,
+        929
+      ],
+      "direction": "ltr",
+      "entities": []
+    }
+  ],
+  "dpi": 300
+}

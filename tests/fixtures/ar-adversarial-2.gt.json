@@ -1,0 +1,267 @@
+{
+  "file": "ar-adversarial-2.pdf",
+  "condition": "born_digital",
+  "language": "en+ar",
+  "layout": "adversarial",
+  "direction": "rtl",
+  "width": 1751,
+  "height": 2480,
+  "homography": [
+    [
+      1.0,
+      0.0,
+      0.0
+    ],
+    [
+      0.0,
+      1.0,
+      0.0
+    ],
+    [
+      0.0,
+      0.0,
+      1.0
+    ]
+  ],
+  "lines": [
+    {
+      "text": "خصم 50% على الطلب",
+      "box": [
+        1281,
+        152,
+        1615,
+        214
+      ],
+      "clean_box": [
+        1281,
+        152,
+        1615,
+        214
+      ],
+      "direction": "rtl",
+      "entities": []
+    },
+    {
+      "text": "٥٠٪ من المبلغ",
+      "box": [
+        1395,
+        244,
+        1608,
+        301
+      ],
+      "clean_box": [
+        1395,
+        244,
+        1608,
+        301
+      ],
+      "direction": "rtl",
+      "entities": []
+    },
+    {
+      "text": "خصم ٥٠٪ على الطلب",
+      "box": [
+        1276,
+        335,
+        1615,
+        397
+      ],
+      "clean_box": [
+        1276,
+        335,
+        1615,
+        397
+      ],
+      "direction": "rtl",
+      "entities": []
+    },
+    {
+      "text": "انظر (مثال) أدناه",
+      "box": [
+        1357,
+        414,
+        1615,
+        478
+      ],
+      "clean_box": [
+        1357,
+        414,
+        1615,
+        478
+      ],
+      "direction": "rtl",
+      "entities": []
+    },
+    {
+      "text": "البند (٣) من العقد",
+      "box": [
+        1330,
+        518,
+        1615,
+        569
+      ],
+      "clean_box": [
+        1330,
+        518,
+        1615,
+        569
+      ],
+      "direction": "rtl",
+      "entities": []
+    },
+    {
+      "text": "السيد (Tomas) حاضر",
+      "box": [
+        1262,
+        610,
+        1615,
+        661
+      ],
+      "clean_box": [
+        1262,
+        610,
+        1615,
+        661
+      ],
+      "direction": "rtl",
+      "entities": []
+    },
+    {
+      "text": "الاسم: Tomas Okafor",
+      "box": [
+        1255,
+        702,
+        1615,
+        764
+      ],
+      "clean_box": [
+        1255,
+        702,
+        1615,
+        764
+      ],
+      "direction": "rtl",
+      "entities": []
+    },
+    {
+      "text": "البريد: tomas.okafor@example.com للتواصل",
+      "box": [
+        887,
+        795,
+        1615,
+        844
+      ],
+      "clean_box": [
+        887,
+        795,
+        1615,
+        844
+      ],
+      "direction": "rtl",
+      "entities": []
+    },
+    {
+      "text": "هل تم الدفع؟ نعم؛ تم، شكرا",
+      "box": [
+        1205,
+        882,
+        1615,
+        944
+      ],
+      "clean_box": [
+        1205,
+        882,
+        1615,
+        944
+      ],
+      "direction": "rtl",
+      "entities": []
+    },
+    {
+      "text": "السلام عليكم ورحمة الله",
+      "box": [
+        1283,
+        960,
+        1615,
+        1036
+      ],
+      "clean_box": [
+        1283,
+        960,
+        1615,
+        1036
+      ],
+      "direction": "rtl",
+      "entities": []
+    },
+    {
+      "text": "شُكْرًا جَزِيلًا لَكُمْ",
+      "box": [
+        1315,
+        1049,
+        1615,
+        1126
+      ],
+      "clean_box": [
+        1315,
+        1049,
+        1615,
+        1126
+      ],
+      "direction": "rtl",
+      "entities": []
+    },
+    {
+      "text": "مـــرحبا بالجميع",
+      "box": [
+        1414,
+        1160,
+        1615,
+        1218
+      ],
+      "clean_box": [
+        1414,
+        1160,
+        1615,
+        1218
+      ],
+      "direction": "rtl",
+      "entities": []
+    },
+    {
+      "text": "Meeting with أحمد الحسن on Monday",
+      "box": [
+        134,
+        1239,
+        785,
+        1301
+      ],
+      "clean_box": [
+        134,
+        1239,
+        785,
+        1301
+      ],
+      "direction": "ltr",
+      "entities": []
+    },
+    {
+      "text": "350 boxes were delivered on time",
+      "box": [
+        135,
+        1342,
+        854,
+        1377
+      ],
+      "clean_box": [
+        135,
+        1342,
+        854,
+        1377
+      ],
+      "direction": "ltr",
+      "entities": []
+    }
+  ],
+  "dpi": 300
+}

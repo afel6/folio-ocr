@@ -1,0 +1,5433 @@
+{
+ "dev_manifest_sha256": "527465d31901ade4590706f3bf6dab86dcd174f3c3e46adc0ae0620bbc7f6cc9",
+ "frozen": {
+  "gap_factor": 1.7,
+  "osd_floor": 1.5,
+  "uncertain_margin_four": 0.41,
+  "uncertain_margin_pair": 0.13
+ },
+ "pages": {
+  "dev-00001-ar-form-faded": {
+   "osd": [
+    0,
+    7.92
+   ],
+   "recall_matched": 8,
+   "recall_total": 9,
+   "vote_angle": 0.0,
+   "vote_branch": "pair",
+   "vote_margin": 0.4007384777069092,
+   "vote_wrong": false
+  },
+  "dev-00001-en-report-rotated": {
+   "osd": [
+    90,
+    19.06
+   ],
+   "recall_matched": 15,
+   "recall_total": 15,
+   "vote_angle": 92.0,
+   "vote_branch": "pair",
+   "vote_margin": 0.44564375281333923,
+   "vote_wrong": false
+  },
+  "dev-00001-mixed-grid-rotated": {
+   "osd": [
+    270,
+    1.68
+   ],
+   "recall_matched": 80,
+   "recall_total": 80,
+   "vote_angle": 270.0,
+   "vote_branch": "four",
+   "vote_margin": 0.0009092837572097778,
+   "vote_wrong": false
+  },
+  "dev-00002-ar-grid-photo": {
+   "osd": [
+    0,
+    5.48
+   ],
+   "recall_matched": 21,
+   "recall_total": 72,
+   "vote_angle": 180.0,
+   "vote_branch": "four",
+   "vote_margin": 0.0034394115209579468,
+   "vote_wrong": true
+  },
+  "dev-00002-en-receipt-rotated": {
+   "osd": [
+    90,
+    7.29
+   ],
+   "recall_matched": 19,
+   "recall_total": 19,
+   "vote_angle": 91.0,
+   "vote_branch": "pair",
+   "vote_margin": 0.2190740704536438,
+   "vote_wrong": false
+  },
+  "dev-00002-mixed-form-lowres": {
+   "osd": [
+    0,
+    7.15
+   ],
+   "recall_matched": 7,
+   "recall_total": 8,
+   "vote_angle": 0.0,
+   "vote_branch": "pair",
+   "vote_margin": 0.16825319826602936,
+   "vote_wrong": false
+  },
+  "dev-00003-ar-receipt-fax": {
+   "osd": [
+    0,
+    5.77
+   ],
+   "recall_matched": 19,
+   "recall_total": 19,
+   "vote_angle": 0.0,
+   "vote_branch": "pair",
+   "vote_margin": 0.21906913816928864,
+   "vote_wrong": false
+  },
+  "dev-00003-en-form-scan": {
+   "osd": [
+    0,
+    1.36
+   ],
+   "recall_matched": 7,
+   "recall_total": 7,
+   "vote_angle": 2.0,
+   "vote_branch": "pair",
+   "vote_margin": 0.3271178901195526,
+   "vote_wrong": false
+  },
+  "dev-00003-mixed-receipt-faded": {
+   "osd": [
+    0,
+    10.93
+   ],
+   "recall_matched": 23,
+   "recall_total": 23,
+   "vote_angle": 0.0,
+   "vote_branch": "pair",
+   "vote_margin": 0.45003123581409454,
+   "vote_wrong": false
+  },
+  "dev-00004-ar-report-clean": {
+   "osd": [
+    0,
+    13.94
+   ],
+   "recall_matched": 12,
+   "recall_total": 12,
+   "vote_angle": 0.0,
+   "vote_branch": "pair",
+   "vote_margin": 0.12795814871788025,
+   "vote_wrong": false
+  },
+  "dev-00004-en-receipt-scan": {
+   "osd": [
+    0,
+    13.56
+   ],
+   "recall_matched": 25,
+   "recall_total": 25,
+   "vote_angle": 358.0,
+   "vote_branch": "pair",
+   "vote_margin": 0.17556773126125336,
+   "vote_wrong": false
+  },
+  "dev-00004-mixed-table-clean": {
+   "osd": [
+    0,
+    10.73
+   ],
+   "recall_matched": 36,
+   "recall_total": 36,
+   "vote_angle": 180.0,
+   "vote_branch": "pair",
+   "vote_margin": 0.11619199812412262,
+   "vote_wrong": true
+  },
+  "dev-00005-ar-grid-scan": {
+   "osd": [
+    0,
+    3.5
+   ],
+   "recall_matched": 29,
+   "recall_total": 48,
+   "vote_angle": 180.0,
+   "vote_branch": "four",
+   "vote_margin": 0.012027844786643982,
+   "vote_wrong": true
+  },
+  "dev-00005-en-form-scan": {
+   "osd": [
+    0,
+    9.62
+   ],
+   "recall_matched": 7,
+   "recall_total": 7,
+   "vote_angle": 358.0,
+   "vote_branch": "pair",
+   "vote_margin": 0.45373277366161346,
+   "vote_wrong": false
+  },
+  "dev-00005-mixed-form-photo": {
+   "osd": [
+    0,
+    12.45
+   ],
+   "recall_matched": 8,
+   "recall_total": 8,
+   "vote_angle": 3.0,
+   "vote_branch": "pair",
+   "vote_margin": 0.4639778584241867,
+   "vote_wrong": false
+  },
+  "dev-00006-ar-report-lowres": {
+   "osd": [
+    0,
+    8.89
+   ],
+   "recall_matched": 11,
+   "recall_total": 12,
+   "vote_angle": 180.0,
+   "vote_branch": "pair",
+   "vote_margin": 0.008589386940002441,
+   "vote_wrong": true
+  },
+  "dev-00006-en-table-scan": {
+   "osd": [
+    0,
+    4.98
+   ],
+   "recall_matched": 50,
+   "recall_total": 50,
+   "vote_angle": 2.0,
+   "vote_branch": "pair",
+   "vote_margin": 0.4211353063583374,
+   "vote_wrong": false
+  },
+  "dev-00006-mixed-receipt-scan": {
+   "osd": [
+    0,
+    10.76
+   ],
+   "recall_matched": 19,
+   "recall_total": 21,
+   "vote_angle": 358.0,
+   "vote_branch": "pair",
+   "vote_margin": 0.3505684584379196,
+   "vote_wrong": false
+  },
+  "dev-00007-ar-form-photo": {
+   "osd": [
+    0,
+    5.23
+   ],
+   "recall_matched": 6,
+   "recall_total": 6,
+   "vote_angle": 354.0,
+   "vote_branch": "pair",
+   "vote_margin": 0.23057842254638672,
+   "vote_wrong": false
+  },
+  "dev-00007-en-report-photo": {
+   "osd": [
+    0,
+    12.05
+   ],
+   "recall_matched": 16,
+   "recall_total": 16,
+   "vote_angle": 352.0,
+   "vote_branch": "pair",
+   "vote_margin": 0.3925877958536148,
+   "vote_wrong": false
+  },
+  "dev-00007-mixed-report-photo": {
+   "osd": [
+    0,
+    22.27
+   ],
+   "recall_matched": 16,
+   "recall_total": 16,
+   "vote_angle": 2.0,
+   "vote_branch": "pair",
+   "vote_margin": 0.35829494148492813,
+   "vote_wrong": false
+  },
+  "dev-00008-ar-report-rotated": {
+   "osd": [
+    90,
+    9.7
+   ],
+   "recall_matched": 15,
+   "recall_total": 16,
+   "vote_angle": 90.0,
+   "vote_branch": "pair",
+   "vote_margin": 0.03166578710079193,
+   "vote_wrong": false
+  },
+  "dev-00008-en-grid-lowres": {
+   "osd": [
+    0,
+    6.53
+   ],
+   "recall_matched": 69,
+   "recall_total": 80,
+   "vote_angle": 0.0,
+   "vote_branch": "four",
+   "vote_margin": 0.0010740607976913452,
+   "vote_wrong": false
+  },
+  "dev-00008-mixed-table-scan": {
+   "osd": [
+    0,
+    7.83
+   ],
+   "recall_matched": 36,
+   "recall_total": 36,
+   "vote_angle": 0.0,
+   "vote_branch": "pair",
+   "vote_margin": 0.2040254771709442,
+   "vote_wrong": false
+  },
+  "dev-00009-ar-report-fax": {
+   "osd": [
+    0,
+    15.97
+   ],
+   "recall_matched": 14,
+   "recall_total": 14,
+   "vote_angle": 0.0,
+   "vote_branch": "pair",
+   "vote_margin": 0.0264105424284935,
+   "vote_wrong": false
+  },
+  "dev-00009-en-form-fax": {
+   "osd": [
+    0,
+    10.91
+   ],
+   "recall_matched": 10,
+   "recall_total": 10,
+   "vote_angle": 0.0,
+   "vote_branch": "pair",
+   "vote_margin": 0.2714369297027588,
+   "vote_wrong": false
+  },
+  "dev-00009-mixed-table-fax": {
+   "osd": null,
+   "recall_matched": null,
+   "recall_total": null,
+   "vote_angle": 0.0,
+   "vote_branch": "none",
+   "vote_margin": null,
+   "vote_wrong": false
+  },
+  "dev-00010-ar-table-photo": {
+   "osd": [
+    0,
+    12.49
+   ],
+   "recall_matched": 40,
+   "recall_total": 40,
+   "vote_angle": 180.0,
+   "vote_branch": "pair",
+   "vote_margin": 0.10251083970069885,
+   "vote_wrong": true
+  },
+  "dev-00010-en-receipt-scan": {
+   "osd": [
+    0,
+    23.16
+   ],
+   "recall_matched": 25,
+   "recall_total": 25,
+   "vote_angle": 3.0,
+   "vote_branch": "pair",
+   "vote_margin": 0.3086693435907364,
+   "vote_wrong": false
+  },
+  "dev-00010-mixed-report-photo": {
+   "osd": [
+    0,
+    17.18
+   ],
+   "recall_matched": 15,
+   "recall_total": 15,
+   "vote_angle": 357.0,
+   "vote_branch": "pair",
+   "vote_margin": 0.17135439813137054,
+   "vote_wrong": false
+  },
+  "dev-00011-ar-form-faded": {
+   "osd": [
+    0,
+    6.25
+   ],
+   "recall_matched": 6,
+   "recall_total": 7,
+   "vote_angle": 0.0,
+   "vote_branch": "pair",
+   "vote_margin": 0.1036212146282196,
+   "vote_wrong": false
+  },
+  "dev-00011-en-form-photo": {
+   "osd": [
+    0,
+    9.6
+   ],
+   "recall_matched": 5,
+   "recall_total": 6,
+   "vote_angle": 353.0,
+   "vote_branch": "pair",
+   "vote_margin": 0.3834657669067383,
+   "vote_wrong": false
+  },
+  "dev-00011-mixed-report-scan": {
+   "osd": [
+    0,
+    24.54
+   ],
+   "recall_matched": 13,
+   "recall_total": 14,
+   "vote_angle": 178.0,
+   "vote_branch": "pair",
+   "vote_margin": 0.031456150114536285,
+   "vote_wrong": true
+  },
+  "dev-00012-ar-receipt-photo": {
+   "osd": [
+    0,
+    7.39
+   ],
+   "recall_matched": 19,
+   "recall_total": 19,
+   "vote_angle": 3.0,
+   "vote_branch": "pair",
+   "vote_margin": 0.13753162324428558,
+   "vote_wrong": false
+  },
+  "dev-00012-en-receipt-lowres": {
+   "osd": [
+    0,
+    12.84
+   ],
+   "recall_matched": 19,
+   "recall_total": 19,
+   "vote_angle": 0.0,
+   "vote_branch": "pair",
+   "vote_margin": 0.31150881946086884,
+   "vote_wrong": false
+  },
+  "dev-00012-mixed-table-scan": {
+   "osd": [
+    0,
+    12.62
+   ],
+   "recall_matched": 44,
+   "recall_total": 44,
+   "vote_angle": 3.0,
+   "vote_branch": "pair",
+   "vote_margin": 0.29315993189811707,
+   "vote_wrong": false
+  },
+  "dev-00013-ar-receipt-scan": {
+   "osd": [
+    0,
+    5.15
+   ],
+   "recall_matched": 25,
+   "recall_total": 25,
+   "vote_angle": 0.0,
+   "vote_branch": "pair",
+   "vote_margin": 0.4056883603334427,
+   "vote_wrong": false
+  },
+  "dev-00013-en-form-scan": {
+   "osd": [
+    0,
+    3.35
+   ],
+   "recall_matched": 6,
+   "recall_total": 6,
+   "vote_angle": 4.0,
+   "vote_branch": "pair",
+   "vote_margin": 0.28167077898979187,
+   "vote_wrong": false
+  },
+  "dev-00013-mixed-form-fax": {
+   "osd": [
+    0,
+    10.86
+   ],
+   "recall_matched": 6,
+   "recall_total": 6,
+   "vote_angle": 0.0,
+   "vote_branch": "pair",
+   "vote_margin": 0.27442367374897003,
+   "vote_wrong": false
+  },
+  "dev-00014-ar-grid-fax": {
+   "osd": [
+    0,
+    4.22
+   ],
+   "recall_matched": 92,
+   "recall_total": 96,
+   "vote_angle": 0.0,
+   "vote_branch": "four",
+   "vote_margin": 0.0004776865243911743,
+   "vote_wrong": false
+  },
+  "dev-00014-en-form-lowres": {
+   "osd": [
+    0,
+    5.08
+   ],
+   "recall_matched": 7,
+   "recall_total": 7,
+   "vote_angle": 0.0,
+   "vote_branch": "pair",
+   "vote_margin": 0.21012437343597412,
+   "vote_wrong": false
+  },
+  "dev-00014-mixed-table-lowres": {
+   "osd": [
+    0,
+    4.46
+   ],
+   "recall_matched": 43,
+   "recall_total": 44,
+   "vote_angle": 0.0,
+   "vote_branch": "pair",
+   "vote_margin": 0.3729596436023712,
+   "vote_wrong": false
+  },
+  "dev-00015-ar-form-faded": {
+   "osd": [
+    0,
+    5.58
+   ],
+   "recall_matched": 3,
+   "recall_total": 7,
+   "vote_angle": 0.0,
+   "vote_branch": "pair",
+   "vote_margin": 0.4140707403421402,
+   "vote_wrong": false
+  },
+  "dev-00015-en-table-fax": {
+   "osd": null,
+   "recall_matched": 0,
+   "recall_total": 45,
+   "vote_angle": 0.0,
+   "vote_branch": "four",
+   "vote_margin": 0.009623467922210693,
+   "vote_wrong": false
+  },
+  "dev-00015-mixed-table-rotated": {
+   "osd": [
+    90,
+    6.91
+   ],
+   "recall_matched": 28,
+   "recall_total": 28,
+   "vote_angle": 90.0,
+   "vote_branch": "pair",
+   "vote_margin": 0.30212366580963135,
+   "vote_wrong": false
+  },
+  "dev-00016-ar-receipt-lowres": {
+   "osd": null,
+   "recall_matched": 23,
+   "recall_total": 23,
+   "vote_angle": 180.0,
+   "vote_branch": "pair",
+   "vote_margin": 0.02893141657114029,
+   "vote_wrong": true
+  },
+  "dev-00016-en-table-faded": {
+   "osd": [
+    0,
+    7.42
+   ],
+   "recall_matched": 45,
+   "recall_total": 45,
+   "vote_angle": 0.0,
+   "vote_branch": "pair",
+   "vote_margin": 0.46372127532958984,
+   "vote_wrong": false
+  },
+  "dev-00016-mixed-report-scan": {
+   "osd": [
+    0,
+    11.69
+   ],
+   "recall_matched": 9,
+   "recall_total": 12,
+   "vote_angle": 1.0,
+   "vote_branch": "pair",
+   "vote_margin": 0.09158045053482056,
+   "vote_wrong": false
+  },
+  "dev-00017-ar-table-rotated": {
+   "osd": [
+    180,
+    5.77
+   ],
+   "recall_matched": 40,
+   "recall_total": 40,
+   "vote_angle": 180.0,
+   "vote_branch": "pair",
+   "vote_margin": 0.33953578770160675,
+   "vote_wrong": false
+  },
+  "dev-00017-en-receipt-fax": {
+   "osd": [
+    0,
+    6.87
+   ],
+   "recall_matched": 23,
+   "recall_total": 23,
+   "vote_angle": 0.0,
+   "vote_branch": "pair",
+   "vote_margin": 0.15779432654380798,
+   "vote_wrong": false
+  },
+  "dev-00017-mixed-grid-rotated": {
+   "osd": [
+    90,
+    3.6
+   ],
+   "recall_matched": 74,
+   "recall_total": 96,
+   "vote_angle": 270.0,
+   "vote_branch": "four",
+   "vote_margin": 0.0046128928661346436,
+   "vote_wrong": true
+  },
+  "dev-00018-ar-report-photo": {
+   "osd": [
+    0,
+    10.01
+   ],
+   "recall_matched": 10,
+   "recall_total": 14,
+   "vote_angle": 6.0,
+   "vote_branch": "pair",
+   "vote_margin": 0.0019991621375083923,
+   "vote_wrong": false
+  },
+  "dev-00018-en-receipt-photo": {
+   "osd": [
+    0,
+    10.71
+   ],
+   "recall_matched": 19,
+   "recall_total": 19,
+   "vote_angle": 353.0,
+   "vote_branch": "four",
+   "vote_margin": 0.17566686868667603,
+   "vote_wrong": false
+  },
+  "dev-00018-mixed-form-scan": {
+   "osd": [
+    0,
+    9.26
+   ],
+   "recall_matched": 9,
+   "recall_total": 9,
+   "vote_angle": 359.0,
+   "vote_branch": "pair",
+   "vote_margin": 0.2751951366662979,
+   "vote_wrong": false
+  },
+  "dev-00019-ar-form-rotated": {
+   "osd": [
+    180,
+    5.82
+   ],
+   "recall_matched": 8,
+   "recall_total": 8,
+   "vote_angle": 1.0,
+   "vote_branch": "pair",
+   "vote_margin": 0.06022581458091736,
+   "vote_wrong": true
+  },
+  "dev-00019-en-report-lowres": {
+   "osd": [
+    180,
+    0.31
+   ],
+   "recall_matched": 17,
+   "recall_total": 17,
+   "vote_angle": 0.0,
+   "vote_branch": "pair",
+   "vote_margin": 0.47891493141651154,
+   "vote_wrong": false
+  },
+  "dev-00019-mixed-report-photo": {
+   "osd": [
+    0,
+    20.51
+   ],
+   "recall_matched": 16,
+   "recall_total": 16,
+   "vote_angle": 358.0,
+   "vote_branch": "pair",
+   "vote_margin": 0.10540977865457535,
+   "vote_wrong": false
+  },
+  "dev-00020-ar-report-fax": {
+   "osd": [
+    0,
+    7.97
+   ],
+   "recall_matched": 2,
+   "recall_total": 11,
+   "vote_angle": 0.0,
+   "vote_branch": "pair",
+   "vote_margin": 0.25670026242733,
+   "vote_wrong": false
+  },
+  "dev-00020-en-grid-rotated": {
+   "osd": [
+    270,
+    2.96
+   ],
+   "recall_matched": 56,
+   "recall_total": 72,
+   "vote_angle": 270.0,
+   "vote_branch": "four",
+   "vote_margin": 0.00042141973972320557,
+   "vote_wrong": false
+  },
+  "dev-00020-mixed-report-faded": {
+   "osd": [
+    0,
+    24.53
+   ],
+   "recall_matched": 14,
+   "recall_total": 15,
+   "vote_angle": 0.0,
+   "vote_branch": "pair",
+   "vote_margin": 0.1944100707769394,
+   "vote_wrong": false
+  },
+  "dev-00021-ar-report-fax": {
+   "osd": [
+    0,
+    21.56
+   ],
+   "recall_matched": 12,
+   "recall_total": 15,
+   "vote_angle": 0.0,
+   "vote_branch": "pair",
+   "vote_margin": 0.21625158935785294,
+   "vote_wrong": false
+  },
+  "dev-00021-en-receipt-faded": {
+   "osd": [
+    0,
+    19.35
+   ],
+   "recall_matched": 19,
+   "recall_total": 19,
+   "vote_angle": 0.0,
+   "vote_branch": "pair",
+   "vote_margin": 0.3701029121875763,
+   "vote_wrong": false
+  },
+  "dev-00021-mixed-report-photo": {
+   "osd": [
+    0,
+    16.52
+   ],
+   "recall_matched": 14,
+   "recall_total": 14,
+   "vote_angle": 358.0,
+   "vote_branch": "pair",
+   "vote_margin": 0.24125945568084717,
+   "vote_wrong": false
+  },
+  "dev-00022-ar-report-scan": {
+   "osd": [
+    0,
+    23.14
+   ],
+   "recall_matched": 17,
+   "recall_total": 17,
+   "vote_angle": 179.0,
+   "vote_branch": "pair",
+   "vote_margin": 0.005572646856307983,
+   "vote_wrong": true
+  },
+  "dev-00022-en-table-lowres": {
+   "osd": [
+    0,
+    15.36
+   ],
+   "recall_matched": 55,
+   "recall_total": 55,
+   "vote_angle": 0.0,
+   "vote_branch": "pair",
+   "vote_margin": 0.46963194012641907,
+   "vote_wrong": false
+  },
+  "dev-00022-mixed-report-lowres": {
+   "osd": [
+    0,
+    15.91
+   ],
+   "recall_matched": 14,
+   "recall_total": 14,
+   "vote_angle": 0.0,
+   "vote_branch": "pair",
+   "vote_margin": 0.1253795176744461,
+   "vote_wrong": false
+  },
+  "dev-00023-ar-table-scan": {
+   "osd": [
+    0,
+    1.51
+   ],
+   "recall_matched": 38,
+   "recall_total": 40,
+   "vote_angle": 4.0,
+   "vote_branch": "pair",
+   "vote_margin": 0.27483950555324554,
+   "vote_wrong": false
+  },
+  "dev-00023-en-form-photo": {
+   "osd": [
+    0,
+    3.15
+   ],
+   "recall_matched": 7,
+   "recall_total": 7,
+   "vote_angle": 7.0,
+   "vote_branch": "pair",
+   "vote_margin": 0.34022048115730286,
+   "vote_wrong": false
+  },
+  "dev-00023-mixed-grid-lowres": {
+   "osd": [
+    0,
+    4.53
+   ],
+   "recall_matched": 83,
+   "recall_total": 90,
+   "vote_angle": 0.0,
+   "vote_branch": "four",
+   "vote_margin": 6.58184289932251e-05,
+   "vote_wrong": false
+  },
+  "dev-00024-ar-table-photo": {
+   "osd": [
+    0,
+    10.13
+   ],
+   "recall_matched": 40,
+   "recall_total": 40,
+   "vote_angle": 358.0,
+   "vote_branch": "pair",
+   "vote_margin": 0.3645116239786148,
+   "vote_wrong": false
+  },
+  "dev-00024-en-form-clean": {
+   "osd": [
+    0,
+    9.48
+   ],
+   "recall_matched": 6,
+   "recall_total": 6,
+   "vote_angle": 0.0,
+   "vote_branch": "pair",
+   "vote_margin": 0.3062387704849243,
+   "vote_wrong": false
+  },
+  "dev-00024-mixed-table-clean": {
+   "osd": [
+    0,
+    14.04
+   ],
+   "recall_matched": 35,
+   "recall_total": 35,
+   "vote_angle": 0.0,
+   "vote_branch": "pair",
+   "vote_margin": 0.2899274230003357,
+   "vote_wrong": false
+  },
+  "dev-00025-ar-report-rotated": {
+   "osd": [
+    270,
+    9.18
+   ],
+   "recall_matched": 14,
+   "recall_total": 14,
+   "vote_angle": 268.0,
+   "vote_branch": "pair",
+   "vote_margin": 0.011022761464118958,
+   "vote_wrong": false
+  },
+  "dev-00025-en-receipt-lowres": {
+   "osd": [
+    0,
+    2.17
+   ],
+   "recall_matched": 25,
+   "recall_total": 25,
+   "vote_angle": 0.0,
+   "vote_branch": "pair",
+   "vote_margin": 0.24077638983726501,
+   "vote_wrong": false
+  },
+  "dev-00025-mixed-report-rotated": {
+   "osd": [
+    270,
+    11.61
+   ],
+   "recall_matched": 13,
+   "recall_total": 14,
+   "vote_angle": 270.0,
+   "vote_branch": "pair",
+   "vote_margin": 0.06825453042984009,
+   "vote_wrong": false
+  },
+  "dev-00026-ar-form-photo": {
+   "osd": [
+    0,
+    3.26
+   ],
+   "recall_matched": 7,
+   "recall_total": 7,
+   "vote_angle": 356.0,
+   "vote_branch": "pair",
+   "vote_margin": 0.24541401863098145,
+   "vote_wrong": false
+  },
+  "dev-00026-en-form-faded": {
+   "osd": [
+    0,
+    10.08
+   ],
+   "recall_matched": 7,
+   "recall_total": 7,
+   "vote_angle": 0.0,
+   "vote_branch": "pair",
+   "vote_margin": 0.29827557504177094,
+   "vote_wrong": false
+  },
+  "dev-00026-mixed-form-lowres": {
+   "osd": [
+    0,
+    7.95
+   ],
+   "recall_matched": 5,
+   "recall_total": 6,
+   "vote_angle": 0.0,
+   "vote_branch": "pair",
+   "vote_margin": 0.35776586830616,
+   "vote_wrong": false
+  },
+  "dev-00027-ar-form-lowres": {
+   "osd": [
+    0,
+    3.82
+   ],
+   "recall_matched": 8,
+   "recall_total": 8,
+   "vote_angle": 0.0,
+   "vote_branch": "pair",
+   "vote_margin": 0.12663310766220093,
+   "vote_wrong": false
+  },
+  "dev-00027-en-receipt-scan": {
+   "osd": [
+    0,
+    8.62
+   ],
+   "recall_matched": 23,
+   "recall_total": 23,
+   "vote_angle": 4.0,
+   "vote_branch": "pair",
+   "vote_margin": 0.24497057497501373,
+   "vote_wrong": false
+  },
+  "dev-00027-mixed-form-lowres": {
+   "osd": [
+    0,
+    5.04
+   ],
+   "recall_matched": 6,
+   "recall_total": 6,
+   "vote_angle": 0.0,
+   "vote_branch": "pair",
+   "vote_margin": 0.3543666899204254,
+   "vote_wrong": false
+  },
+  "dev-00028-ar-grid-rotated": {
+   "osd": [
+    90,
+    1.59
+   ],
+   "recall_matched": 56,
+   "recall_total": 80,
+   "vote_angle": 270.0,
+   "vote_branch": "four",
+   "vote_margin": 0.003205806016921997,
+   "vote_wrong": true
+  },
+  "dev-00028-en-form-scan": {
+   "osd": [
+    0,
+    4.87
+   ],
+   "recall_matched": 4,
+   "recall_total": 10,
+   "vote_angle": 0.0,
+   "vote_branch": "pair",
+   "vote_margin": 0.37817952036857605,
+   "vote_wrong": false
+  },
+  "dev-00028-mixed-table-rotated": {
+   "osd": [
+    270,
+    14.62
+   ],
+   "recall_matched": 55,
+   "recall_total": 55,
+   "vote_angle": 270.0,
+   "vote_branch": "pair",
+   "vote_margin": 0.4751906841993332,
+   "vote_wrong": false
+  },
+  "dev-00029-ar-form-photo": {
+   "osd": [
+    0,
+    4.67
+   ],
+   "recall_matched": 7,
+   "recall_total": 7,
+   "vote_angle": 2.0,
+   "vote_branch": "pair",
+   "vote_margin": 0.454518124461174,
+   "vote_wrong": false
+  },
+  "dev-00029-en-table-photo": {
+   "osd": [
+    0,
+    3.42
+   ],
+   "recall_matched": 55,
+   "recall_total": 55,
+   "vote_angle": 358.0,
+   "vote_branch": "pair",
+   "vote_margin": 0.3844047635793686,
+   "vote_wrong": false
+  },
+  "dev-00029-mixed-receipt-rotated": {
+   "osd": [
+    90,
+    6.93
+   ],
+   "recall_matched": 21,
+   "recall_total": 21,
+   "vote_angle": 90.0,
+   "vote_branch": "pair",
+   "vote_margin": 0.3366193324327469,
+   "vote_wrong": false
+  },
+  "dev-00030-ar-table-clean": {
+   "osd": [
+    0,
+    9.91
+   ],
+   "recall_matched": 30,
+   "recall_total": 32,
+   "vote_angle": 0.0,
+   "vote_branch": "pair",
+   "vote_margin": 0.23651260137557983,
+   "vote_wrong": false
+  },
+  "dev-00030-en-report-lowres": {
+   "osd": [
+    0,
+    3.42
+   ],
+   "recall_matched": 16,
+   "recall_total": 16,
+   "vote_angle": 0.0,
+   "vote_branch": "pair",
+   "vote_margin": 0.4453105330467224,
+   "vote_wrong": false
+  },
+  "dev-00030-mixed-table-lowres": {
+   "osd": [
+    0,
+    7.52
+   ],
+   "recall_matched": 49,
+   "recall_total": 50,
+   "vote_angle": 0.0,
+   "vote_branch": "pair",
+   "vote_margin": 0.46723678708076477,
+   "vote_wrong": false
+  },
+  "dev-00031-ar-table-lowres": {
+   "osd": [
+    0,
+    12.56
+   ],
+   "recall_matched": 44,
+   "recall_total": 44,
+   "vote_angle": 0.0,
+   "vote_branch": "pair",
+   "vote_margin": 0.09945325553417206,
+   "vote_wrong": false
+  },
+  "dev-00031-en-grid-photo": {
+   "osd": [
+    0,
+    5.04
+   ],
+   "recall_matched": 8,
+   "recall_total": 90,
+   "vote_angle": 0.0,
+   "vote_branch": "four",
+   "vote_margin": 0.0009742975234985352,
+   "vote_wrong": false
+  },
+  "dev-00031-mixed-table-scan": {
+   "osd": [
+    0,
+    3.02
+   ],
+   "recall_matched": 28,
+   "recall_total": 28,
+   "vote_angle": 180.0,
+   "vote_branch": "pair",
+   "vote_margin": 0.02564696967601776,
+   "vote_wrong": true
+  },
+  "dev-00032-ar-receipt-scan": {
+   "osd": [
+    0,
+    8.12
+   ],
+   "recall_matched": 19,
+   "recall_total": 19,
+   "vote_angle": 182.0,
+   "vote_branch": "pair",
+   "vote_margin": 0.044812873005867004,
+   "vote_wrong": true
+  },
+  "dev-00032-en-receipt-scan": {
+   "osd": [
+    0,
+    18.89
+   ],
+   "recall_matched": 23,
+   "recall_total": 23,
+   "vote_angle": 0.0,
+   "vote_branch": "pair",
+   "vote_margin": 0.17567922174930573,
+   "vote_wrong": false
+  },
+  "dev-00032-mixed-form-rotated": {
+   "osd": [
+    90,
+    9.3
+   ],
+   "recall_matched": 5,
+   "recall_total": 6,
+   "vote_angle": 90.0,
+   "vote_branch": "pair",
+   "vote_margin": 0.47391101717948914,
+   "vote_wrong": false
+  },
+  "dev-00033-ar-form-clean": {
+   "osd": [
+    0,
+    4.45
+   ],
+   "recall_matched": 7,
+   "recall_total": 7,
+   "vote_angle": 0.0,
+   "vote_branch": "pair",
+   "vote_margin": 0.2772699445486069,
+   "vote_wrong": false
+  },
+  "dev-00033-en-report-fax": {
+   "osd": [
+    0,
+    10.12
+   ],
+   "recall_matched": 16,
+   "recall_total": 16,
+   "vote_angle": 0.0,
+   "vote_branch": "pair",
+   "vote_margin": 0.44139978289604187,
+   "vote_wrong": false
+  },
+  "dev-00033-mixed-form-fax": {
+   "osd": null,
+   "recall_matched": 5,
+   "recall_total": 6,
+   "vote_angle": 0.0,
+   "vote_branch": "pair",
+   "vote_margin": 0.30043987929821014,
+   "vote_wrong": false
+  },
+  "dev-00034-ar-table-fax": {
+   "osd": [
+    0,
+    8.45
+   ],
+   "recall_matched": 35,
+   "recall_total": 36,
+   "vote_angle": 0.0,
+   "vote_branch": "pair",
+   "vote_margin": 0.04132765531539917,
+   "vote_wrong": false
+  },
+  "dev-00034-en-receipt-photo": {
+   "osd": [
+    0,
+    7.7
+   ],
+   "recall_matched": 21,
+   "recall_total": 23,
+   "vote_angle": 0.0,
+   "vote_branch": "four",
+   "vote_margin": 0.151191845536232,
+   "vote_wrong": false
+  },
+  "dev-00034-mixed-report-rotated": {
+   "osd": [
+    180,
+    14.24
+   ],
+   "recall_matched": 12,
+   "recall_total": 12,
+   "vote_angle": 180.0,
+   "vote_branch": "pair",
+   "vote_margin": 0.1506422609090805,
+   "vote_wrong": false
+  },
+  "dev-00035-ar-grid-photo": {
+   "osd": [
+    90,
+    0.63
+   ],
+   "recall_matched": 26,
+   "recall_total": 72,
+   "vote_angle": 180.0,
+   "vote_branch": "four",
+   "vote_margin": 0.02347809076309204,
+   "vote_wrong": true
+  },
+  "dev-00035-en-form-scan": {
+   "osd": [
+    0,
+    3.58
+   ],
+   "recall_matched": 6,
+   "recall_total": 6,
+   "vote_angle": 2.0,
+   "vote_branch": "pair",
+   "vote_margin": 0.17901313304901123,
+   "vote_wrong": false
+  },
+  "dev-00035-mixed-receipt-scan": {
+   "osd": [
+    0,
+    8.03
+   ],
+   "recall_matched": 19,
+   "recall_total": 19,
+   "vote_angle": 2.0,
+   "vote_branch": "pair",
+   "vote_margin": 0.4093898981809616,
+   "vote_wrong": false
+  },
+  "dev-00036-ar-grid-faded": {
+   "osd": [
+    0,
+    4.81
+   ],
+   "recall_matched": 59,
+   "recall_total": 84,
+   "vote_angle": 0.0,
+   "vote_branch": "four",
+   "vote_margin": 0.001341894268989563,
+   "vote_wrong": false
+  },
+  "dev-00036-en-table-rotated": {
+   "osd": [
+    270,
+    13.29
+   ],
+   "recall_matched": 39,
+   "recall_total": 40,
+   "vote_angle": 270.0,
+   "vote_branch": "pair",
+   "vote_margin": 0.24345891177654266,
+   "vote_wrong": false
+  },
+  "dev-00036-mixed-grid-clean": {
+   "osd": [
+    0,
+    3.77
+   ],
+   "recall_matched": 55,
+   "recall_total": 72,
+   "vote_angle": 180.0,
+   "vote_branch": "four",
+   "vote_margin": 0.00465334951877594,
+   "vote_wrong": true
+  },
+  "dev-00037-ar-form-photo": {
+   "osd": [
+    0,
+    5.99
+   ],
+   "recall_matched": 8,
+   "recall_total": 8,
+   "vote_angle": 359.0,
+   "vote_branch": "pair",
+   "vote_margin": 0.15793374180793762,
+   "vote_wrong": false
+  },
+  "dev-00037-en-grid-faded": {
+   "osd": [
+    0,
+    1.94
+   ],
+   "recall_matched": 88,
+   "recall_total": 100,
+   "vote_angle": 0.0,
+   "vote_branch": "four",
+   "vote_margin": 0.0005866885185241699,
+   "vote_wrong": false
+  },
+  "dev-00037-mixed-table-rotated": {
+   "osd": [
+    270,
+    5.86
+   ],
+   "recall_matched": 45,
+   "recall_total": 45,
+   "vote_angle": 270.0,
+   "vote_branch": "pair",
+   "vote_margin": 0.40507911145687103,
+   "vote_wrong": false
+  },
+  "dev-00038-ar-report-lowres": {
+   "osd": [
+    0,
+    25.34
+   ],
+   "recall_matched": 16,
+   "recall_total": 16,
+   "vote_angle": 0.0,
+   "vote_branch": "pair",
+   "vote_margin": 0.03426887094974518,
+   "vote_wrong": false
+  },
+  "dev-00038-en-form-photo": {
+   "osd": [
+    0,
+    5.18
+   ],
+   "recall_matched": 6,
+   "recall_total": 6,
+   "vote_angle": 356.0,
+   "vote_branch": "pair",
+   "vote_margin": 0.18278145790100098,
+   "vote_wrong": false
+  },
+  "dev-00038-mixed-table-rotated": {
+   "osd": [
+    180,
+    12.54
+   ],
+   "recall_matched": 40,
+   "recall_total": 40,
+   "vote_angle": 181.0,
+   "vote_branch": "pair",
+   "vote_margin": 0.2707602381706238,
+   "vote_wrong": false
+  },
+  "dev-00039-ar-report-rotated": {
+   "osd": [
+    270,
+    11.01
+   ],
+   "recall_matched": 15,
+   "recall_total": 15,
+   "vote_angle": 270.0,
+   "vote_branch": "pair",
+   "vote_margin": 0.06354695558547974,
+   "vote_wrong": false
+  },
+  "dev-00039-en-report-lowres": {
+   "osd": [
+    0,
+    24.89
+   ],
+   "recall_matched": 15,
+   "recall_total": 15,
+   "vote_angle": 0.0,
+   "vote_branch": "pair",
+   "vote_margin": 0.4653654247522354,
+   "vote_wrong": false
+  },
+  "dev-00039-mixed-report-scan": {
+   "osd": [
+    0,
+    15.95
+   ],
+   "recall_matched": 12,
+   "recall_total": 12,
+   "vote_angle": 358.0,
+   "vote_branch": "pair",
+   "vote_margin": 0.09691791236400604,
+   "vote_wrong": false
+  },
+  "dev-00040-ar-receipt-lowres": {
+   "osd": [
+    0,
+    3.08
+   ],
+   "recall_matched": 19,
+   "recall_total": 19,
+   "vote_angle": 0.0,
+   "vote_branch": "pair",
+   "vote_margin": 0.3714708760380745,
+   "vote_wrong": false
+  },
+  "dev-00040-en-receipt-rotated": {
+   "osd": [
+    180,
+    8.11
+   ],
+   "recall_matched": 21,
+   "recall_total": 21,
+   "vote_angle": 180.0,
+   "vote_branch": "pair",
+   "vote_margin": 0.1993335783481598,
+   "vote_wrong": false
+  },
+  "dev-00040-mixed-receipt-rotated": {
+   "osd": [
+    180,
+    11.06
+   ],
+   "recall_matched": 23,
+   "recall_total": 23,
+   "vote_angle": 180.0,
+   "vote_branch": "pair",
+   "vote_margin": 0.44983573257923126,
+   "vote_wrong": false
+  },
+  "dev-00041-ar-table-scan": {
+   "osd": [
+    0,
+    10.9
+   ],
+   "recall_matched": 39,
+   "recall_total": 40,
+   "vote_angle": 0.0,
+   "vote_branch": "pair",
+   "vote_margin": 0.20899544656276703,
+   "vote_wrong": false
+  },
+  "dev-00041-en-grid-fax": {
+   "osd": [
+    0,
+    0.85
+   ],
+   "recall_matched": 56,
+   "recall_total": 77,
+   "vote_angle": 0.0,
+   "vote_branch": "four",
+   "vote_margin": 4.4912099838256836e-05,
+   "vote_wrong": false
+  },
+  "dev-00041-mixed-form-faded": {
+   "osd": [
+    0,
+    14.1
+   ],
+   "recall_matched": 9,
+   "recall_total": 9,
+   "vote_angle": 0.0,
+   "vote_branch": "pair",
+   "vote_margin": 0.34818074107170105,
+   "vote_wrong": false
+  },
+  "dev-00042-ar-report-clean": {
+   "osd": [
+    0,
+    21.02
+   ],
+   "recall_matched": 14,
+   "recall_total": 17,
+   "vote_angle": 0.0,
+   "vote_branch": "pair",
+   "vote_margin": 0.33653174340724945,
+   "vote_wrong": false
+  },
+  "dev-00042-en-report-scan": {
+   "osd": [
+    0,
+    27.93
+   ],
+   "recall_matched": 12,
+   "recall_total": 12,
+   "vote_angle": 357.0,
+   "vote_branch": "pair",
+   "vote_margin": 0.4028038829565048,
+   "vote_wrong": false
+  },
+  "dev-00042-mixed-grid-rotated": {
+   "osd": [
+    90,
+    2.08
+   ],
+   "recall_matched": 108,
+   "recall_total": 108,
+   "vote_angle": 90.0,
+   "vote_branch": "four",
+   "vote_margin": 0.0013407915830612183,
+   "vote_wrong": false
+  },
+  "dev-00043-ar-grid-lowres": {
+   "osd": [
+    0,
+    3.57
+   ],
+   "recall_matched": 77,
+   "recall_total": 80,
+   "vote_angle": 0.0,
+   "vote_branch": "four",
+   "vote_margin": 0.001992926001548767,
+   "vote_wrong": false
+  },
+  "dev-00043-en-report-clean": {
+   "osd": [
+    0,
+    14.89
+   ],
+   "recall_matched": 14,
+   "recall_total": 14,
+   "vote_angle": 0.0,
+   "vote_branch": "pair",
+   "vote_margin": 0.43688443303108215,
+   "vote_wrong": false
+  },
+  "dev-00043-mixed-grid-rotated": {
+   "osd": [
+    90,
+    7.1
+   ],
+   "recall_matched": 85,
+   "recall_total": 108,
+   "vote_angle": 270.0,
+   "vote_branch": "four",
+   "vote_margin": 0.0035710185766220093,
+   "vote_wrong": true
+  },
+  "dev-00044-ar-receipt-photo": {
+   "osd": [
+    0,
+    4.32
+   ],
+   "recall_matched": 19,
+   "recall_total": 19,
+   "vote_angle": 173.0,
+   "vote_branch": "four",
+   "vote_margin": 0.013395488262176514,
+   "vote_wrong": true
+  },
+  "dev-00044-en-table-lowres": {
+   "osd": [
+    0,
+    3.21
+   ],
+   "recall_matched": 32,
+   "recall_total": 32,
+   "vote_angle": 0.0,
+   "vote_branch": "pair",
+   "vote_margin": 0.3360556364059448,
+   "vote_wrong": false
+  },
+  "dev-00044-mixed-receipt-scan": {
+   "osd": [
+    0,
+    12.55
+   ],
+   "recall_matched": 19,
+   "recall_total": 19,
+   "vote_angle": 4.0,
+   "vote_branch": "pair",
+   "vote_margin": 0.2535308748483658,
+   "vote_wrong": false
+  },
+  "dev-00045-ar-table-fax": {
+   "osd": [
+    0,
+    9.83
+   ],
+   "recall_matched": 36,
+   "recall_total": 36,
+   "vote_angle": 180.0,
+   "vote_branch": "pair",
+   "vote_margin": 0.09701842069625854,
+   "vote_wrong": true
+  },
+  "dev-00045-en-receipt-lowres": {
+   "osd": [
+    0,
+    6.09
+   ],
+   "recall_matched": 19,
+   "recall_total": 19,
+   "vote_angle": 0.0,
+   "vote_branch": "pair",
+   "vote_margin": 0.2165547013282776,
+   "vote_wrong": false
+  },
+  "dev-00045-mixed-receipt-faded": {
+   "osd": [
+    0,
+    7.3
+   ],
+   "recall_matched": 13,
+   "recall_total": 19,
+   "vote_angle": 0.0,
+   "vote_branch": "pair",
+   "vote_margin": 0.44616952538490295,
+   "vote_wrong": false
+  },
+  "dev-00046-ar-form-photo": {
+   "osd": [
+    0,
+    2.61
+   ],
+   "recall_matched": 4,
+   "recall_total": 6,
+   "vote_angle": 270.0,
+   "vote_branch": "four",
+   "vote_margin": 0.08027783036231995,
+   "vote_wrong": true
+  },
+  "dev-00046-en-table-clean": {
+   "osd": [
+    0,
+    7.57
+   ],
+   "recall_matched": 28,
+   "recall_total": 28,
+   "vote_angle": 0.0,
+   "vote_branch": "pair",
+   "vote_margin": 0.1323179304599762,
+   "vote_wrong": false
+  },
+  "dev-00046-mixed-report-scan": {
+   "osd": [
+    0,
+    10.22
+   ],
+   "recall_matched": 5,
+   "recall_total": 12,
+   "vote_angle": 0.0,
+   "vote_branch": "pair",
+   "vote_margin": 0.3017134442925453,
+   "vote_wrong": false
+  },
+  "dev-00047-ar-form-scan": {
+   "osd": [
+    0,
+    5.1
+   ],
+   "recall_matched": 8,
+   "recall_total": 8,
+   "vote_angle": 0.0,
+   "vote_branch": "pair",
+   "vote_margin": 0.22691692411899567,
+   "vote_wrong": false
+  },
+  "dev-00047-en-receipt-rotated": {
+   "osd": [
+    270,
+    14.99
+   ],
+   "recall_matched": 21,
+   "recall_total": 21,
+   "vote_angle": 270.0,
+   "vote_branch": "pair",
+   "vote_margin": 0.20084676146507263,
+   "vote_wrong": false
+  },
+  "dev-00047-mixed-table-fax": {
+   "osd": [
+    0,
+    1.05
+   ],
+   "recall_matched": 11,
+   "recall_total": 28,
+   "vote_angle": 0.0,
+   "vote_branch": "pair",
+   "vote_margin": 0.06984475255012512,
+   "vote_wrong": false
+  },
+  "dev-00048-ar-form-lowres": {
+   "osd": [
+    0,
+    1.96
+   ],
+   "recall_matched": 7,
+   "recall_total": 7,
+   "vote_angle": 0.0,
+   "vote_branch": "pair",
+   "vote_margin": 0.4267956018447876,
+   "vote_wrong": false
+  },
+  "dev-00048-en-receipt-fax": {
+   "osd": [
+    0,
+    12.02
+   ],
+   "recall_matched": 25,
+   "recall_total": 25,
+   "vote_angle": 0.0,
+   "vote_branch": "pair",
+   "vote_margin": 0.1681101769208908,
+   "vote_wrong": false
+  },
+  "dev-00048-mixed-form-photo": {
+   "osd": [
+    0,
+    8.81
+   ],
+   "recall_matched": 8,
+   "recall_total": 8,
+   "vote_angle": 356.0,
+   "vote_branch": "pair",
+   "vote_margin": 0.4542635530233383,
+   "vote_wrong": false
+  },
+  "dev-00049-ar-form-scan": {
+   "osd": [
+    0,
+    4.83
+   ],
+   "recall_matched": 9,
+   "recall_total": 9,
+   "vote_angle": 356.0,
+   "vote_branch": "pair",
+   "vote_margin": 0.09299400448799133,
+   "vote_wrong": false
+  },
+  "dev-00049-en-form-fax": {
+   "osd": [
+    0,
+    5.64
+   ],
+   "recall_matched": 7,
+   "recall_total": 7,
+   "vote_angle": 0.0,
+   "vote_branch": "pair",
+   "vote_margin": 0.26960673928260803,
+   "vote_wrong": false
+  },
+  "dev-00049-mixed-form-photo": {
+   "osd": [
+    0,
+    5.67
+   ],
+   "recall_matched": 6,
+   "recall_total": 6,
+   "vote_angle": 358.0,
+   "vote_branch": "pair",
+   "vote_margin": 0.44359371066093445,
+   "vote_wrong": false
+  },
+  "dev-00050-ar-form-fax": {
+   "osd": [
+    0,
+    7.82
+   ],
+   "recall_matched": 7,
+   "recall_total": 9,
+   "vote_angle": 0.0,
+   "vote_branch": "pair",
+   "vote_margin": 0.3509300649166107,
+   "vote_wrong": false
+  },
+  "dev-00050-en-receipt-faded": {
+   "osd": [
+    0,
+    19.63
+   ],
+   "recall_matched": 23,
+   "recall_total": 23,
+   "vote_angle": 0.0,
+   "vote_branch": "pair",
+   "vote_margin": 0.3203888237476349,
+   "vote_wrong": false
+  },
+  "dev-00050-mixed-table-clean": {
+   "osd": [
+    0,
+    6.37
+   ],
+   "recall_matched": 50,
+   "recall_total": 50,
+   "vote_angle": 0.0,
+   "vote_branch": "pair",
+   "vote_margin": 0.3088301122188568,
+   "vote_wrong": false
+  },
+  "dev-00051-ar-form-photo": {
+   "osd": [
+    0,
+    4.29
+   ],
+   "recall_matched": 7,
+   "recall_total": 7,
+   "vote_angle": 5.0,
+   "vote_branch": "four",
+   "vote_margin": 0.036974191665649414,
+   "vote_wrong": false
+  },
+  "dev-00051-en-table-lowres": {
+   "osd": [
+    0,
+    7.5
+   ],
+   "recall_matched": 40,
+   "recall_total": 40,
+   "vote_angle": 0.0,
+   "vote_branch": "pair",
+   "vote_margin": 0.24342754483222961,
+   "vote_wrong": false
+  },
+  "dev-00051-mixed-receipt-lowres": {
+   "osd": [
+    0,
+    8.81
+   ],
+   "recall_matched": 23,
+   "recall_total": 23,
+   "vote_angle": 0.0,
+   "vote_branch": "pair",
+   "vote_margin": 0.42157571017742157,
+   "vote_wrong": false
+  },
+  "dev-00052-ar-grid-rotated": {
+   "osd": [
+    180,
+    2.04
+   ],
+   "recall_matched": 68,
+   "recall_total": 99,
+   "vote_angle": 0.0,
+   "vote_branch": "four",
+   "vote_margin": 0.0029112249612808228,
+   "vote_wrong": true
+  },
+  "dev-00052-en-report-scan": {
+   "osd": [
+    0,
+    16.57
+   ],
+   "recall_matched": 12,
+   "recall_total": 12,
+   "vote_angle": 4.0,
+   "vote_branch": "pair",
+   "vote_margin": 0.34984512627124786,
+   "vote_wrong": false
+  },
+  "dev-00052-mixed-form-rotated": {
+   "osd": [
+    180,
+    5.93
+   ],
+   "recall_matched": 7,
+   "recall_total": 7,
+   "vote_angle": 180.0,
+   "vote_branch": "pair",
+   "vote_margin": 0.2962689846754074,
+   "vote_wrong": false
+  },
+  "dev-00053-ar-form-photo": {
+   "osd": [
+    0,
+    5.78
+   ],
+   "recall_matched": 9,
+   "recall_total": 9,
+   "vote_angle": 4.0,
+   "vote_branch": "pair",
+   "vote_margin": 0.41981684416532516,
+   "vote_wrong": false
+  },
+  "dev-00053-en-grid-rotated": {
+   "osd": [
+    270,
+    3.72
+   ],
+   "recall_matched": 59,
+   "recall_total": 70,
+   "vote_angle": 270.0,
+   "vote_branch": "four",
+   "vote_margin": 0.0007954835891723633,
+   "vote_wrong": false
+  },
+  "dev-00053-mixed-table-scan": {
+   "osd": [
+    0,
+    8.77
+   ],
+   "recall_matched": 36,
+   "recall_total": 36,
+   "vote_angle": 357.0,
+   "vote_branch": "pair",
+   "vote_margin": 0.11214588582515717,
+   "vote_wrong": false
+  },
+  "dev-00054-ar-report-rotated": {
+   "osd": [
+    270,
+    9.36
+   ],
+   "recall_matched": 15,
+   "recall_total": 15,
+   "vote_angle": 90.0,
+   "vote_branch": "pair",
+   "vote_margin": 0.010211750864982605,
+   "vote_wrong": true
+  },
+  "dev-00054-en-form-photo": {
+   "osd": [
+    0,
+    4.58
+   ],
+   "recall_matched": 1,
+   "recall_total": 7,
+   "vote_angle": 5.0,
+   "vote_branch": "four",
+   "vote_margin": 0.1609269678592682,
+   "vote_wrong": false
+  },
+  "dev-00054-mixed-grid-rotated": {
+   "osd": [
+    270,
+    3.61
+   ],
+   "recall_matched": 98,
+   "recall_total": 100,
+   "vote_angle": 270.0,
+   "vote_branch": "four",
+   "vote_margin": 0.027709707617759705,
+   "vote_wrong": false
+  },
+  "dev-00055-ar-receipt-rotated": {
+   "osd": [
+    180,
+    6.24
+   ],
+   "recall_matched": 19,
+   "recall_total": 19,
+   "vote_angle": 180.0,
+   "vote_branch": "pair",
+   "vote_margin": 0.4967501237988472,
+   "vote_wrong": false
+  },
+  "dev-00055-en-report-rotated": {
+   "osd": [
+    270,
+    20.1
+   ],
+   "recall_matched": 14,
+   "recall_total": 14,
+   "vote_angle": 272.0,
+   "vote_branch": "pair",
+   "vote_margin": 0.4026047885417938,
+   "vote_wrong": false
+  },
+  "dev-00055-mixed-table-lowres": {
+   "osd": [
+    0,
+    7.83
+   ],
+   "recall_matched": 49,
+   "recall_total": 50,
+   "vote_angle": 0.0,
+   "vote_branch": "pair",
+   "vote_margin": 0.40204375982284546,
+   "vote_wrong": false
+  },
+  "dev-00056-ar-report-rotated": {
+   "osd": [
+    180,
+    17.21
+   ],
+   "recall_matched": 11,
+   "recall_total": 12,
+   "vote_angle": 180.0,
+   "vote_branch": "pair",
+   "vote_margin": 0.11773475259542465,
+   "vote_wrong": false
+  },
+  "dev-00056-en-table-photo": {
+   "osd": [
+    0,
+    8.67
+   ],
+   "recall_matched": 40,
+   "recall_total": 40,
+   "vote_angle": 354.0,
+   "vote_branch": "pair",
+   "vote_margin": 0.2596874386072159,
+   "vote_wrong": false
+  },
+  "dev-00056-mixed-table-photo": {
+   "osd": [
+    0,
+    9.47
+   ],
+   "recall_matched": 50,
+   "recall_total": 50,
+   "vote_angle": 357.0,
+   "vote_branch": "pair",
+   "vote_margin": 0.2569892108440399,
+   "vote_wrong": false
+  },
+  "dev-00057-ar-report-photo": {
+   "osd": [
+    0,
+    8.54
+   ],
+   "recall_matched": 13,
+   "recall_total": 13,
+   "vote_angle": 7.0,
+   "vote_branch": "four",
+   "vote_margin": 0.11393719911575317,
+   "vote_wrong": false
+  },
+  "dev-00057-en-receipt-rotated": {
+   "osd": [
+    270,
+    13.66
+   ],
+   "recall_matched": 25,
+   "recall_total": 25,
+   "vote_angle": 270.0,
+   "vote_branch": "pair",
+   "vote_margin": 0.25391681492328644,
+   "vote_wrong": false
+  },
+  "dev-00057-mixed-table-scan": {
+   "osd": [
+    0,
+    11.24
+   ],
+   "recall_matched": 44,
+   "recall_total": 45,
+   "vote_angle": 3.0,
+   "vote_branch": "pair",
+   "vote_margin": 0.2449246272444725,
+   "vote_wrong": false
+  },
+  "dev-00058-ar-report-clean": {
+   "osd": [
+    0,
+    16.38
+   ],
+   "recall_matched": 15,
+   "recall_total": 15,
+   "vote_angle": 0.0,
+   "vote_branch": "pair",
+   "vote_margin": 0.10645411163568497,
+   "vote_wrong": false
+  },
+  "dev-00058-en-grid-rotated": {
+   "osd": [
+    270,
+    3.2
+   ],
+   "recall_matched": 75,
+   "recall_total": 77,
+   "vote_angle": 270.0,
+   "vote_branch": "four",
+   "vote_margin": 0.0007044225931167603,
+   "vote_wrong": false
+  },
+  "dev-00058-mixed-receipt-scan": {
+   "osd": [
+    0,
+    6.4
+   ],
+   "recall_matched": 19,
+   "recall_total": 19,
+   "vote_angle": 358.0,
+   "vote_branch": "pair",
+   "vote_margin": 0.3496146649122238,
+   "vote_wrong": false
+  },
+  "dev-00059-ar-receipt-clean": {
+   "osd": [
+    0,
+    9.09
+   ],
+   "recall_matched": 20,
+   "recall_total": 21,
+   "vote_angle": 0.0,
+   "vote_branch": "pair",
+   "vote_margin": 0.09636673331260681,
+   "vote_wrong": false
+  },
+  "dev-00059-en-receipt-lowres": {
+   "osd": [
+    0,
+    3.02
+   ],
+   "recall_matched": 21,
+   "recall_total": 21,
+   "vote_angle": 0.0,
+   "vote_branch": "pair",
+   "vote_margin": 0.2331017106771469,
+   "vote_wrong": false
+  },
+  "dev-00059-mixed-receipt-lowres": {
+   "osd": [
+    0,
+    10.94
+   ],
+   "recall_matched": 20,
+   "recall_total": 21,
+   "vote_angle": 0.0,
+   "vote_branch": "pair",
+   "vote_margin": 0.4247173070907593,
+   "vote_wrong": false
+  },
+  "dev-00060-ar-form-photo": {
+   "osd": [
+    0,
+    6.98
+   ],
+   "recall_matched": 9,
+   "recall_total": 9,
+   "vote_angle": 359.0,
+   "vote_branch": "pair",
+   "vote_margin": 0.054735757410526276,
+   "vote_wrong": false
+  },
+  "dev-00060-en-receipt-clean": {
+   "osd": [
+    0,
+    15.07
+   ],
+   "recall_matched": 25,
+   "recall_total": 25,
+   "vote_angle": 0.0,
+   "vote_branch": "pair",
+   "vote_margin": 0.3035733103752136,
+   "vote_wrong": false
+  },
+  "dev-00060-mixed-receipt-lowres": {
+   "osd": [
+    0,
+    3.41
+   ],
+   "recall_matched": 20,
+   "recall_total": 21,
+   "vote_angle": 0.0,
+   "vote_branch": "pair",
+   "vote_margin": 0.4890187457203865,
+   "vote_wrong": false
+  },
+  "dev-00061-ar-report-scan": {
+   "osd": [
+    0,
+    22.32
+   ],
+   "recall_matched": 15,
+   "recall_total": 16,
+   "vote_angle": 2.0,
+   "vote_branch": "pair",
+   "vote_margin": 0.03929610550403595,
+   "vote_wrong": false
+  },
+  "dev-00061-en-grid-lowres": {
+   "osd": [
+    0,
+    4.23
+   ],
+   "recall_matched": 67,
+   "recall_total": 72,
+   "vote_angle": 0.0,
+   "vote_branch": "four",
+   "vote_margin": 0.0002302229404449463,
+   "vote_wrong": false
+  },
+  "dev-00061-mixed-receipt-fax": {
+   "osd": [
+    0,
+    2.27
+   ],
+   "recall_matched": 20,
+   "recall_total": 23,
+   "vote_angle": 0.0,
+   "vote_branch": "pair",
+   "vote_margin": 0.2513795644044876,
+   "vote_wrong": false
+  },
+  "dev-00062-ar-grid-faded": {
+   "osd": [
+    0,
+    1.06
+   ],
+   "recall_matched": 14,
+   "recall_total": 81,
+   "vote_angle": 180.0,
+   "vote_branch": "four",
+   "vote_margin": 0.01042822003364563,
+   "vote_wrong": true
+  },
+  "dev-00062-en-table-scan": {
+   "osd": [
+    0,
+    7.37
+   ],
+   "recall_matched": 44,
+   "recall_total": 45,
+   "vote_angle": 357.0,
+   "vote_branch": "pair",
+   "vote_margin": 0.3984733670949936,
+   "vote_wrong": false
+  },
+  "dev-00062-mixed-receipt-fax": {
+   "osd": [
+    0,
+    9.33
+   ],
+   "recall_matched": 19,
+   "recall_total": 19,
+   "vote_angle": 0.0,
+   "vote_branch": "pair",
+   "vote_margin": 0.14320102334022522,
+   "vote_wrong": false
+  },
+  "dev-00063-ar-table-scan": {
+   "osd": [
+    0,
+    9.57
+   ],
+   "recall_matched": 28,
+   "recall_total": 28,
+   "vote_angle": 90.0,
+   "vote_branch": "four",
+   "vote_margin": 0.035604894161224365,
+   "vote_wrong": true
+  },
+  "dev-00063-en-report-scan": {
+   "osd": [
+    0,
+    30.3
+   ],
+   "recall_matched": 12,
+   "recall_total": 12,
+   "vote_angle": 2.0,
+   "vote_branch": "pair",
+   "vote_margin": 0.4567846655845642,
+   "vote_wrong": false
+  },
+  "dev-00063-mixed-table-scan": {
+   "osd": [
+    0,
+    3.5
+   ],
+   "recall_matched": 50,
+   "recall_total": 50,
+   "vote_angle": 0.0,
+   "vote_branch": "pair",
+   "vote_margin": 0.4120204895734787,
+   "vote_wrong": false
+  },
+  "dev-00064-ar-receipt-scan": {
+   "osd": [
+    0,
+    6.78
+   ],
+   "recall_matched": 19,
+   "recall_total": 19,
+   "vote_angle": 4.0,
+   "vote_branch": "pair",
+   "vote_margin": 0.07061006128787994,
+   "vote_wrong": false
+  },
+  "dev-00064-en-report-faded": {
+   "osd": [
+    0,
+    16.83
+   ],
+   "recall_matched": 17,
+   "recall_total": 17,
+   "vote_angle": 0.0,
+   "vote_branch": "pair",
+   "vote_margin": 0.3610953539609909,
+   "vote_wrong": false
+  },
+  "dev-00064-mixed-form-scan": {
+   "osd": [
+    0,
+    6.14
+   ],
+   "recall_matched": 10,
+   "recall_total": 10,
+   "vote_angle": 0.0,
+   "vote_branch": "pair",
+   "vote_margin": 0.3725680410861969,
+   "vote_wrong": false
+  },
+  "dev-00065-ar-receipt-scan": {
+   "osd": [
+    0,
+    1.23
+   ],
+   "recall_matched": 23,
+   "recall_total": 23,
+   "vote_angle": 357.0,
+   "vote_branch": "pair",
+   "vote_margin": 0.27131660282611847,
+   "vote_wrong": false
+  },
+  "dev-00065-en-form-rotated": {
+   "osd": [
+    180,
+    8.46
+   ],
+   "recall_matched": 7,
+   "recall_total": 7,
+   "vote_angle": 179.0,
+   "vote_branch": "pair",
+   "vote_margin": 0.34358710050582886,
+   "vote_wrong": false
+  },
+  "dev-00065-mixed-report-rotated": {
+   "osd": [
+    180,
+    13.83
+   ],
+   "recall_matched": 10,
+   "recall_total": 12,
+   "vote_angle": 180.0,
+   "vote_branch": "pair",
+   "vote_margin": 0.046880170702934265,
+   "vote_wrong": false
+  },
+  "dev-00066-ar-receipt-clean": {
+   "osd": [
+    0,
+    5.73
+   ],
+   "recall_matched": 25,
+   "recall_total": 25,
+   "vote_angle": 0.0,
+   "vote_branch": "pair",
+   "vote_margin": 0.3221360743045807,
+   "vote_wrong": false
+  },
+  "dev-00066-en-report-rotated": {
+   "osd": [
+    180,
+    35.9
+   ],
+   "recall_matched": 16,
+   "recall_total": 16,
+   "vote_angle": 180.0,
+   "vote_branch": "pair",
+   "vote_margin": 0.5272465199232101,
+   "vote_wrong": false
+  },
+  "dev-00066-mixed-report-faded": {
+   "osd": [
+    0,
+    20.36
+   ],
+   "recall_matched": 5,
+   "recall_total": 14,
+   "vote_angle": 0.0,
+   "vote_branch": "pair",
+   "vote_margin": 0.3573926091194153,
+   "vote_wrong": false
+  },
+  "dev-00067-ar-report-scan": {
+   "osd": [
+    0,
+    19.42
+   ],
+   "recall_matched": 12,
+   "recall_total": 14,
+   "vote_angle": 2.0,
+   "vote_branch": "pair",
+   "vote_margin": 0.0994996502995491,
+   "vote_wrong": false
+  },
+  "dev-00067-en-form-lowres": {
+   "osd": null,
+   "recall_matched": 10,
+   "recall_total": 10,
+   "vote_angle": 0.0,
+   "vote_branch": "pair",
+   "vote_margin": 0.14321178197860718,
+   "vote_wrong": false
+  },
+  "dev-00067-mixed-receipt-scan": {
+   "osd": [
+    0,
+    11.59
+   ],
+   "recall_matched": 24,
+   "recall_total": 25,
+   "vote_angle": 3.0,
+   "vote_branch": "pair",
+   "vote_margin": 0.31612662971019745,
+   "vote_wrong": false
+  },
+  "dev-00068-ar-grid-rotated": {
+   "osd": [
+    90,
+    5.02
+   ],
+   "recall_matched": 89,
+   "recall_total": 99,
+   "vote_angle": 90.0,
+   "vote_branch": "four",
+   "vote_margin": 0.0002021193504333496,
+   "vote_wrong": false
+  },
+  "dev-00068-en-form-scan": {
+   "osd": [
+    0,
+    9.71
+   ],
+   "recall_matched": 6,
+   "recall_total": 6,
+   "vote_angle": 3.0,
+   "vote_branch": "pair",
+   "vote_margin": 0.3891880512237549,
+   "vote_wrong": false
+  },
+  "dev-00068-mixed-report-photo": {
+   "osd": [
+    0,
+    8.27
+   ],
+   "recall_matched": 5,
+   "recall_total": 17,
+   "vote_angle": 188.0,
+   "vote_branch": "four",
+   "vote_margin": 0.03139001131057739,
+   "vote_wrong": true
+  },
+  "dev-00069-ar-table-scan": {
+   "osd": [
+    0,
+    7.21
+   ],
+   "recall_matched": 39,
+   "recall_total": 40,
+   "vote_angle": 2.0,
+   "vote_branch": "pair",
+   "vote_margin": 0.4066716432571411,
+   "vote_wrong": false
+  },
+  "dev-00069-en-grid-rotated": {
+   "osd": [
+    270,
+    3.71
+   ],
+   "recall_matched": 61,
+   "recall_total": 63,
+   "vote_angle": 270.0,
+   "vote_branch": "four",
+   "vote_margin": 0.0009894073009490967,
+   "vote_wrong": false
+  },
+  "dev-00069-mixed-report-clean": {
+   "osd": [
+    0,
+    16.4
+   ],
+   "recall_matched": 9,
+   "recall_total": 11,
+   "vote_angle": 0.0,
+   "vote_branch": "pair",
+   "vote_margin": 0.22165265679359436,
+   "vote_wrong": false
+  },
+  "dev-00070-ar-report-lowres": {
+   "osd": [
+    0,
+    18.1
+   ],
+   "recall_matched": 15,
+   "recall_total": 15,
+   "vote_angle": 180.0,
+   "vote_branch": "pair",
+   "vote_margin": 0.03790080547332764,
+   "vote_wrong": true
+  },
+  "dev-00070-en-receipt-scan": {
+   "osd": [
+    0,
+    0.9
+   ],
+   "recall_matched": 23,
+   "recall_total": 23,
+   "vote_angle": 357.0,
+   "vote_branch": "pair",
+   "vote_margin": 0.22473843395709991,
+   "vote_wrong": false
+  },
+  "dev-00070-mixed-grid-fax": {
+   "osd": [
+    270,
+    0.34
+   ],
+   "recall_matched": 3,
+   "recall_total": 77,
+   "vote_angle": 0.0,
+   "vote_branch": "four",
+   "vote_margin": 0.038012824952602386,
+   "vote_wrong": false
+  },
+  "dev-00071-ar-grid-lowres": {
+   "osd": [
+    0,
+    2.1
+   ],
+   "recall_matched": 35,
+   "recall_total": 66,
+   "vote_angle": 180.0,
+   "vote_branch": "four",
+   "vote_margin": 0.013687759637832642,
+   "vote_wrong": true
+  },
+  "dev-00071-en-form-scan": {
+   "osd": [
+    0,
+    3.8
+   ],
+   "recall_matched": 9,
+   "recall_total": 9,
+   "vote_angle": 0.0,
+   "vote_branch": "pair",
+   "vote_margin": 0.24524803459644318,
+   "vote_wrong": false
+  },
+  "dev-00071-mixed-report-lowres": {
+   "osd": [
+    0,
+    14.75
+   ],
+   "recall_matched": 12,
+   "recall_total": 12,
+   "vote_angle": 0.0,
+   "vote_branch": "pair",
+   "vote_margin": 0.15332645177841187,
+   "vote_wrong": false
+  },
+  "dev-00072-ar-receipt-photo": {
+   "osd": [
+    0,
+    5.72
+   ],
+   "recall_matched": 25,
+   "recall_total": 25,
+   "vote_angle": 176.0,
+   "vote_branch": "pair",
+   "vote_margin": 0.014421582221984863,
+   "vote_wrong": true
+  },
+  "dev-00072-en-form-clean": {
+   "osd": [
+    0,
+    20.65
+   ],
+   "recall_matched": 9,
+   "recall_total": 9,
+   "vote_angle": 0.0,
+   "vote_branch": "pair",
+   "vote_margin": 0.4288753420114517,
+   "vote_wrong": false
+  },
+  "dev-00072-mixed-form-lowres": {
+   "osd": [
+    0,
+    9.02
+   ],
+   "recall_matched": 8,
+   "recall_total": 8,
+   "vote_angle": 0.0,
+   "vote_branch": "pair",
+   "vote_margin": 0.44299231469631195,
+   "vote_wrong": false
+  },
+  "dev-00073-ar-form-scan": {
+   "osd": [
+    0,
+    4.57
+   ],
+   "recall_matched": 8,
+   "recall_total": 8,
+   "vote_angle": 178.0,
+   "vote_branch": "pair",
+   "vote_margin": 0.11200271546840668,
+   "vote_wrong": true
+  },
+  "dev-00073-en-form-lowres": {
+   "osd": [
+    0,
+    11.19
+   ],
+   "recall_matched": 10,
+   "recall_total": 10,
+   "vote_angle": 0.0,
+   "vote_branch": "pair",
+   "vote_margin": 0.3842873275279999,
+   "vote_wrong": false
+  },
+  "dev-00073-mixed-table-scan": {
+   "osd": [
+    0,
+    9.17
+   ],
+   "recall_matched": 45,
+   "recall_total": 45,
+   "vote_angle": 358.0,
+   "vote_branch": "pair",
+   "vote_margin": 0.35674626380205154,
+   "vote_wrong": false
+  },
+  "dev-00074-ar-form-fax": {
+   "osd": [
+    0,
+    3.88
+   ],
+   "recall_matched": 8,
+   "recall_total": 8,
+   "vote_angle": 0.0,
+   "vote_branch": "pair",
+   "vote_margin": 0.08487191796302795,
+   "vote_wrong": false
+  },
+  "dev-00074-en-form-faded": {
+   "osd": [
+    0,
+    15.76
+   ],
+   "recall_matched": 7,
+   "recall_total": 7,
+   "vote_angle": 0.0,
+   "vote_branch": "pair",
+   "vote_margin": 0.5836715176701546,
+   "vote_wrong": false
+  },
+  "dev-00074-mixed-table-fax": {
+   "osd": [
+    0,
+    0.5
+   ],
+   "recall_matched": 26,
+   "recall_total": 36,
+   "vote_angle": 0.0,
+   "vote_branch": "pair",
+   "vote_margin": 0.31202851235866547,
+   "vote_wrong": false
+  },
+  "dev-00075-ar-report-scan": {
+   "osd": [
+    0,
+    5.34
+   ],
+   "recall_matched": 12,
+   "recall_total": 12,
+   "vote_angle": 0.0,
+   "vote_branch": "pair",
+   "vote_margin": 0.06154149770736694,
+   "vote_wrong": false
+  },
+  "dev-00075-en-report-photo": {
+   "osd": [
+    0,
+    19.57
+   ],
+   "recall_matched": 15,
+   "recall_total": 15,
+   "vote_angle": 0.0,
+   "vote_branch": "pair",
+   "vote_margin": 0.40811678767204285,
+   "vote_wrong": false
+  },
+  "dev-00075-mixed-report-scan": {
+   "osd": [
+    0,
+    17.69
+   ],
+   "recall_matched": 11,
+   "recall_total": 12,
+   "vote_angle": 177.0,
+   "vote_branch": "pair",
+   "vote_margin": 0.012741193175315857,
+   "vote_wrong": true
+  },
+  "dev-00076-ar-form-lowres": {
+   "osd": [
+    0,
+    2.6
+   ],
+   "recall_matched": 7,
+   "recall_total": 7,
+   "vote_angle": 0.0,
+   "vote_branch": "pair",
+   "vote_margin": 0.26598384976387024,
+   "vote_wrong": false
+  },
+  "dev-00076-en-receipt-photo": {
+   "osd": [
+    0,
+    19.06
+   ],
+   "recall_matched": 21,
+   "recall_total": 21,
+   "vote_angle": 355.0,
+   "vote_branch": "pair",
+   "vote_margin": 0.261362761259079,
+   "vote_wrong": false
+  },
+  "dev-00076-mixed-receipt-fax": {
+   "osd": [
+    0,
+    10.76
+   ],
+   "recall_matched": 18,
+   "recall_total": 21,
+   "vote_angle": 0.0,
+   "vote_branch": "pair",
+   "vote_margin": 0.3745531141757965,
+   "vote_wrong": false
+  },
+  "dev-00077-ar-grid-scan": {
+   "osd": [
+    0,
+    4.63
+   ],
+   "recall_matched": 11,
+   "recall_total": 70,
+   "vote_angle": 180.0,
+   "vote_branch": "four",
+   "vote_margin": 0.0030265450477600098,
+   "vote_wrong": true
+  },
+  "dev-00077-en-form-faded": {
+   "osd": [
+    0,
+    11.33
+   ],
+   "recall_matched": 9,
+   "recall_total": 9,
+   "vote_angle": 0.0,
+   "vote_branch": "pair",
+   "vote_margin": 0.4217665493488312,
+   "vote_wrong": false
+  },
+  "dev-00077-mixed-report-clean": {
+   "osd": [
+    0,
+    20.79
+   ],
+   "recall_matched": 16,
+   "recall_total": 16,
+   "vote_angle": 0.0,
+   "vote_branch": "pair",
+   "vote_margin": 0.15798429399728775,
+   "vote_wrong": false
+  },
+  "dev-00078-ar-report-fax": {
+   "osd": [
+    0,
+    15.47
+   ],
+   "recall_matched": 11,
+   "recall_total": 13,
+   "vote_angle": 0.0,
+   "vote_branch": "pair",
+   "vote_margin": 0.09417302906513214,
+   "vote_wrong": false
+  },
+  "dev-00078-en-form-clean": {
+   "osd": [
+    0,
+    12.76
+   ],
+   "recall_matched": 6,
+   "recall_total": 6,
+   "vote_angle": 0.0,
+   "vote_branch": "pair",
+   "vote_margin": 0.28503452241420746,
+   "vote_wrong": false
+  },
+  "dev-00078-mixed-table-photo": {
+   "osd": [
+    0,
+    5.98
+   ],
+   "recall_matched": 27,
+   "recall_total": 28,
+   "vote_angle": 2.0,
+   "vote_branch": "pair",
+   "vote_margin": 0.19009175896644592,
+   "vote_wrong": false
+  },
+  "dev-00079-ar-receipt-photo": {
+   "osd": [
+    0,
+    6.89
+   ],
+   "recall_matched": 23,
+   "recall_total": 23,
+   "vote_angle": 353.0,
+   "vote_branch": "pair",
+   "vote_margin": 0.020698577165603638,
+   "vote_wrong": false
+  },
+  "dev-00079-en-receipt-photo": {
+   "osd": [
+    0,
+    16.62
+   ],
+   "recall_matched": 21,
+   "recall_total": 21,
+   "vote_angle": 0.0,
+   "vote_branch": "pair",
+   "vote_margin": 0.24952800571918488,
+   "vote_wrong": false
+  },
+  "dev-00079-mixed-receipt-lowres": {
+   "osd": [
+    0,
+    10.16
+   ],
+   "recall_matched": 25,
+   "recall_total": 25,
+   "vote_angle": 0.0,
+   "vote_branch": "pair",
+   "vote_margin": 0.2809008061885834,
+   "vote_wrong": false
+  },
+  "dev-00080-ar-form-lowres": {
+   "osd": [
+    0,
+    1.21
+   ],
+   "recall_matched": 5,
+   "recall_total": 7,
+   "vote_angle": 0.0,
+   "vote_branch": "pair",
+   "vote_margin": 0.015314608812332153,
+   "vote_wrong": false
+  },
+  "dev-00080-en-form-photo": {
+   "osd": [
+    0,
+    14.37
+   ],
+   "recall_matched": 10,
+   "recall_total": 10,
+   "vote_angle": 2.0,
+   "vote_branch": "pair",
+   "vote_margin": 0.3820919394493103,
+   "vote_wrong": false
+  },
+  "dev-00080-mixed-table-clean": {
+   "osd": [
+    0,
+    15.92
+   ],
+   "recall_matched": 44,
+   "recall_total": 45,
+   "vote_angle": 0.0,
+   "vote_branch": "pair",
+   "vote_margin": 0.2625774145126343,
+   "vote_wrong": false
+  },
+  "dev-00081-ar-form-scan": {
+   "osd": [
+    0,
+    8.3
+   ],
+   "recall_matched": 9,
+   "recall_total": 9,
+   "vote_angle": 0.0,
+   "vote_branch": "pair",
+   "vote_margin": 0.21646559238433838,
+   "vote_wrong": false
+  },
+  "dev-00081-en-grid-rotated": {
+   "osd": [
+    90,
+    2.97
+   ],
+   "recall_matched": 70,
+   "recall_total": 77,
+   "vote_angle": 90.0,
+   "vote_branch": "four",
+   "vote_margin": 0.0017400532960891724,
+   "vote_wrong": false
+  },
+  "dev-00081-mixed-form-rotated": {
+   "osd": [
+    90,
+    8.26
+   ],
+   "recall_matched": 9,
+   "recall_total": 9,
+   "vote_angle": 90.0,
+   "vote_branch": "pair",
+   "vote_margin": 0.3856904208660126,
+   "vote_wrong": false
+  },
+  "dev-00082-ar-report-photo": {
+   "osd": [
+    0,
+    14.78
+   ],
+   "recall_matched": 10,
+   "recall_total": 13,
+   "vote_angle": 355.0,
+   "vote_branch": "pair",
+   "vote_margin": 0.056263796985149384,
+   "vote_wrong": false
+  },
+  "dev-00082-en-table-fax": {
+   "osd": [
+    0,
+    3.14
+   ],
+   "recall_matched": 43,
+   "recall_total": 44,
+   "vote_angle": 0.0,
+   "vote_branch": "pair",
+   "vote_margin": 0.35676997900009155,
+   "vote_wrong": false
+  },
+  "dev-00082-mixed-report-photo": {
+   "osd": [
+    0,
+    16.67
+   ],
+   "recall_matched": 14,
+   "recall_total": 14,
+   "vote_angle": 353.0,
+   "vote_branch": "pair",
+   "vote_margin": 0.19685350358486176,
+   "vote_wrong": false
+  },
+  "dev-00083-ar-table-scan": {
+   "osd": [
+    0,
+    11.09
+   ],
+   "recall_matched": 43,
+   "recall_total": 44,
+   "vote_angle": 0.0,
+   "vote_branch": "pair",
+   "vote_margin": 0.06917332112789154,
+   "vote_wrong": false
+  },
+  "dev-00083-en-table-scan": {
+   "osd": [
+    0,
+    4.87
+   ],
+   "recall_matched": 35,
+   "recall_total": 35,
+   "vote_angle": 357.0,
+   "vote_branch": "pair",
+   "vote_margin": 0.32828570902347565,
+   "vote_wrong": false
+  },
+  "dev-00083-mixed-grid-rotated": {
+   "osd": [
+    180,
+    2.66
+   ],
+   "recall_matched": 71,
+   "recall_total": 72,
+   "vote_angle": 180.0,
+   "vote_branch": "four",
+   "vote_margin": 0.000295981764793396,
+   "vote_wrong": false
+  },
+  "dev-00084-ar-report-scan": {
+   "osd": [
+    0,
+    12.88
+   ],
+   "recall_matched": 12,
+   "recall_total": 12,
+   "vote_angle": 357.0,
+   "vote_branch": "pair",
+   "vote_margin": 0.07767032086849213,
+   "vote_wrong": false
+  },
+  "dev-00084-en-receipt-rotated": {
+   "osd": [
+    180,
+    10.2
+   ],
+   "recall_matched": 21,
+   "recall_total": 21,
+   "vote_angle": 180.0,
+   "vote_branch": "pair",
+   "vote_margin": 0.2762390524148941,
+   "vote_wrong": false
+  },
+  "dev-00084-mixed-form-clean": {
+   "osd": [
+    0,
+    3.72
+   ],
+   "recall_matched": 6,
+   "recall_total": 6,
+   "vote_angle": 0.0,
+   "vote_branch": "pair",
+   "vote_margin": 0.3697102963924408,
+   "vote_wrong": false
+  },
+  "dev-00085-ar-table-clean": {
+   "osd": [
+    0,
+    18.83
+   ],
+   "recall_matched": 55,
+   "recall_total": 55,
+   "vote_angle": 0.0,
+   "vote_branch": "pair",
+   "vote_margin": 0.01566404104232788,
+   "vote_wrong": false
+  },
+  "dev-00085-en-report-photo": {
+   "osd": [
+    0,
+    30.03
+   ],
+   "recall_matched": 15,
+   "recall_total": 15,
+   "vote_angle": 355.0,
+   "vote_branch": "pair",
+   "vote_margin": 0.43730054795742035,
+   "vote_wrong": false
+  },
+  "dev-00085-mixed-form-lowres": {
+   "osd": [
+    0,
+    9.65
+   ],
+   "recall_matched": 10,
+   "recall_total": 10,
+   "vote_angle": 0.0,
+   "vote_branch": "pair",
+   "vote_margin": 0.3404846489429474,
+   "vote_wrong": false
+  },
+  "dev-00086-ar-receipt-faded": {
+   "osd": [
+    0,
+    6.54
+   ],
+   "recall_matched": 19,
+   "recall_total": 21,
+   "vote_angle": 0.0,
+   "vote_branch": "pair",
+   "vote_margin": 0.06354570388793945,
+   "vote_wrong": false
+  },
+  "dev-00086-en-form-clean": {
+   "osd": [
+    0,
+    15.97
+   ],
+   "recall_matched": 10,
+   "recall_total": 10,
+   "vote_angle": 0.0,
+   "vote_branch": "pair",
+   "vote_margin": 0.396149143576622,
+   "vote_wrong": false
+  },
+  "dev-00086-mixed-report-clean": {
+   "osd": [
+    0,
+    28.02
+   ],
+   "recall_matched": 14,
+   "recall_total": 15,
+   "vote_angle": 0.0,
+   "vote_branch": "pair",
+   "vote_margin": 0.07536603510379791,
+   "vote_wrong": false
+  },
+  "dev-00087-ar-form-clean": {
+   "osd": [
+    0,
+    4.47
+   ],
+   "recall_matched": 6,
+   "recall_total": 6,
+   "vote_angle": 180.0,
+   "vote_branch": "pair",
+   "vote_margin": 0.08093396574258804,
+   "vote_wrong": true
+  },
+  "dev-00087-en-receipt-scan": {
+   "osd": [
+    0,
+    13.63
+   ],
+   "recall_matched": 23,
+   "recall_total": 23,
+   "vote_angle": 0.0,
+   "vote_branch": "pair",
+   "vote_margin": 0.27502626180648804,
+   "vote_wrong": false
+  },
+  "dev-00087-mixed-table-scan": {
+   "osd": [
+    0,
+    12.23
+   ],
+   "recall_matched": 34,
+   "recall_total": 35,
+   "vote_angle": 359.0,
+   "vote_branch": "pair",
+   "vote_margin": 0.26793381571769714,
+   "vote_wrong": false
+  },
+  "dev-00088-ar-receipt-scan": {
+   "osd": [
+    0,
+    6.18
+   ],
+   "recall_matched": 23,
+   "recall_total": 25,
+   "vote_angle": 357.0,
+   "vote_branch": "pair",
+   "vote_margin": 0.4001532793045044,
+   "vote_wrong": false
+  },
+  "dev-00088-en-report-photo": {
+   "osd": [
+    0,
+    15.26
+   ],
+   "recall_matched": 16,
+   "recall_total": 16,
+   "vote_angle": 356.0,
+   "vote_branch": "pair",
+   "vote_margin": 0.5115619078278542,
+   "vote_wrong": false
+  },
+  "dev-00088-mixed-receipt-photo": {
+   "osd": [
+    0,
+    10.92
+   ],
+   "recall_matched": 21,
+   "recall_total": 21,
+   "vote_angle": 355.0,
+   "vote_branch": "pair",
+   "vote_margin": 0.49883200228214264,
+   "vote_wrong": false
+  },
+  "dev-00089-ar-receipt-scan": {
+   "osd": [
+    0,
+    1.14
+   ],
+   "recall_matched": 18,
+   "recall_total": 23,
+   "vote_angle": 0.0,
+   "vote_branch": "pair",
+   "vote_margin": 0.3325263112783432,
+   "vote_wrong": false
+  },
+  "dev-00089-en-form-scan": {
+   "osd": [
+    0,
+    11.97
+   ],
+   "recall_matched": 9,
+   "recall_total": 9,
+   "vote_angle": 357.0,
+   "vote_branch": "pair",
+   "vote_margin": 0.2438175082206726,
+   "vote_wrong": false
+  },
+  "dev-00089-mixed-receipt-lowres": {
+   "osd": [
+    0,
+    4.37
+   ],
+   "recall_matched": 19,
+   "recall_total": 19,
+   "vote_angle": 0.0,
+   "vote_branch": "pair",
+   "vote_margin": 0.335061252117157,
+   "vote_wrong": false
+  },
+  "dev-00090-ar-form-rotated": {
+   "osd": [
+    180,
+    5.12
+   ],
+   "recall_matched": 7,
+   "recall_total": 7,
+   "vote_angle": 180.0,
+   "vote_branch": "pair",
+   "vote_margin": 0.052487730979919434,
+   "vote_wrong": false
+  },
+  "dev-00090-en-receipt-lowres": {
+   "osd": [
+    0,
+    14.97
+   ],
+   "recall_matched": 25,
+   "recall_total": 25,
+   "vote_angle": 0.0,
+   "vote_branch": "pair",
+   "vote_margin": 0.29939766228199005,
+   "vote_wrong": false
+  },
+  "dev-00090-mixed-form-fax": {
+   "osd": null,
+   "recall_matched": 1,
+   "recall_total": 8,
+   "vote_angle": 0.0,
+   "vote_branch": "pair",
+   "vote_margin": 0.3814009428024292,
+   "vote_wrong": false
+  },
+  "dev-00091-ar-receipt-scan": {
+   "osd": [
+    0,
+    3.28
+   ],
+   "recall_matched": 15,
+   "recall_total": 19,
+   "vote_angle": 2.0,
+   "vote_branch": "pair",
+   "vote_margin": 0.38155342638492584,
+   "vote_wrong": false
+  },
+  "dev-00091-en-receipt-lowres": {
+   "osd": [
+    0,
+    10.65
+   ],
+   "recall_matched": 23,
+   "recall_total": 23,
+   "vote_angle": 0.0,
+   "vote_branch": "pair",
+   "vote_margin": 0.2944260686635971,
+   "vote_wrong": false
+  },
+  "dev-00091-mixed-grid-rotated": {
+   "osd": [
+    270,
+    2.71
+   ],
+   "recall_matched": 63,
+   "recall_total": 63,
+   "vote_angle": 270.0,
+   "vote_branch": "four",
+   "vote_margin": 0.00035837292671203613,
+   "vote_wrong": false
+  },
+  "dev-00092-ar-form-scan": {
+   "osd": [
+    0,
+    5.82
+   ],
+   "recall_matched": 9,
+   "recall_total": 9,
+   "vote_angle": 358.0,
+   "vote_branch": "pair",
+   "vote_margin": 0.1896190494298935,
+   "vote_wrong": false
+  },
+  "dev-00092-en-form-faded": {
+   "osd": [
+    0,
+    11.46
+   ],
+   "recall_matched": 7,
+   "recall_total": 7,
+   "vote_angle": 0.0,
+   "vote_branch": "pair",
+   "vote_margin": 0.18932288885116577,
+   "vote_wrong": false
+  },
+  "dev-00092-mixed-form-photo": {
+   "osd": [
+    0,
+    9.03
+   ],
+   "recall_matched": 8,
+   "recall_total": 8,
+   "vote_angle": 355.0,
+   "vote_branch": "pair",
+   "vote_margin": 0.502717062830925,
+   "vote_wrong": false
+  },
+  "dev-00093-ar-form-photo": {
+   "osd": [
+    0,
+    5.83
+   ],
+   "recall_matched": 6,
+   "recall_total": 6,
+   "vote_angle": 174.0,
+   "vote_branch": "four",
+   "vote_margin": 0.06200262904167175,
+   "vote_wrong": true
+  },
+  "dev-00093-en-table-clean": {
+   "osd": [
+    0,
+    14.71
+   ],
+   "recall_matched": 50,
+   "recall_total": 50,
+   "vote_angle": 0.0,
+   "vote_branch": "pair",
+   "vote_margin": 0.36240167915821075,
+   "vote_wrong": false
+  },
+  "dev-00093-mixed-table-scan": {
+   "osd": [
+    0,
+    7.37
+   ],
+   "recall_matched": 50,
+   "recall_total": 50,
+   "vote_angle": 358.0,
+   "vote_branch": "pair",
+   "vote_margin": 0.4052773416042328,
+   "vote_wrong": false
+  },
+  "dev-00094-ar-form-photo": {
+   "osd": [
+    0,
+    3.66
+   ],
+   "recall_matched": 6,
+   "recall_total": 6,
+   "vote_angle": 185.0,
+   "vote_branch": "pair",
+   "vote_margin": 0.036718711256980896,
+   "vote_wrong": true
+  },
+  "dev-00094-en-table-scan": {
+   "osd": [
+    0,
+    0.37
+   ],
+   "recall_matched": 50,
+   "recall_total": 50,
+   "vote_angle": 0.0,
+   "vote_branch": "pair",
+   "vote_margin": 0.3459666520357132,
+   "vote_wrong": false
+  },
+  "dev-00094-mixed-report-rotated": {
+   "osd": [
+    180,
+    26.73
+   ],
+   "recall_matched": 15,
+   "recall_total": 16,
+   "vote_angle": 180.0,
+   "vote_branch": "pair",
+   "vote_margin": 0.07599475979804993,
+   "vote_wrong": false
+  },
+  "dev-00095-ar-receipt-lowres": {
+   "osd": [
+    0,
+    6.35
+   ],
+   "recall_matched": 19,
+   "recall_total": 19,
+   "vote_angle": 0.0,
+   "vote_branch": "pair",
+   "vote_margin": 0.2476295530796051,
+   "vote_wrong": false
+  },
+  "dev-00095-en-table-photo": {
+   "osd": [
+    0,
+    7.52
+   ],
+   "recall_matched": 32,
+   "recall_total": 32,
+   "vote_angle": 5.0,
+   "vote_branch": "pair",
+   "vote_margin": 0.2696872800588608,
+   "vote_wrong": false
+  },
+  "dev-00095-mixed-form-photo": {
+   "osd": [
+    0,
+    4.95
+   ],
+   "recall_matched": 7,
+   "recall_total": 7,
+   "vote_angle": 355.0,
+   "vote_branch": "pair",
+   "vote_margin": 0.4087163060903549,
+   "vote_wrong": false
+  },
+  "dev-00096-ar-report-scan": {
+   "osd": [
+    0,
+    17.66
+   ],
+   "recall_matched": 15,
+   "recall_total": 15,
+   "vote_angle": 0.0,
+   "vote_branch": "pair",
+   "vote_margin": 0.10609810054302216,
+   "vote_wrong": false
+  },
+  "dev-00096-en-form-fax": {
+   "osd": [
+    0,
+    8.2
+   ],
+   "recall_matched": 9,
+   "recall_total": 9,
+   "vote_angle": 0.0,
+   "vote_branch": "pair",
+   "vote_margin": 0.21562981605529785,
+   "vote_wrong": false
+  },
+  "dev-00096-mixed-report-rotated": {
+   "osd": [
+    90,
+    14.57
+   ],
+   "recall_matched": 13,
+   "recall_total": 16,
+   "vote_angle": 90.0,
+   "vote_branch": "pair",
+   "vote_margin": 0.014277055859565735,
+   "vote_wrong": false
+  },
+  "dev-00097-ar-table-lowres": {
+   "osd": [
+    0,
+    3.3
+   ],
+   "recall_matched": 28,
+   "recall_total": 28,
+   "vote_angle": 0.0,
+   "vote_branch": "pair",
+   "vote_margin": 0.3906688392162323,
+   "vote_wrong": false
+  },
+  "dev-00097-en-report-faded": {
+   "osd": [
+    0,
+    33.43
+   ],
+   "recall_matched": 15,
+   "recall_total": 15,
+   "vote_angle": 0.0,
+   "vote_branch": "pair",
+   "vote_margin": 0.41858188807964325,
+   "vote_wrong": false
+  },
+  "dev-00097-mixed-report-scan": {
+   "osd": [
+    0,
+    17.38
+   ],
+   "recall_matched": 14,
+   "recall_total": 14,
+   "vote_angle": 356.0,
+   "vote_branch": "pair",
+   "vote_margin": 0.19554318487644196,
+   "vote_wrong": false
+  },
+  "dev-00098-ar-form-scan": {
+   "osd": [
+    0,
+    5.41
+   ],
+   "recall_matched": 6,
+   "recall_total": 7,
+   "vote_angle": 1.0,
+   "vote_branch": "pair",
+   "vote_margin": 0.04681782424449921,
+   "vote_wrong": false
+  },
+  "dev-00098-en-form-faded": {
+   "osd": [
+    0,
+    9.56
+   ],
+   "recall_matched": 8,
+   "recall_total": 8,
+   "vote_angle": 0.0,
+   "vote_branch": "pair",
+   "vote_margin": 0.3293813019990921,
+   "vote_wrong": false
+  },
+  "dev-00098-mixed-grid-rotated": {
+   "osd": [
+    270,
+    3.16
+   ],
+   "recall_matched": 55,
+   "recall_total": 81,
+   "vote_angle": 90.0,
+   "vote_branch": "four",
+   "vote_margin": 0.007813051342964172,
+   "vote_wrong": true
+  },
+  "dev-00099-ar-grid-lowres": {
+   "osd": [
+    0,
+    5.66
+   ],
+   "recall_matched": 63,
+   "recall_total": 96,
+   "vote_angle": 0.0,
+   "vote_branch": "four",
+   "vote_margin": 0.0013961344957351685,
+   "vote_wrong": false
+  },
+  "dev-00099-en-form-scan": {
+   "osd": [
+    0,
+    17.7
+   ],
+   "recall_matched": 10,
+   "recall_total": 10,
+   "vote_angle": 358.0,
+   "vote_branch": "pair",
+   "vote_margin": 0.2643353343009949,
+   "vote_wrong": false
+  },
+  "dev-00099-mixed-grid-rotated": {
+   "osd": [
+    90,
+    1.78
+   ],
+   "recall_matched": 63,
+   "recall_total": 63,
+   "vote_angle": 90.0,
+   "vote_branch": "four",
+   "vote_margin": 0.0041991472244262695,
+   "vote_wrong": false
+  },
+  "dev-00100-ar-report-scan": {
+   "osd": [
+    0,
+    18.2
+   ],
+   "recall_matched": 17,
+   "recall_total": 17,
+   "vote_angle": 182.0,
+   "vote_branch": "pair",
+   "vote_margin": 0.02961341291666031,
+   "vote_wrong": true
+  },
+  "dev-00100-en-receipt-scan": {
+   "osd": [
+    0,
+    9.86
+   ],
+   "recall_matched": 25,
+   "recall_total": 25,
+   "vote_angle": 357.0,
+   "vote_branch": "pair",
+   "vote_margin": 0.1906682699918747,
+   "vote_wrong": false
+  },
+  "dev-00100-mixed-receipt-clean": {
+   "osd": [
+    0,
+    9.28
+   ],
+   "recall_matched": 20,
+   "recall_total": 21,
+   "vote_angle": 0.0,
+   "vote_branch": "pair",
+   "vote_margin": 0.2463977187871933,
+   "vote_wrong": false
+  },
+  "dev-00101-ar-form-clean": {
+   "osd": [
+    0,
+    5.1
+   ],
+   "recall_matched": 7,
+   "recall_total": 8,
+   "vote_angle": 0.0,
+   "vote_branch": "pair",
+   "vote_margin": 0.3173820227384567,
+   "vote_wrong": false
+  },
+  "dev-00101-en-receipt-lowres": {
+   "osd": [
+    0,
+    18.41
+   ],
+   "recall_matched": 19,
+   "recall_total": 19,
+   "vote_angle": 0.0,
+   "vote_branch": "pair",
+   "vote_margin": 0.38775472342967987,
+   "vote_wrong": false
+  },
+  "dev-00101-mixed-report-photo": {
+   "osd": [
+    0,
+    23.63
+   ],
+   "recall_matched": 15,
+   "recall_total": 15,
+   "vote_angle": 6.0,
+   "vote_branch": "pair",
+   "vote_margin": 0.32222821563482285,
+   "vote_wrong": false
+  },
+  "dev-00102-ar-form-faded": {
+   "osd": [
+    0,
+    3.94
+   ],
+   "recall_matched": 7,
+   "recall_total": 7,
+   "vote_angle": 180.0,
+   "vote_branch": "pair",
+   "vote_margin": 0.024628669023513794,
+   "vote_wrong": true
+  },
+  "dev-00102-en-receipt-scan": {
+   "osd": [
+    0,
+    16.27
+   ],
+   "recall_matched": 23,
+   "recall_total": 23,
+   "vote_angle": 356.0,
+   "vote_branch": "four",
+   "vote_margin": 0.10905744135379791,
+   "vote_wrong": false
+  },
+  "dev-00102-mixed-table-lowres": {
+   "osd": [
+    0,
+    12.82
+   ],
+   "recall_matched": 43,
+   "recall_total": 44,
+   "vote_angle": 0.0,
+   "vote_branch": "pair",
+   "vote_margin": 0.45639507472515106,
+   "vote_wrong": false
+  },
+  "dev-00103-ar-table-photo": {
+   "osd": [
+    0,
+    12.51
+   ],
+   "recall_matched": 0,
+   "recall_total": 44,
+   "vote_angle": 90.0,
+   "vote_branch": "four",
+   "vote_margin": 0.14927902817726135,
+   "vote_wrong": true
+  },
+  "dev-00103-en-receipt-faded": {
+   "osd": [
+    0,
+    21.51
+   ],
+   "recall_matched": 20,
+   "recall_total": 21,
+   "vote_angle": 0.0,
+   "vote_branch": "pair",
+   "vote_margin": 0.2773178666830063,
+   "vote_wrong": false
+  },
+  "dev-00103-mixed-form-clean": {
+   "osd": [
+    0,
+    13.49
+   ],
+   "recall_matched": 8,
+   "recall_total": 9,
+   "vote_angle": 0.0,
+   "vote_branch": "pair",
+   "vote_margin": 0.3700788617134094,
+   "vote_wrong": false
+  },
+  "dev-00104-ar-form-photo": {
+   "osd": [
+    0,
+    4.45
+   ],
+   "recall_matched": 5,
+   "recall_total": 7,
+   "vote_angle": 0.0,
+   "vote_branch": "pair",
+   "vote_margin": 0.11205658316612244,
+   "vote_wrong": false
+  },
+  "dev-00104-en-report-fax": {
+   "osd": [
+    0,
+    4.63
+   ],
+   "recall_matched": 12,
+   "recall_total": 12,
+   "vote_angle": 0.0,
+   "vote_branch": "pair",
+   "vote_margin": 0.4469865709543228,
+   "vote_wrong": false
+  },
+  "dev-00104-mixed-grid-rotated": {
+   "osd": [
+    180,
+    3.36
+   ],
+   "recall_matched": 64,
+   "recall_total": 66,
+   "vote_angle": 180.0,
+   "vote_branch": "four",
+   "vote_margin": 0.002134576439857483,
+   "vote_wrong": false
+  },
+  "dev-00105-ar-report-scan": {
+   "osd": [
+    0,
+    11.62
+   ],
+   "recall_matched": 13,
+   "recall_total": 13,
+   "vote_angle": 3.0,
+   "vote_branch": "pair",
+   "vote_margin": 0.19748324900865555,
+   "vote_wrong": false
+  },
+  "dev-00105-en-table-scan": {
+   "osd": [
+    0,
+    3.43
+   ],
+   "recall_matched": 32,
+   "recall_total": 32,
+   "vote_angle": 2.0,
+   "vote_branch": "pair",
+   "vote_margin": 0.2130652666091919,
+   "vote_wrong": false
+  },
+  "dev-00105-mixed-form-photo": {
+   "osd": [
+    0,
+    5.85
+   ],
+   "recall_matched": 6,
+   "recall_total": 6,
+   "vote_angle": 354.0,
+   "vote_branch": "pair",
+   "vote_margin": 0.42302408814430237,
+   "vote_wrong": false
+  },
+  "dev-00106-ar-receipt-faded": {
+   "osd": [
+    0,
+    6.51
+   ],
+   "recall_matched": 21,
+   "recall_total": 21,
+   "vote_angle": 0.0,
+   "vote_branch": "pair",
+   "vote_margin": 0.41119687259197235,
+   "vote_wrong": false
+  },
+  "dev-00106-en-form-fax": {
+   "osd": [
+    0,
+    1.4
+   ],
+   "recall_matched": 6,
+   "recall_total": 6,
+   "vote_angle": 0.0,
+   "vote_branch": "pair",
+   "vote_margin": 0.13975182175636292,
+   "vote_wrong": false
+  },
+  "dev-00106-mixed-table-faded": {
+   "osd": [
+    0,
+    13.5
+   ],
+   "recall_matched": 53,
+   "recall_total": 55,
+   "vote_angle": 0.0,
+   "vote_branch": "pair",
+   "vote_margin": 0.41960030794143677,
+   "vote_wrong": false
+  },
+  "dev-00107-ar-report-photo": {
+   "osd": [
+    0,
+    14.99
+   ],
+   "recall_matched": 13,
+   "recall_total": 13,
+   "vote_angle": 358.0,
+   "vote_branch": "pair",
+   "vote_margin": 0.06327478587627411,
+   "vote_wrong": false
+  },
+  "dev-00107-en-grid-rotated": {
+   "osd": [
+    270,
+    5.51
+   ],
+   "recall_matched": 87,
+   "recall_total": 96,
+   "vote_angle": 90.0,
+   "vote_branch": "four",
+   "vote_margin": 4.26173210144043e-06,
+   "vote_wrong": true
+  },
+  "dev-00107-mixed-form-lowres": {
+   "osd": [
+    0,
+    4.84
+   ],
+   "recall_matched": 8,
+   "recall_total": 8,
+   "vote_angle": 0.0,
+   "vote_branch": "pair",
+   "vote_margin": 0.35806307196617126,
+   "vote_wrong": false
+  },
+  "dev-00108-ar-report-rotated": {
+   "osd": [
+    90,
+    10.18
+   ],
+   "recall_matched": 14,
+   "recall_total": 17,
+   "vote_angle": 90.0,
+   "vote_branch": "pair",
+   "vote_margin": 0.009877532720565796,
+   "vote_wrong": false
+  },
+  "dev-00108-en-table-photo": {
+   "osd": [
+    0,
+    10.65
+   ],
+   "recall_matched": 40,
+   "recall_total": 40,
+   "vote_angle": 358.0,
+   "vote_branch": "pair",
+   "vote_margin": 0.2340145856142044,
+   "vote_wrong": false
+  },
+  "dev-00108-mixed-receipt-rotated": {
+   "osd": [
+    270,
+    9.02
+   ],
+   "recall_matched": 19,
+   "recall_total": 19,
+   "vote_angle": 270.0,
+   "vote_branch": "pair",
+   "vote_margin": 0.24531875550746918,
+   "vote_wrong": false
+  },
+  "dev-00109-ar-receipt-photo": {
+   "osd": [
+    0,
+    4.85
+   ],
+   "recall_matched": 19,
+   "recall_total": 19,
+   "vote_angle": 0.0,
+   "vote_branch": "pair",
+   "vote_margin": 0.3297116458415985,
+   "vote_wrong": false
+  },
+  "dev-00109-en-report-photo": {
+   "osd": [
+    0,
+    14.19
+   ],
+   "recall_matched": 15,
+   "recall_total": 15,
+   "vote_angle": 5.0,
+   "vote_branch": "pair",
+   "vote_margin": 0.4380449652671814,
+   "vote_wrong": false
+  },
+  "dev-00109-mixed-report-photo": {
+   "osd": [
+    0,
+    18.21
+   ],
+   "recall_matched": 11,
+   "recall_total": 12,
+   "vote_angle": 3.0,
+   "vote_branch": "pair",
+   "vote_margin": 0.3185410127043724,
+   "vote_wrong": false
+  },
+  "dev-00110-ar-report-fax": {
+   "osd": [
+    0,
+    10.2
+   ],
+   "recall_matched": 8,
+   "recall_total": 16,
+   "vote_angle": 0.0,
+   "vote_branch": "pair",
+   "vote_margin": 0.065757155418396,
+   "vote_wrong": false
+  },
+  "dev-00110-en-report-photo": {
+   "osd": [
+    0,
+    14.98
+   ],
+   "recall_matched": 12,
+   "recall_total": 12,
+   "vote_angle": 355.0,
+   "vote_branch": "pair",
+   "vote_margin": 0.39390498399734497,
+   "vote_wrong": false
+  },
+  "dev-00110-mixed-table-photo": {
+   "osd": [
+    0,
+    4.21
+   ],
+   "recall_matched": 41,
+   "recall_total": 45,
+   "vote_angle": 356.0,
+   "vote_branch": "pair",
+   "vote_margin": 0.2805829346179962,
+   "vote_wrong": false
+  },
+  "dev-00111-ar-report-photo": {
+   "osd": [
+    0,
+    14.67
+   ],
+   "recall_matched": 14,
+   "recall_total": 14,
+   "vote_angle": 354.0,
+   "vote_branch": "pair",
+   "vote_margin": 0.07513231039047241,
+   "vote_wrong": false
+  },
+  "dev-00111-en-table-scan": {
+   "osd": [
+    0,
+    0.04
+   ],
+   "recall_matched": 50,
+   "recall_total": 50,
+   "vote_angle": 0.0,
+   "vote_branch": "pair",
+   "vote_margin": 0.3969375342130661,
+   "vote_wrong": false
+  },
+  "dev-00111-mixed-receipt-photo": {
+   "osd": [
+    0,
+    7.59
+   ],
+   "recall_matched": 23,
+   "recall_total": 23,
+   "vote_angle": 355.0,
+   "vote_branch": "pair",
+   "vote_margin": 0.19917501509189606,
+   "vote_wrong": false
+  },
+  "dev-00112-ar-receipt-lowres": {
+   "osd": [
+    0,
+    5.67
+   ],
+   "recall_matched": 21,
+   "recall_total": 21,
+   "vote_angle": 0.0,
+   "vote_branch": "pair",
+   "vote_margin": 0.2852538228034973,
+   "vote_wrong": false
+  },
+  "dev-00112-en-form-rotated": {
+   "osd": [
+    270,
+    9.24
+   ],
+   "recall_matched": 9,
+   "recall_total": 9,
+   "vote_angle": 270.0,
+   "vote_branch": "pair",
+   "vote_margin": 0.2567485570907593,
+   "vote_wrong": false
+  },
+  "dev-00112-mixed-report-rotated": {
+   "osd": [
+    180,
+    24.41
+   ],
+   "recall_matched": 14,
+   "recall_total": 14,
+   "vote_angle": 180.0,
+   "vote_branch": "pair",
+   "vote_margin": 0.4799152612686157,
+   "vote_wrong": false
+  },
+  "dev-00113-ar-grid-rotated": {
+   "osd": [
+    180,
+    5.0
+   ],
+   "recall_matched": 96,
+   "recall_total": 108,
+   "vote_angle": 180.0,
+   "vote_branch": "four",
+   "vote_margin": 0.0008271932601928711,
+   "vote_wrong": false
+  },
+  "dev-00113-en-table-fax": {
+   "osd": null,
+   "recall_matched": 13,
+   "recall_total": 40,
+   "vote_angle": 0.0,
+   "vote_branch": "pair",
+   "vote_margin": 0.10114279389381409,
+   "vote_wrong": false
+  },
+  "dev-00113-mixed-receipt-fax": {
+   "osd": [
+    0,
+    4.15
+   ],
+   "recall_matched": 21,
+   "recall_total": 21,
+   "vote_angle": 0.0,
+   "vote_branch": "pair",
+   "vote_margin": 0.3470360040664673,
+   "vote_wrong": false
+  },
+  "dev-00114-ar-receipt-photo": {
+   "osd": [
+    0,
+    10.09
+   ],
+   "recall_matched": 23,
+   "recall_total": 23,
+   "vote_angle": 182.0,
+   "vote_branch": "pair",
+   "vote_margin": 0.04303339868783951,
+   "vote_wrong": true
+  },
+  "dev-00114-en-grid-fax": {
+   "osd": [
+    0,
+    5.18
+   ],
+   "recall_matched": 83,
+   "recall_total": 88,
+   "vote_angle": 0.0,
+   "vote_branch": "four",
+   "vote_margin": 0.001382574439048767,
+   "vote_wrong": false
+  },
+  "dev-00114-mixed-receipt-lowres": {
+   "osd": [
+    0,
+    11.67
+   ],
+   "recall_matched": 20,
+   "recall_total": 21,
+   "vote_angle": 0.0,
+   "vote_branch": "pair",
+   "vote_margin": 0.42543767392635345,
+   "vote_wrong": false
+  },
+  "dev-00115-ar-table-fax": {
+   "osd": [
+    0,
+    0.03
+   ],
+   "recall_matched": 45,
+   "recall_total": 45,
+   "vote_angle": 0.0,
+   "vote_branch": "pair",
+   "vote_margin": 0.33861562609672546,
+   "vote_wrong": false
+  },
+  "dev-00115-en-table-scan": {
+   "osd": [
+    0,
+    9.15
+   ],
+   "recall_matched": 40,
+   "recall_total": 40,
+   "vote_angle": 0.0,
+   "vote_branch": "pair",
+   "vote_margin": 0.3078554570674896,
+   "vote_wrong": false
+  },
+  "dev-00115-mixed-form-lowres": {
+   "osd": [
+    0,
+    5.9
+   ],
+   "recall_matched": 9,
+   "recall_total": 9,
+   "vote_angle": 0.0,
+   "vote_branch": "pair",
+   "vote_margin": 0.4398193210363388,
+   "vote_wrong": false
+  },
+  "dev-00116-ar-receipt-photo": {
+   "osd": [
+    0,
+    8.74
+   ],
+   "recall_matched": 21,
+   "recall_total": 21,
+   "vote_angle": 177.0,
+   "vote_branch": "pair",
+   "vote_margin": 0.11971963196992874,
+   "vote_wrong": true
+  },
+  "dev-00116-en-grid-rotated": {
+   "osd": [
+    270,
+    2.9
+   ],
+   "recall_matched": 84,
+   "recall_total": 84,
+   "vote_angle": 270.0,
+   "vote_branch": "four",
+   "vote_margin": 0.0009611248970031738,
+   "vote_wrong": false
+  },
+  "dev-00116-mixed-form-lowres": {
+   "osd": [
+    0,
+    3.19
+   ],
+   "recall_matched": 9,
+   "recall_total": 9,
+   "vote_angle": 0.0,
+   "vote_branch": "pair",
+   "vote_margin": 0.44303572177886963,
+   "vote_wrong": false
+  },
+  "dev-00117-ar-report-faded": {
+   "osd": [
+    0,
+    16.4
+   ],
+   "recall_matched": 13,
+   "recall_total": 14,
+   "vote_angle": 0.0,
+   "vote_branch": "pair",
+   "vote_margin": 0.009149953722953796,
+   "vote_wrong": false
+  },
+  "dev-00117-en-receipt-scan": {
+   "osd": [
+    0,
+    11.04
+   ],
+   "recall_matched": 23,
+   "recall_total": 23,
+   "vote_angle": 0.0,
+   "vote_branch": "pair",
+   "vote_margin": 0.22491151094436646,
+   "vote_wrong": false
+  },
+  "dev-00117-mixed-form-faded": {
+   "osd": [
+    0,
+    7.84
+   ],
+   "recall_matched": 2,
+   "recall_total": 7,
+   "vote_angle": 0.0,
+   "vote_branch": "pair",
+   "vote_margin": 0.41339442133903503,
+   "vote_wrong": false
+  },
+  "dev-00118-ar-report-rotated": {
+   "osd": [
+    90,
+    10.59
+   ],
+   "recall_matched": 16,
+   "recall_total": 16,
+   "vote_angle": 90.0,
+   "vote_branch": "pair",
+   "vote_margin": 0.008515268564224243,
+   "vote_wrong": false
+  },
+  "dev-00118-en-receipt-photo": {
+   "osd": [
+    0,
+    6.48
+   ],
+   "recall_matched": 25,
+   "recall_total": 25,
+   "vote_angle": 8.0,
+   "vote_branch": "four",
+   "vote_margin": 0.1244320273399353,
+   "vote_wrong": false
+  },
+  "dev-00118-mixed-form-lowres": {
+   "osd": [
+    0,
+    6.47
+   ],
+   "recall_matched": 9,
+   "recall_total": 9,
+   "vote_angle": 0.0,
+   "vote_branch": "pair",
+   "vote_margin": 0.3249548226594925,
+   "vote_wrong": false
+  },
+  "dev-00119-ar-form-scan": {
+   "osd": [
+    0,
+    7.56
+   ],
+   "recall_matched": 8,
+   "recall_total": 8,
+   "vote_angle": 356.0,
+   "vote_branch": "pair",
+   "vote_margin": 0.09003455936908722,
+   "vote_wrong": false
+  },
+  "dev-00119-en-form-lowres": {
+   "osd": [
+    0,
+    5.0
+   ],
+   "recall_matched": 6,
+   "recall_total": 6,
+   "vote_angle": 0.0,
+   "vote_branch": "pair",
+   "vote_margin": 0.33102886378765106,
+   "vote_wrong": false
+  },
+  "dev-00119-mixed-table-scan": {
+   "osd": [
+    0,
+    6.77
+   ],
+   "recall_matched": 48,
+   "recall_total": 55,
+   "vote_angle": 1.0,
+   "vote_branch": "pair",
+   "vote_margin": 0.34357426315546036,
+   "vote_wrong": false
+  },
+  "dev-00120-ar-grid-rotated": {
+   "osd": [
+    180,
+    3.82
+   ],
+   "recall_matched": 58,
+   "recall_total": 88,
+   "vote_angle": 0.0,
+   "vote_branch": "four",
+   "vote_margin": 0.005777984857559204,
+   "vote_wrong": true
+  },
+  "dev-00120-en-report-lowres": {
+   "osd": [
+    180,
+    0.1
+   ],
+   "recall_matched": 14,
+   "recall_total": 14,
+   "vote_angle": 0.0,
+   "vote_branch": "pair",
+   "vote_margin": 0.18413512408733368,
+   "vote_wrong": false
+  },
+  "dev-00120-mixed-form-fax": {
+   "osd": [
+    0,
+    2.97
+   ],
+   "recall_matched": 8,
+   "recall_total": 10,
+   "vote_angle": 0.0,
+   "vote_branch": "pair",
+   "vote_margin": 0.3867560774087906,
+   "vote_wrong": false
+  },
+  "dev-00121-ar-table-faded": {
+   "osd": [
+    0,
+    10.5
+   ],
+   "recall_matched": 27,
+   "recall_total": 44,
+   "vote_angle": 0.0,
+   "vote_branch": "pair",
+   "vote_margin": 0.23913292586803436,
+   "vote_wrong": false
+  },
+  "dev-00121-en-form-lowres": {
+   "osd": [
+    0,
+    11.04
+   ],
+   "recall_matched": 6,
+   "recall_total": 6,
+   "vote_angle": 0.0,
+   "vote_branch": "pair",
+   "vote_margin": 0.34719711542129517,
+   "vote_wrong": false
+  },
+  "dev-00121-mixed-receipt-scan": {
+   "osd": [
+    0,
+    7.92
+   ],
+   "recall_matched": 19,
+   "recall_total": 21,
+   "vote_angle": 357.0,
+   "vote_branch": "pair",
+   "vote_margin": 0.4130531847476959,
+   "vote_wrong": false
+  },
+  "dev-00122-ar-form-clean": {
+   "osd": [
+    0,
+    6.17
+   ],
+   "recall_matched": 9,
+   "recall_total": 9,
+   "vote_angle": 0.0,
+   "vote_branch": "pair",
+   "vote_margin": 0.03016597032546997,
+   "vote_wrong": false
+  },
+  "dev-00122-en-receipt-clean": {
+   "osd": [
+    0,
+    24.8
+   ],
+   "recall_matched": 19,
+   "recall_total": 19,
+   "vote_angle": 0.0,
+   "vote_branch": "pair",
+   "vote_margin": 0.4109562337398529,
+   "vote_wrong": false
+  },
+  "dev-00122-mixed-receipt-fax": {
+   "osd": [
+    0,
+    2.52
+   ],
+   "recall_matched": 11,
+   "recall_total": 21,
+   "vote_angle": 0.0,
+   "vote_branch": "pair",
+   "vote_margin": 0.32132209837436676,
+   "vote_wrong": false
+  },
+  "dev-00123-ar-receipt-rotated": {
+   "osd": [
+    180,
+    6.26
+   ],
+   "recall_matched": 23,
+   "recall_total": 23,
+   "vote_angle": 179.0,
+   "vote_branch": "pair",
+   "vote_margin": 0.05143461376428604,
+   "vote_wrong": false
+  },
+  "dev-00123-en-receipt-scan": {
+   "osd": [
+    0,
+    17.61
+   ],
+   "recall_matched": 21,
+   "recall_total": 21,
+   "vote_angle": 0.0,
+   "vote_branch": "pair",
+   "vote_margin": 0.3197360783815384,
+   "vote_wrong": false
+  },
+  "dev-00123-mixed-table-scan": {
+   "osd": [
+    0,
+    10.95
+   ],
+   "recall_matched": 40,
+   "recall_total": 40,
+   "vote_angle": 357.0,
+   "vote_branch": "pair",
+   "vote_margin": 0.09433683753013611,
+   "vote_wrong": false
+  },
+  "dev-00124-ar-grid-scan": {
+   "osd": [
+    0,
+    3.89
+   ],
+   "recall_matched": 30,
+   "recall_total": 60,
+   "vote_angle": 180.0,
+   "vote_branch": "four",
+   "vote_margin": 0.013879001140594482,
+   "vote_wrong": true
+  },
+  "dev-00124-en-table-clean": {
+   "osd": [
+    0,
+    6.68
+   ],
+   "recall_matched": 44,
+   "recall_total": 45,
+   "vote_angle": 0.0,
+   "vote_branch": "pair",
+   "vote_margin": 0.41461673378944397,
+   "vote_wrong": false
+  },
+  "dev-00124-mixed-form-fax": {
+   "osd": null,
+   "recall_matched": 1,
+   "recall_total": 7,
+   "vote_angle": 270.0,
+   "vote_branch": "four",
+   "vote_margin": 0.4006069004535675,
+   "vote_wrong": true
+  },
+  "dev-00125-ar-table-scan": {
+   "osd": [
+    0,
+    13.12
+   ],
+   "recall_matched": 34,
+   "recall_total": 36,
+   "vote_angle": 180.0,
+   "vote_branch": "pair",
+   "vote_margin": 0.09120915830135345,
+   "vote_wrong": true
+  },
+  "dev-00125-en-report-photo": {
+   "osd": [
+    0,
+    14.02
+   ],
+   "recall_matched": 13,
+   "recall_total": 13,
+   "vote_angle": 4.0,
+   "vote_branch": "pair",
+   "vote_margin": 0.38228073716163635,
+   "vote_wrong": false
+  },
+  "dev-00125-mixed-grid-fax": {
+   "osd": [
+    0,
+    2.11
+   ],
+   "recall_matched": 78,
+   "recall_total": 90,
+   "vote_angle": 0.0,
+   "vote_branch": "four",
+   "vote_margin": 2.637505531311035e-05,
+   "vote_wrong": false
+  },
+  "dev-00126-ar-report-lowres": {
+   "osd": [
+    0,
+    15.55
+   ],
+   "recall_matched": 13,
+   "recall_total": 13,
+   "vote_angle": 0.0,
+   "vote_branch": "pair",
+   "vote_margin": 0.07286228239536285,
+   "vote_wrong": false
+  },
+  "dev-00126-en-form-scan": {
+   "osd": [
+    0,
+    6.47
+   ],
+   "recall_matched": 7,
+   "recall_total": 7,
+   "vote_angle": 357.0,
+   "vote_branch": "pair",
+   "vote_margin": 0.3207865208387375,
+   "vote_wrong": false
+  },
+  "dev-00126-mixed-table-lowres": {
+   "osd": [
+    0,
+    3.3
+   ],
+   "recall_matched": 44,
+   "recall_total": 44,
+   "vote_angle": 0.0,
+   "vote_branch": "pair",
+   "vote_margin": 0.3362463265657425,
+   "vote_wrong": false
+  },
+  "dev-00127-ar-report-lowres": {
+   "osd": [
+    0,
+    19.34
+   ],
+   "recall_matched": 12,
+   "recall_total": 12,
+   "vote_angle": 0.0,
+   "vote_branch": "pair",
+   "vote_margin": 0.027488090097904205,
+   "vote_wrong": false
+  },
+  "dev-00127-en-grid-scan": {
+   "osd": [
+    0,
+    4.34
+   ],
+   "recall_matched": 92,
+   "recall_total": 96,
+   "vote_angle": 0.0,
+   "vote_branch": "four",
+   "vote_margin": 0.0008706897497177124,
+   "vote_wrong": false
+  },
+  "dev-00127-mixed-form-clean": {
+   "osd": [
+    0,
+    6.44
+   ],
+   "recall_matched": 9,
+   "recall_total": 9,
+   "vote_angle": 0.0,
+   "vote_branch": "pair",
+   "vote_margin": 0.260535329580307,
+   "vote_wrong": false
+  },
+  "dev-00128-ar-report-faded": {
+   "osd": [
+    0,
+    16.54
+   ],
+   "recall_matched": 13,
+   "recall_total": 15,
+   "vote_angle": 180.0,
+   "vote_branch": "pair",
+   "vote_margin": 0.01913917064666748,
+   "vote_wrong": true
+  },
+  "dev-00128-en-form-scan": {
+   "osd": [
+    0,
+    5.97
+   ],
+   "recall_matched": 7,
+   "recall_total": 7,
+   "vote_angle": 0.0,
+   "vote_branch": "pair",
+   "vote_margin": 0.22595924139022827,
+   "vote_wrong": false
+  },
+  "dev-00128-mixed-table-fax": {
+   "osd": [
+    0,
+    1.14
+   ],
+   "recall_matched": 30,
+   "recall_total": 35,
+   "vote_angle": 0.0,
+   "vote_branch": "pair",
+   "vote_margin": 0.39218857884407043,
+   "vote_wrong": false
+  },
+  "dev-00129-ar-receipt-scan": {
+   "osd": [
+    0,
+    10.33
+   ],
+   "recall_matched": 21,
+   "recall_total": 21,
+   "vote_angle": 0.0,
+   "vote_branch": "pair",
+   "vote_margin": 0.10461471974849701,
+   "vote_wrong": false
+  },
+  "dev-00129-en-grid-rotated": {
+   "osd": [
+    90,
+    1.46
+   ],
+   "recall_matched": 66,
+   "recall_total": 72,
+   "vote_angle": 90.0,
+   "vote_branch": "four",
+   "vote_margin": 0.0017954856157302856,
+   "vote_wrong": false
+  },
+  "dev-00129-mixed-table-clean": {
+   "osd": [
+    0,
+    8.49
+   ],
+   "recall_matched": 50,
+   "recall_total": 50,
+   "vote_angle": 0.0,
+   "vote_branch": "pair",
+   "vote_margin": 0.36134330928325653,
+   "vote_wrong": false
+  },
+  "dev-00130-ar-table-lowres": {
+   "osd": [
+    0,
+    4.56
+   ],
+   "recall_matched": 44,
+   "recall_total": 45,
+   "vote_angle": 0.0,
+   "vote_branch": "pair",
+   "vote_margin": 0.35471029579639435,
+   "vote_wrong": false
+  },
+  "dev-00130-en-report-scan": {
+   "osd": [
+    0,
+    28.81
+   ],
+   "recall_matched": 17,
+   "recall_total": 17,
+   "vote_angle": 2.0,
+   "vote_branch": "pair",
+   "vote_margin": 0.4422798752784729,
+   "vote_wrong": false
+  },
+  "dev-00130-mixed-table-clean": {
+   "osd": [
+    0,
+    16.56
+   ],
+   "recall_matched": 37,
+   "recall_total": 40,
+   "vote_angle": 0.0,
+   "vote_branch": "pair",
+   "vote_margin": 0.27455897629261017,
+   "vote_wrong": false
+  },
+  "dev-00131-ar-table-scan": {
+   "osd": [
+    0,
+    7.22
+   ],
+   "recall_matched": 35,
+   "recall_total": 35,
+   "vote_angle": 356.0,
+   "vote_branch": "pair",
+   "vote_margin": 0.058629006147384644,
+   "vote_wrong": false
+  },
+  "dev-00131-en-table-clean": {
+   "osd": [
+    0,
+    8.18
+   ],
+   "recall_matched": 32,
+   "recall_total": 32,
+   "vote_angle": 0.0,
+   "vote_branch": "pair",
+   "vote_margin": 0.04876899719238281,
+   "vote_wrong": false
+  },
+  "dev-00131-mixed-form-photo": {
+   "osd": [
+    0,
+    10.82
+   ],
+   "recall_matched": 9,
+   "recall_total": 9,
+   "vote_angle": 2.0,
+   "vote_branch": "pair",
+   "vote_margin": 0.4861694276332855,
+   "vote_wrong": false
+  },
+  "dev-00132-ar-receipt-lowres": {
+   "osd": [
+    0,
+    7.58
+   ],
+   "recall_matched": 23,
+   "recall_total": 23,
+   "vote_angle": 180.0,
+   "vote_branch": "pair",
+   "vote_margin": 0.005717441439628601,
+   "vote_wrong": true
+  },
+  "dev-00132-en-report-rotated": {
+   "osd": [
+    180,
+    31.08
+   ],
+   "recall_matched": 16,
+   "recall_total": 16,
+   "vote_angle": 179.0,
+   "vote_branch": "pair",
+   "vote_margin": 0.4590764492750168,
+   "vote_wrong": false
+  },
+  "dev-00132-mixed-receipt-scan": {
+   "osd": [
+    0,
+    2.99
+   ],
+   "recall_matched": 19,
+   "recall_total": 19,
+   "vote_angle": 356.0,
+   "vote_branch": "pair",
+   "vote_margin": 0.27344243228435516,
+   "vote_wrong": false
+  },
+  "dev-00133-ar-form-scan": {
+   "osd": [
+    0,
+    3.86
+   ],
+   "recall_matched": 6,
+   "recall_total": 6,
+   "vote_angle": 0.0,
+   "vote_branch": "pair",
+   "vote_margin": 0.366538405418396,
+   "vote_wrong": false
+  },
+  "dev-00133-en-table-lowres": {
+   "osd": [
+    180,
+    1.48
+   ],
+   "recall_matched": 36,
+   "recall_total": 36,
+   "vote_angle": 0.0,
+   "vote_branch": "pair",
+   "vote_margin": 0.29384590685367584,
+   "vote_wrong": false
+  },
+  "dev-00133-mixed-form-lowres": {
+   "osd": [
+    0,
+    7.37
+   ],
+   "recall_matched": 7,
+   "recall_total": 7,
+   "vote_angle": 0.0,
+   "vote_branch": "pair",
+   "vote_margin": 0.4137873649597168,
+   "vote_wrong": false
+  },
+  "dev-00134-ar-receipt-rotated": {
+   "osd": [
+    180,
+    6.89
+   ],
+   "recall_matched": 19,
+   "recall_total": 19,
+   "vote_angle": 0.0,
+   "vote_branch": "pair",
+   "vote_margin": 0.012321531772613525,
+   "vote_wrong": true
+  },
+  "dev-00134-en-table-faded": {
+   "osd": [
+    0,
+    4.07
+   ],
+   "recall_matched": 47,
+   "recall_total": 55,
+   "vote_angle": 0.0,
+   "vote_branch": "pair",
+   "vote_margin": 0.45493078231811523,
+   "vote_wrong": false
+  },
+  "dev-00134-mixed-form-scan": {
+   "osd": [
+    0,
+    6.98
+   ],
+   "recall_matched": 8,
+   "recall_total": 8,
+   "vote_angle": 357.0,
+   "vote_branch": "pair",
+   "vote_margin": 0.2971497178077698,
+   "vote_wrong": false
+  },
+  "dev-00135-ar-report-scan": {
+   "osd": [
+    0,
+    15.5
+   ],
+   "recall_matched": 14,
+   "recall_total": 14,
+   "vote_angle": 356.0,
+   "vote_branch": "pair",
+   "vote_margin": 0.11992819607257843,
+   "vote_wrong": false
+  },
+  "dev-00135-en-receipt-photo": {
+   "osd": [
+    0,
+    10.38
+   ],
+   "recall_matched": 23,
+   "recall_total": 23,
+   "vote_angle": 5.0,
+   "vote_branch": "pair",
+   "vote_margin": 0.19076687097549438,
+   "vote_wrong": false
+  },
+  "dev-00135-mixed-receipt-photo": {
+   "osd": [
+    0,
+    14.25
+   ],
+   "recall_matched": 25,
+   "recall_total": 25,
+   "vote_angle": 358.0,
+   "vote_branch": "pair",
+   "vote_margin": 0.4716748148202896,
+   "vote_wrong": false
+  },
+  "dev-00136-ar-grid-fax": {
+   "osd": [
+    0,
+    4.55
+   ],
+   "recall_matched": 17,
+   "recall_total": 60,
+   "vote_angle": 180.0,
+   "vote_branch": "four",
+   "vote_margin": 0.07604202628135681,
+   "vote_wrong": true
+  },
+  "dev-00136-en-report-scan": {
+   "osd": [
+    0,
+    16.56
+   ],
+   "recall_matched": 14,
+   "recall_total": 14,
+   "vote_angle": 0.0,
+   "vote_branch": "pair",
+   "vote_margin": 0.413025364279747,
+   "vote_wrong": false
+  },
+  "dev-00136-mixed-table-clean": {
+   "osd": [
+    0,
+    15.3
+   ],
+   "recall_matched": 35,
+   "recall_total": 35,
+   "vote_angle": 0.0,
+   "vote_branch": "pair",
+   "vote_margin": 0.21826916933059692,
+   "vote_wrong": false
+  },
+  "dev-00137-ar-form-scan": {
+   "osd": [
+    0,
+    2.82
+   ],
+   "recall_matched": 7,
+   "recall_total": 7,
+   "vote_angle": 2.0,
+   "vote_branch": "pair",
+   "vote_margin": 0.2981606125831604,
+   "vote_wrong": false
+  },
+  "dev-00137-en-grid-rotated": {
+   "osd": [
+    180,
+    2.95
+   ],
+   "recall_matched": 58,
+   "recall_total": 63,
+   "vote_angle": 180.0,
+   "vote_branch": "four",
+   "vote_margin": 0.0002640038728713989,
+   "vote_wrong": false
+  },
+  "dev-00137-mixed-report-lowres": {
+   "osd": [
+    0,
+    12.61
+   ],
+   "recall_matched": 17,
+   "recall_total": 17,
+   "vote_angle": 0.0,
+   "vote_branch": "pair",
+   "vote_margin": 0.17101801931858063,
+   "vote_wrong": false
+  },
+  "dev-00138-ar-grid-rotated": {
+   "osd": [
+    180,
+    5.07
+   ],
+   "recall_matched": 47,
+   "recall_total": 80,
+   "vote_angle": 0.0,
+   "vote_branch": "four",
+   "vote_margin": 0.003058329224586487,
+   "vote_wrong": true
+  },
+  "dev-00138-en-receipt-faded": {
+   "osd": [
+    0,
+    14.23
+   ],
+   "recall_matched": 19,
+   "recall_total": 19,
+   "vote_angle": 0.0,
+   "vote_branch": "pair",
+   "vote_margin": 0.2327912300825119,
+   "vote_wrong": false
+  },
+  "dev-00138-mixed-receipt-clean": {
+   "osd": [
+    0,
+    10.07
+   ],
+   "recall_matched": 23,
+   "recall_total": 23,
+   "vote_angle": 0.0,
+   "vote_branch": "pair",
+   "vote_margin": 0.43378934264183044,
+   "vote_wrong": false
+  },
+  "dev-00139-ar-form-scan": {
+   "osd": [
+    0,
+    4.7
+   ],
+   "recall_matched": 7,
+   "recall_total": 7,
+   "vote_angle": 0.0,
+   "vote_branch": "pair",
+   "vote_margin": 0.3785702586174011,
+   "vote_wrong": false
+  },
+  "dev-00139-en-receipt-scan": {
+   "osd": [
+    0,
+    16.05
+   ],
+   "recall_matched": 19,
+   "recall_total": 19,
+   "vote_angle": 0.0,
+   "vote_branch": "pair",
+   "vote_margin": 0.22157177329063416,
+   "vote_wrong": false
+  },
+  "dev-00139-mixed-form-photo": {
+   "osd": [
+    0,
+    7.78
+   ],
+   "recall_matched": 10,
+   "recall_total": 10,
+   "vote_angle": 358.0,
+   "vote_branch": "pair",
+   "vote_margin": 0.48380525410175323,
+   "vote_wrong": false
+  },
+  "dev-00140-ar-receipt-scan": {
+   "osd": [
+    0,
+    7.85
+   ],
+   "recall_matched": 23,
+   "recall_total": 23,
+   "vote_angle": 4.0,
+   "vote_branch": "pair",
+   "vote_margin": 0.3786381036043167,
+   "vote_wrong": false
+  },
+  "dev-00140-en-receipt-rotated": {
+   "osd": [
+    90,
+    22.86
+   ],
+   "recall_matched": 23,
+   "recall_total": 23,
+   "vote_angle": 90.0,
+   "vote_branch": "pair",
+   "vote_margin": 0.34868770837783813,
+   "vote_wrong": false
+  },
+  "dev-00140-mixed-table-fax": {
+   "osd": [
+    180,
+    1.48
+   ],
+   "recall_matched": 12,
+   "recall_total": 35,
+   "vote_angle": 0.0,
+   "vote_branch": "pair",
+   "vote_margin": 0.3488045185804367,
+   "vote_wrong": false
+  },
+  "dev-00141-ar-report-clean": {
+   "osd": [
+    0,
+    15.86
+   ],
+   "recall_matched": 15,
+   "recall_total": 15,
+   "vote_angle": 0.0,
+   "vote_branch": "pair",
+   "vote_margin": 0.009649619460105896,
+   "vote_wrong": false
+  },
+  "dev-00141-en-report-photo": {
+   "osd": [
+    0,
+    7.71
+   ],
+   "recall_matched": 14,
+   "recall_total": 14,
+   "vote_angle": 5.0,
+   "vote_branch": "pair",
+   "vote_margin": 0.42311325669288635,
+   "vote_wrong": false
+  },
+  "dev-00141-mixed-grid-scan": {
+   "osd": [
+    180,
+    0.39
+   ],
+   "recall_matched": 0,
+   "recall_total": 70,
+   "vote_angle": 0.0,
+   "vote_branch": "four",
+   "vote_margin": 0.0003057420253753662,
+   "vote_wrong": false
+  },
+  "dev-00142-ar-grid-clean": {
+   "osd": [
+    0,
+    4.15
+   ],
+   "recall_matched": 43,
+   "recall_total": 72,
+   "vote_angle": 180.0,
+   "vote_branch": "four",
+   "vote_margin": 0.015338689088821411,
+   "vote_wrong": true
+  },
+  "dev-00142-en-table-photo": {
+   "osd": [
+    0,
+    8.93
+   ],
+   "recall_matched": 50,
+   "recall_total": 50,
+   "vote_angle": 356.0,
+   "vote_branch": "pair",
+   "vote_margin": 0.3451857268810272,
+   "vote_wrong": false
+  },
+  "dev-00142-mixed-receipt-clean": {
+   "osd": [
+    0,
+    15.1
+   ],
+   "recall_matched": 23,
+   "recall_total": 23,
+   "vote_angle": 0.0,
+   "vote_branch": "pair",
+   "vote_margin": 0.31808311492204666,
+   "vote_wrong": false
+  },
+  "dev-00143-ar-grid-scan": {
+   "osd": [
+    0,
+    3.73
+   ],
+   "recall_matched": 71,
+   "recall_total": 72,
+   "vote_angle": 0.0,
+   "vote_branch": "four",
+   "vote_margin": 0.0011751502752304077,
+   "vote_wrong": false
+  },
+  "dev-00143-en-report-scan": {
+   "osd": [
+    0,
+    7.44
+   ],
+   "recall_matched": 16,
+   "recall_total": 16,
+   "vote_angle": 2.0,
+   "vote_branch": "pair",
+   "vote_margin": 0.5068556591868401,
+   "vote_wrong": false
+  },
+  "dev-00143-mixed-receipt-faded": {
+   "osd": [
+    0,
+    12.68
+   ],
+   "recall_matched": 17,
+   "recall_total": 19,
+   "vote_angle": 0.0,
+   "vote_branch": "pair",
+   "vote_margin": 0.4056578427553177,
+   "vote_wrong": false
+  },
+  "dev-00144-ar-receipt-scan": {
+   "osd": [
+    0,
+    1.52
+   ],
+   "recall_matched": 23,
+   "recall_total": 23,
+   "vote_angle": 0.0,
+   "vote_branch": "pair",
+   "vote_margin": 0.09039187431335449,
+   "vote_wrong": false
+  },
+  "dev-00144-en-table-clean": {
+   "osd": [
+    0,
+    9.22
+   ],
+   "recall_matched": 50,
+   "recall_total": 50,
+   "vote_angle": 0.0,
+   "vote_branch": "pair",
+   "vote_margin": 0.4049055278301239,
+   "vote_wrong": false
+  },
+  "dev-00144-mixed-form-lowres": {
+   "osd": [
+    0,
+    9.69
+   ],
+   "recall_matched": 5,
+   "recall_total": 6,
+   "vote_angle": 0.0,
+   "vote_branch": "pair",
+   "vote_margin": 0.42691770195961,
+   "vote_wrong": false
+  },
+  "dev-00145-ar-report-lowres": {
+   "osd": [
+    0,
+    15.3
+   ],
+   "recall_matched": 13,
+   "recall_total": 13,
+   "vote_angle": 0.0,
+   "vote_branch": "pair",
+   "vote_margin": 0.03113347291946411,
+   "vote_wrong": false
+  },
+  "dev-00145-en-receipt-lowres": {
+   "osd": [
+    0,
+    12.29
+   ],
+   "recall_matched": 23,
+   "recall_total": 23,
+   "vote_angle": 0.0,
+   "vote_branch": "pair",
+   "vote_margin": 0.22370851039886475,
+   "vote_wrong": false
+  },
+  "dev-00145-mixed-form-rotated": {
+   "osd": [
+    180,
+    11.16
+   ],
+   "recall_matched": 10,
+   "recall_total": 10,
+   "vote_angle": 180.0,
+   "vote_branch": "pair",
+   "vote_margin": 0.28599804639816284,
+   "vote_wrong": false
+  },
+  "dev-00146-ar-receipt-faded": {
+   "osd": [
+    0,
+    8.7
+   ],
+   "recall_matched": 21,
+   "recall_total": 21,
+   "vote_angle": 0.0,
+   "vote_branch": "pair",
+   "vote_margin": 0.05874301493167877,
+   "vote_wrong": false
+  },
+  "dev-00146-en-grid-scan": {
+   "osd": [
+    0,
+    2.45
+   ],
+   "recall_matched": 43,
+   "recall_total": 54,
+   "vote_angle": 0.0,
+   "vote_branch": "four",
+   "vote_margin": 0.0014437288045883179,
+   "vote_wrong": false
+  },
+  "dev-00146-mixed-report-lowres": {
+   "osd": [
+    0,
+    11.35
+   ],
+   "recall_matched": 14,
+   "recall_total": 14,
+   "vote_angle": 0.0,
+   "vote_branch": "pair",
+   "vote_margin": 0.16334094107151031,
+   "vote_wrong": false
+  },
+  "dev-00147-ar-report-fax": {
+   "osd": [
+    0,
+    0.34
+   ],
+   "recall_matched": 0,
+   "recall_total": 11,
+   "vote_angle": 180.0,
+   "vote_branch": "four",
+   "vote_margin": 0.12535719573497772,
+   "vote_wrong": true
+  },
+  "dev-00147-en-receipt-photo": {
+   "osd": [
+    0,
+    9.39
+   ],
+   "recall_matched": 25,
+   "recall_total": 25,
+   "vote_angle": 8.0,
+   "vote_branch": "four",
+   "vote_margin": 0.11929824948310852,
+   "vote_wrong": false
+  },
+  "dev-00147-mixed-table-faded": {
+   "osd": [
+    0,
+    15.99
+   ],
+   "recall_matched": 36,
+   "recall_total": 40,
+   "vote_angle": 0.0,
+   "vote_branch": "pair",
+   "vote_margin": 0.2788363993167877,
+   "vote_wrong": false
+  },
+  "dev-00148-ar-form-fax": {
+   "osd": null,
+   "recall_matched": null,
+   "recall_total": null,
+   "vote_angle": 0.0,
+   "vote_branch": "none",
+   "vote_margin": null,
+   "vote_wrong": false
+  },
+  "dev-00148-en-form-scan": {
+   "osd": [
+    0,
+    10.88
+   ],
+   "recall_matched": 10,
+   "recall_total": 10,
+   "vote_angle": 0.0,
+   "vote_branch": "pair",
+   "vote_margin": 0.1419956535100937,
+   "vote_wrong": false
+  },
+  "dev-00148-mixed-table-clean": {
+   "osd": [
+    0,
+    4.89
+   ],
+   "recall_matched": 27,
+   "recall_total": 28,
+   "vote_angle": 0.0,
+   "vote_branch": "pair",
+   "vote_margin": 0.38473862409591675,
+   "vote_wrong": false
+  },
+  "dev-00149-ar-receipt-scan": {
+   "osd": [
+    0,
+    7.83
+   ],
+   "recall_matched": 21,
+   "recall_total": 21,
+   "vote_angle": 358.0,
+   "vote_branch": "pair",
+   "vote_margin": 0.07027766108512878,
+   "vote_wrong": false
+  },
+  "dev-00149-en-receipt-photo": {
+   "osd": [
+    0,
+    16.65
+   ],
+   "recall_matched": 21,
+   "recall_total": 21,
+   "vote_angle": 8.0,
+   "vote_branch": "four",
+   "vote_margin": 0.14135313034057617,
+   "vote_wrong": false
+  },
+  "dev-00149-mixed-form-lowres": {
+   "osd": [
+    0,
+    7.88
+   ],
+   "recall_matched": 10,
+   "recall_total": 10,
+   "vote_angle": 0.0,
+   "vote_branch": "pair",
+   "vote_margin": 0.4136960804462433,
+   "vote_wrong": false
+  },
+  "dev-00150-ar-form-rotated": {
+   "osd": [
+    90,
+    4.63
+   ],
+   "recall_matched": 6,
+   "recall_total": 6,
+   "vote_angle": 92.0,
+   "vote_branch": "pair",
+   "vote_margin": 0.15438847988843918,
+   "vote_wrong": false
+  },
+  "dev-00150-en-receipt-scan": {
+   "osd": [
+    0,
+    10.02
+   ],
+   "recall_matched": 23,
+   "recall_total": 23,
+   "vote_angle": 356.0,
+   "vote_branch": "pair",
+   "vote_margin": 0.2744096517562866,
+   "vote_wrong": false
+  },
+  "dev-00150-mixed-table-lowres": {
+   "osd": [
+    0,
+    6.55
+   ],
+   "recall_matched": 34,
+   "recall_total": 36,
+   "vote_angle": 0.0,
+   "vote_branch": "pair",
+   "vote_margin": 0.3345782160758972,
+   "vote_wrong": false
+  }
+ },
+ "schema": "folio-dev-constants/1",
+ "summary": {
+  "final": {
+   "wrong": 5,
+   "wrong_unflagged": 0
+  },
+  "manifest_differs": 0,
+  "osd": {
+   "failure": 0,
+   "no_answer": 9,
+   "right": 434,
+   "wrong": 7
+  },
+  "osd_differs": {
+   "count": 0,
+   "first": []
+  },
+  "osd_used_wrong": 0,
+  "pages": 450,
+  "recall": {
+   "matched": 10647,
+   "share": 0.8770181219110379,
+   "total": 12140
+  },
+  "vote": {
+   "four": {
+    "largest_wrong_margin": 0.4006069004535675,
+    "pages": 70,
+    "wrong": 26,
+    "wrong_unflagged": 0
+   },
+   "none": {
+    "largest_wrong_margin": null,
+    "pages": 2,
+    "wrong": 0,
+    "wrong_unflagged": 0
+   },
+   "pair": {
+    "largest_wrong_margin": 0.11971963196992874,
+    "pages": 378,
+    "wrong": 25,
+    "wrong_unflagged": 0
+   }
+  },
+  "vote_angle_differs": {
+   "count": 0,
+   "first": []
+  }
+ }
+}

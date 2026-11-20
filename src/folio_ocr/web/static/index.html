@@ -1,0 +1,152 @@
+<!doctype html>
+<html lang="en" dir="ltr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>folio</title>
+<link rel="stylesheet" href="/app.css">
+<script type="module" src="/app.js"></script>
+</head>
+<body>
+<a class="skip" id="skip" href="#lines" hidden>Skip to lines</a>
+
+<header class="top">
+  <p class="brand" translate="no">folio</p>
+  <nav class="docs" aria-labelledby="docs-heading">
+    <h2 id="docs-heading" class="docs-heading" tabindex="-1">Documents</h2>
+    <ul id="doc-list" class="doc-list"></ul>
+    <button type="button" id="add-doc">Add a document</button>
+  </nav>
+  <button type="button" id="readers" class="readers"><span id="readers-mark" class="readers-mark" aria-hidden="true" hidden>!</span><span id="readers-text">Readers: unknown</span></button>
+  <p id="banner-model" class="banner" hidden></p>
+  <p id="banner-remote" class="banner" hidden>folio is open to other computers on your network. Anyone who can reach it can see, read and delete these documents.</p>
+</header>
+
+<main id="main">
+  <section id="start" class="start" aria-labelledby="start-title">
+    <h1 id="start-title" tabindex="-1">Check machine-read text before you export it</h1>
+    <p class="lead">Add a scan, photo or PDF. folio reads it line by line and marks every line it is unsure of. You check those lines, then export.</p>
+    <form id="upload" class="upload">
+      <div id="drop" class="drop">Drop a file here, or choose one.</div>
+      <p class="file-row">
+        <label for="file">Choose a file</label>
+        <input type="file" id="file" name="file" required accept=".pdf,.png,.jpg,.jpeg,.tif,.tiff,.webp,application/pdf,image/png,image/jpeg,image/tiff,image/webp">
+      </p>
+      <p class="limits">PDF, PNG, JPEG, TIFF or WebP, up to 25&nbsp;MB. PDFs and TIFFs up to 20 pages.</p>
+      <fieldset class="langs">
+        <legend>Languages on the pages</legend>
+        <p class="choice"><input type="radio" id="lang-both" name="languages" value="en+ar" checked><label for="lang-both">English and Arabic (recommended)</label></p>
+        <p class="choice"><input type="radio" id="lang-en" name="languages" value="en" aria-describedby="lang-en-help"><label for="lang-en">English only</label></p>
+        <p class="help" id="lang-en-help">Choose only when the pages have no Arabic.</p>
+        <p class="choice"><input type="radio" id="lang-ar" name="languages" value="ar"><label for="lang-ar">Arabic only</label></p>
+      </fieldset>
+      <p class="submit-row">
+        <button type="submit" id="add-read" class="primary">Add and read</button>
+      </p>
+      <p id="held-note" class="note" hidden></p>
+    </form>
+    <p class="keeping">Documents stay only while folio is running, and folio holds up to 3 at a time. Export your work before folio stops.</p>
+  </section>
+
+  <section id="doc-head" class="doc-head" aria-labelledby="doc-title" hidden>
+    <h1 id="doc-title" tabindex="-1"></h1>
+    <p id="doc-meta" class="meta"></p>
+    <p id="export-summary" class="summary"></p>
+    <p id="uncalibrated" class="summary" hidden>For now folio marks every line it reads to check, because its confidence check isn’t set up yet. Check each line against the image.</p>
+    <div class="doc-actions">
+      <button type="button" id="export-txt" data-format="txt">Export TXT</button>
+      <button type="button" id="export-docx" data-format="docx">Export Word (DOCX)</button>
+      <button type="button" id="export-json" data-format="json">Export JSON</button>
+      <button type="button" id="delete-doc" class="danger">Delete document</button>
+    </div>
+    <p class="keeping">Documents stay only while folio is running, and folio holds up to 3 at a time. Export your work before folio stops.</p>
+  </section>
+
+  <div id="messages" class="messages">
+    <p id="status" class="status" role="status" aria-live="polite"></p>
+    <div id="alert-panel" class="alert-panel">
+      <p id="alert" class="alert" role="alert"></p>
+      <button type="button" id="dismiss" aria-label="Dismiss message" hidden>Dismiss</button>
+    </div>
+  </div>
+
+  <div id="work" class="work" hidden>
+    <section id="page" class="page-col" aria-labelledby="page-heading">
+      <h2 id="page-heading" class="visually-hidden"></h2>
+      <nav class="pagebar" aria-label="Pages">
+        <button type="button" id="prev-page">Previous page</button>
+        <label for="page-select">Page</label>
+        <select id="page-select"></select>
+        <button type="button" id="next-page">Next page</button>
+        <button type="button" id="read-page" hidden></button>
+        <button type="button" id="stop-reading" hidden>Stop reading</button>
+        <span id="progress-wrap" class="progress" hidden>
+          <progress id="progress"></progress>
+          <span aria-hidden="true"><span id="progress-label"></span> <span id="elapsed" class="num"></span></span>
+        </span>
+      </nav>
+      <figure class="sheet">
+        <img id="page-img" alt="">
+        <svg id="overlay" class="overlay" aria-hidden="true" focusable="false"></svg>
+      </figure>
+    </section>
+
+    <section id="review" class="review-col" aria-labelledby="review-heading">
+      <h2 id="review-heading"></h2>
+      <p id="review-counts" class="counts"></p>
+      <div id="notices" class="notices"></div>
+      <article id="detail" class="detail" aria-labelledby="detail-heading" hidden>
+        <div class="detail-head">
+          <h3 id="detail-heading"></h3>
+          <span id="detail-status" class="status-label"></span>
+        </div>
+        <svg id="closeup" class="closeup" role="img"></svg>
+        <div id="text-slot" class="text-slot">
+          <span id="detail-text" class="line-text"></span>
+          <textarea id="editor" class="line-text" aria-labelledby="detail-heading" rows="2" spellcheck="false" autocomplete="off" autocapitalize="off" hidden></textarea>
+        </div>
+        <p id="read-as" class="read-as" hidden>Read as: <span id="read-as-text" class="line-text"></span></p>
+        <div id="edit-actions" class="edit-actions" hidden>
+          <button type="button" id="save" class="primary">Save</button>
+          <button type="button" id="cancel">Cancel</button>
+          <span class="hint">Enter saves, Esc cancels</span>
+        </div>
+        <ul id="flags" class="flags"></ul>
+        <div class="actions">
+          <button type="button" id="edit">Edit</button>
+          <button type="button" id="confirm" class="primary">Confirm</button>
+          <button type="button" id="next-check">Next to check</button>
+        </div>
+        <p id="nobody-hint" class="hint" hidden>Nobody read this line. Confirming keeps it empty in the export.</p>
+      </article>
+      <div id="lines" class="lines" role="listbox" tabindex="0"></div>
+      <ul class="keys" aria-label="Keys for the line list">
+        <li>↑ ↓ move</li>
+        <li>N next to check</li>
+        <li>C confirm</li>
+        <li>E edit</li>
+        <li>Enter save</li>
+        <li>Esc cancel</li>
+      </ul>
+    </section>
+  </div>
+</main>
+
+<dialog id="delete-dialog" class="dialog" aria-labelledby="delete-title">
+  <h2 id="delete-title"></h2>
+  <p id="delete-body"></p>
+  <div class="dialog-actions">
+    <button type="button" id="keep-doc" autofocus>Keep it</button>
+    <button type="button" id="confirm-delete" class="danger">Delete document</button>
+  </div>
+</dialog>
+
+<dialog id="readers-dialog" class="dialog" aria-labelledby="readers-title">
+  <h2 id="readers-title">Readers</h2>
+  <dl id="readers-rows" class="readers-rows"></dl>
+  <div class="dialog-actions">
+    <button type="button" id="readers-close">Close</button>
+  </div>
+</dialog>
+</body>
+</html>

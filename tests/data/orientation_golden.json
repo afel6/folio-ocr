@@ -1,0 +1,62 @@
+{
+  "dev-00006-ar-report-lowres": {
+    "vote": {
+      "angle": 180.0,
+      "source": "vote",
+      "uncertain": true
+    },
+    "osd": {
+      "angle": 0.0,
+      "source": "osd",
+      "uncertain": false
+    }
+  },
+  "dev-00011-mixed-report-scan": {
+    "vote": {
+      "angle": 178.0,
+      "source": "vote",
+      "uncertain": true
+    },
+    "osd": {
+      "angle": 358.0,
+      "source": "osd",
+      "uncertain": false
+    }
+  },
+  "dev-00008-en-grid-lowres": {
+    "vote": {
+      "angle": 0.0,
+      "source": "vote",
+      "uncertain": true
+    },
+    "osd": {
+      "angle": 0.0,
+      "source": "osd",
+      "uncertain": false
+    }
+  },
+  "dev-00001-en-report-rotated": {
+    "vote": {
+      "angle": 92.0,
+      "source": "vote",
+      "uncertain": false
+    },
+    "osd": {
+      "angle": 92.0,
+      "source": "osd",
+      "uncertain": false
+    }
+  },
+  "dev-00001-mixed-grid-rotated": {
+    "vote": {
+      "angle": 270.0,
+      "source": "vote",
+      "uncertain": true
+    },
+    "osd": {
+      "angle": 270.0,
+      "source": "osd",
+      "uncertain": false
+    }
+  }
+}

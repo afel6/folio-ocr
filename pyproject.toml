@@ -1,0 +1,55 @@
+[build-system]
+requires = ["setuptools>=77"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "folio-ocr"
+version = "0.1.0"
+description = "Local OCR for English and Arabic company documents, with review flags."
+license = "MIT"
+requires-python = ">=3.12"
+dependencies = [
+    "pillow==13.0.0",
+    "pypdfium2==5.15.2",
+    "rapidfuzz==3.14.6",
+    "httpx==0.28.1",
+    "python-docx==1.2.0",
+    "onnxtr[cpu-headless]==0.9.0",
+    "onnxruntime==1.32.0",
+    "opencv-python-headless==5.1.0.95",
+    "numpy==2.5.5",
+    "fastapi==0.165.0",
+    "uvicorn==0.54.0",
+    "python-multipart==0.0.34",
+    "pydantic==2.14.4",
+    "starlette==1.10.0",
+    "h11==0.16.0",
+]
+
+[project.scripts]
+folio = "folio_ocr.cli:main"
+
+[project.optional-dependencies]
+dev = [
+    "pytest==9.2.0",
+    "pytest-cov==7.1.0",
+    "jiwer==4.0.0",
+    "fpdf2==2.9.0",
+    "uharfbuzz==0.57.0",
+    "fonttools==4.68.0",
+    "ruff==0.17.5",
+]
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.setuptools.package-data]
+folio_ocr = ["web/static/**/*"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+addopts = "-q"
+
+[tool.ruff]
+line-length = 100
+target-version = "py312"
