@@ -10,7 +10,7 @@ import pytest
 from sample_files import PAGE_IMAGE_LINE as PAGE_IMAGE
 from sample_files import PDF_IMAGE_LINE as PDF_IMAGE
 from sample_files import UNCHECKED_LINE as UNCHECKED
-from sample_files import image_pdf, pdf_stream, pdfium_image_sizes, raw_pdf
+from sample_files import assert_within_a_second, image_pdf, pdf_stream, pdfium_image_sizes, raw_pdf
 
 from folio_ocr.errors import InputError
 from folio_ocr.ingest import MAX_PIXELS, open_pdf
@@ -175,6 +175,13 @@ def test_a_reference_to_a_number_object_is_followed():
     assert declared(data) == 20000 * 20000
 
 
+def test_a_zero_padded_size_is_read_at_its_value():
+    padded = b"00000000020000"
+    assert declared(obj(1, pdf_stream(b"/Width %s /Height 20000" % padded))) == 20000 * 20000
+    data = obj(1, pdf_stream(b"/Width 2 0 R /Height 20000")) + obj(2, padded)
+    assert declared(data) == 20000 * 20000
+
+
 def test_negative_or_zero_sizes_hold_no_pixels():
     data = obj(1, pdf_stream(b"/Width -20000 /Height -20000")) + obj(2, pdf_stream(b"/Width 0"))
     assert declared(data) == 0
@@ -230,7 +237,7 @@ def test_reading_a_hostile_file_is_bounded(unit):
     data = b"%PDF-1.7\n1 0 obj\n<<" + unit * (2 * 1024 * 1024 // len(unit))
     start = time.perf_counter()
     result = largest_declared_image(data)
-    assert time.perf_counter() - start < 1.0
+    assert_within_a_second(start)
     assert result.largest == 0
 
 

@@ -6,14 +6,15 @@ only an annotation, a pattern or a Type 3 glyph draws, so the file itself is rea
 way PDFium's parser reads a dictionary: a name may hold #xx escapes, a comment may sit
 between tokens, a value may be a reference to a number object, the last of two equal keys
 wins, and in a key position every word that is not a name is passed over (a "(" there does
-not start a string). PDFium reaches every stream through an object header ("7 0 obj"), so
-the dictionary after every header in the file is read, wherever the header sits: no object
-can hide another.
+not start a string). The dictionary after every obj keyword in the file ("7 0 obj") is
+read, wherever it sits, so no object written in the file can hide another.
 
 The result is incomplete when a size names an object that is not a plain number object in
 the file (a missing one, a reference, or any object of a file that has object streams), when
 a stream is nested inside a dictionary (PDFium may end it elsewhere), or when reading takes
-more steps or bytes than the file's size allows."""
+more steps or bytes than the file's size allows. Not read: a stream that PDFium accepts from
+inside a compressed object stream, and a dictionary nested deeper than PDFium's limit after
+that limit was lowered by /Length references PDFium followed on the way."""
 
 import re
 from typing import NamedTuple

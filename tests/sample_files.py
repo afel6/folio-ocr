@@ -2,6 +2,8 @@
 
 import io
 import struct
+import sys
+import time
 import zlib
 
 import fpdf
@@ -196,3 +198,9 @@ def pdfium_image_sizes(data):
     finally:
         page.close()
         doc.close()
+
+
+def assert_within_a_second(started):
+    """A read that began at perf_counter() `started` ended within a second. A tracer
+    (coverage, a debugger) slows Python several-fold, so the limit holds only without one."""
+    assert sys.gettrace() is not None or time.perf_counter() - started < 1.0

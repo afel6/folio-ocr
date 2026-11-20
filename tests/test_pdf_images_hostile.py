@@ -12,6 +12,7 @@ from sample_files import UNCHECKED_LINE as UNCHECKED
 from sample_files import (
     _image_stream,
     _placed,
+    assert_within_a_second,
     image_pdf,
     objstm_pdf,
     pdf_stream,
@@ -31,7 +32,7 @@ def read(data):
     """The reader's verdict, which must come back within a second."""
     start = time.perf_counter()
     result = largest_declared_image(data)
-    assert time.perf_counter() - start < 1.0
+    assert_within_a_second(start)
     return result
 
 
@@ -44,7 +45,7 @@ def verdict(data):
     except InputError as err:
         return str(err)
     finally:
-        assert time.perf_counter() - start < 1.0
+        assert_within_a_second(start)
 
 
 def sized(width):
