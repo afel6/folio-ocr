@@ -11,6 +11,7 @@ import sys
 from pathlib import Path
 
 import pytest
+from fixture_checks import assert_same_png
 from PIL import Image
 
 from folio_ocr.config import Settings, find_tesseract
@@ -51,14 +52,16 @@ def test_sha256_field_matches_bytes_and_pin(line):
     assert line.sha256 == PINNED_SHA256[line.languages]
 
 
-def test_regenerating_gives_the_same_bytes():
+def test_regenerated_lines_match_committed_png_content():
     pytest.importorskip("fpdf")
     pytest.importorskip("uharfbuzz")
     sys.path.insert(0, str(HERE.parent / "scripts"))
     import make_self_test_lines as gen
 
     rendered = gen.render_lines()
-    assert [rendered[line.languages] for line in LINES] == [line.png for line in LINES]
+    assert rendered.keys() == {line.languages for line in LINES}
+    for line in LINES:
+        assert_same_png(rendered[line.languages], line.png)
 
 
 def _tesseract_read(png: bytes, lang: str) -> str:

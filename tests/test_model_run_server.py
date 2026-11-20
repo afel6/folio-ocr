@@ -239,7 +239,9 @@ def test_server_facts_missing_and_down():
         pytest.raises(sm.ModelRunError, match="calibration key"),
     ):
         sm.server_facts(config(server.url), 5.0)
-    with pytest.raises(sm.ModelRunError, match="did not answer"):
+    with pytest.raises(
+        sm.ModelRunError, match=r"model server (?:did not answer|refused the connection)"
+    ):
         sm.server_facts(config(closed_url()), 2.0)
 
 

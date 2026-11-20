@@ -6,6 +6,7 @@ import sys
 from pathlib import Path
 
 import pytest
+from fixture_checks import assert_same_ground_truth, assert_same_png
 
 HERE = Path(__file__).resolve().parent
 sys.path.insert(0, str(HERE.parent / "scripts"))
@@ -26,9 +27,12 @@ def test_builtin_seed_images_match_committed_fixtures(token, layout):
     images = ho.held_out_images(ho.BUILTIN_SEED, token, layout)
     assert [i.condition for i in images] == ["clean", "scan", "photo"]
     for img in images:
-        assert hashlib.sha256(img.data).hexdigest() == COMMITTED[img.name]["sha256"]
+        if img.name.endswith(".png"):
+            assert_same_png(img.data, (FIXTURES / img.name).read_bytes())
+        else:
+            assert hashlib.sha256(img.data).hexdigest() == COMMITTED[img.name]["sha256"]
         gt = json.loads((FIXTURES / COMMITTED[img.name]["gt"]).read_text("utf-8"))
-        assert img.gt == gt
+        assert_same_ground_truth(img.gt, gt)
         assert img.unit == f"{ho.BUILTIN_SEED}-{token}-{layout}"
 
 

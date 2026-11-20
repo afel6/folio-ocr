@@ -4,6 +4,7 @@ import re
 from pathlib import Path
 
 import pytest
+from starlette import responses
 from starlette.testclient import TestClient
 
 from folio_ocr.config import Settings
@@ -44,6 +45,14 @@ def test_every_static_file_is_served_with_a_type_the_browser_runs(client, name):
     expected = TYPES.get(Path(name).suffix)
     if expected:
         assert reply.headers["content-type"].split(";")[0] == expected
+
+
+def test_javascript_type_is_independent_of_the_host_mime_database(client, monkeypatch):
+    monkeypatch.setattr(responses, "guess_type", lambda _: ("application/javascript", None))
+    reply = client.get("/app.js")
+    assert reply.status_code == 200
+    assert reply.headers["content-type"].split(";")[0] == "text/javascript"
+    assert reply.headers["x-content-type-options"] == "nosniff"
 
 
 def test_every_module_the_page_imports_is_served(client):

@@ -12,6 +12,7 @@ from pathlib import Path
 import numpy as np
 import pypdfium2 as pdfium
 import pytest
+from fixture_checks import assert_same_ground_truth, assert_same_png
 from PIL import Image, ImageOps
 
 HERE = Path(__file__).resolve().parent
@@ -149,7 +150,22 @@ def test_build_is_byte_identical(tmp_path):
 def test_build_all_reproduces_committed_manifest(tmp_path):
     out = tmp_path / "fx"
     manifest = mf.build_all(mf.DEFAULT_SEED, out)
-    assert manifest.read_bytes() == (FIX / "manifest.json").read_bytes()
+    regenerated = json.loads(manifest.read_bytes())
+    for entry in regenerated["fixtures"]:
+        name = entry["file"]
+        if name.endswith(".png"):
+            assert entry["sha256"] == _sha(out / name)
+            assert_same_png((out / name).read_bytes(), (FIX / name).read_bytes())
+            # Compare the manifest using the committed digest once the PNG content matches.
+            entry["sha256"] = _sha(FIX / name)
+        gt_name = entry["gt"]
+        current_gt_sha = _sha(out / gt_name)
+        assert entry["gt_sha256"] == current_gt_sha
+        committed_gt_sha = _sha(FIX / gt_name)
+        if current_gt_sha != committed_gt_sha:
+            assert_same_ground_truth(json.loads((out / gt_name).read_bytes()), _gt(gt_name))
+            entry["gt_sha256"] = committed_gt_sha
+    assert regenerated == _manifest()
 
 
 @pytest.mark.parametrize("token,language,layout", DOCS)

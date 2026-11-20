@@ -14,6 +14,7 @@ from fastapi.exceptions import RequestValidationError
 from fastapi.responses import JSONResponse, Response
 from pydantic import BaseModel, StrictStr
 from starlette.exceptions import HTTPException
+from starlette.responses import FileResponse
 from starlette.routing import Match, Mount
 from starlette.staticfiles import StaticFiles
 
@@ -31,6 +32,16 @@ BAD_TEXT = "final_text holds a character that is not valid text"
 BAD_FORMAT = "format must be txt, docx or json"
 DOCX = "application/vnd.openxmlformats-officedocument.wordprocessingml.document"
 HTTP_MESSAGES = {404: "not found", 405: "method not allowed"}
+
+
+class _StaticPages(StaticFiles):
+    """Serve JavaScript with a stable content type across host MIME databases."""
+
+    def file_response(self, full_path, stat_result, scope, status_code=200) -> Response:
+        response = super().file_response(full_path, stat_result, scope, status_code)
+        if isinstance(response, FileResponse) and Path(full_path).suffix.lower() == ".js":
+            response.headers["content-type"] = "text/javascript; charset=utf-8"
+        return response
 
 
 class _PagesMount(Mount):
@@ -252,5 +263,5 @@ def create_app(
     _add_upload_routes(app)
     _add_page_routes(app, settings, tesseract, model, read_page, page_image)
     _add_export_route(app)
-    app.router.routes.append(_PagesMount("/", app=StaticFiles(directory=static_dir, html=True)))
+    app.router.routes.append(_PagesMount("/", app=_StaticPages(directory=static_dir, html=True)))
     return app

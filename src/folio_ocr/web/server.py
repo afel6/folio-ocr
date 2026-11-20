@@ -14,7 +14,7 @@ from folio_ocr.web import guard
 from folio_ocr.web.guard import stderr_line
 
 UNREADABLE_REQUEST = "the request could not be read"
-_DENIED = {errno.EACCES, errno.EPERM, getattr(errno, "WSAEACCES", errno.EACCES)}
+_DENIED = {errno.EACCES, errno.EPERM, getattr(errno, "WSAEACCES", 10013)}
 
 
 def bind(host: str, port: int) -> socket.socket:
