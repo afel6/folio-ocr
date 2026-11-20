@@ -145,6 +145,7 @@ def test_the_taus_are_filled_after_measure_and_before_grade(tmp_path, monkeypatc
 
 def test_a_stopped_run_restores_the_process_state(tmp_path, monkeypatch, capsys):
     monkeypatch.setenv("FOLIO_MODEL_URL", "http://outer/v1")
+    monkeypatch.setattr(dry.shutil, "which", lambda name: None)  # the nvidia-smi stub goes in too
     for name in ("TAUS", "lookup", "table_sha256"):
         monkeypatch.setattr(calibration, name, getattr(calibration, name))
     before = (calibration.TAUS, calibration.lookup, calibration.table_sha256,

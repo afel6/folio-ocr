@@ -1,5 +1,7 @@
 """Checks on an uploaded file before any page is read: type by magic bytes, size, page count,
-pixel count and a safe display filename. Nothing here renders a PDF page."""
+pixel count (of each page and of each image a PDF draws, from headers) and a safe display
+filename. Nothing here renders a PDF page; loading a page to list its images lets PDFium
+decode the data of an inline image, which it does whenever it loads the page."""
 
 import io
 import math
@@ -14,6 +16,7 @@ import pypdfium2.raw as pdfium_raw
 from PIL import Image, ImageOps, UnidentifiedImageError
 
 from folio_ocr.errors import InputError
+from folio_ocr.pdf_images import largest_declared_image
 
 MAX_UPLOAD_BYTES = 25 * 1024 * 1024
 MAX_PDF_PAGES = 20  # also the cap on the frames (pages) of a TIFF
@@ -26,7 +29,10 @@ _NOT_SUPPORTED = "the file is not a PDF, PNG, JPEG, TIFF or WebP file"
 _ENCRYPTED = "the PDF is encrypted; remove its password and try again"
 _DAMAGED_PDF = "the PDF could not be opened; it may be damaged"
 _IMAGE_TOO_BIG = "the image is too large to read (over 50 megapixels)"
+_HOLDS_TOO_BIG = "holds an image too large to read (over 50 megapixels)"
+_IMAGES_UNCHECKED = "the PDF's images could not be checked safely; it was not read"
 _DECODE = "the image could not be decoded; it may be damaged"
+_FORMS = 128  # Form XObject nesting walked for images; PDFium draws far fewer levels
 
 _PILLOW_FORMAT = {"png": "PNG", "jpeg": "JPEG", "tiff": "TIFF", "webp": "WEBP"}
 _TIFF_MAGIC = (b"II*\x00", b"MM\x00*", b"II+\x00", b"MM\x00+")
@@ -82,6 +88,31 @@ def render_size(width_pt: float, height_pt: float, dpi: int = RENDER_DPI) -> tup
     return math.ceil(width_pt * scale), math.ceil(height_pt * scale)
 
 
+def _image_pixels(width: int, height: int) -> int:
+    """Pixels of an image size as PDFium reports it: PDFium keeps sizes as signed 32-bit
+    numbers, so a reported size of 2^31 or more is a negative one and holds no pixels."""
+    return width * height if 0 < width < 2**31 and 0 < height < 2**31 else 0
+
+
+def _check_page_images(doc: pdfium.PdfDocument, index: int) -> None:
+    """Refuse a page that draws an image (in its content, in a Form XObject or inline) whose
+    header size is over the pixel cap. Only headers are read; nothing is decoded."""
+    try:
+        page = doc[index]
+    except pdfium.PdfiumError:
+        return  # a page that does not load is reported as damaged when it is read
+    try:
+        for image in page.get_objects(filter=(pdfium_raw.FPDF_PAGEOBJ_IMAGE,), max_depth=_FORMS):
+            if _image_pixels(*image.get_px_size()) > MAX_PIXELS:
+                raise InputError(f"page {index + 1} {_HOLDS_TOO_BIG}")
+    except pdfium.PdfiumError as err:
+        raise InputError(
+            f"page {index + 1} of the PDF could not be read; it may be damaged"
+        ) from err
+    finally:
+        page.close()
+
+
 def _check_pdf(doc: pdfium.PdfDocument) -> None:
     if pdfium_raw.FPDF_GetSecurityHandlerRevision(doc.raw) != -1:
         raise InputError(_ENCRYPTED)
@@ -94,10 +125,21 @@ def _check_pdf(doc: pdfium.PdfDocument) -> None:
             raise InputError(_DAMAGED_PDF) from err
         if width * height > MAX_PIXELS:
             raise InputError(f"page {i + 1} is too large to read (over 50 megapixels at 300 dpi)")
+    for i in range(len(doc)):
+        _check_page_images(doc, i)
 
 
-def open_pdf(data: bytes) -> pdfium.PdfDocument:
-    """Open a PDF after checking encryption, page count and page sizes. The caller closes it."""
+def _check_declared_images(data: bytes) -> None:
+    """Refuse a PDF whose stream dictionaries state an image (an /SMask or /Mask, or an image
+    an annotation or a pattern draws) over the pixel cap, or whose sizes cannot all be read."""
+    declared = largest_declared_image(data)
+    if declared.largest > MAX_PIXELS:
+        raise InputError(f"the PDF {_HOLDS_TOO_BIG}")
+    if not declared.complete:
+        raise InputError(_IMAGES_UNCHECKED)
+
+
+def _open_checked(data: bytes) -> pdfium.PdfDocument:
     try:
         doc = pdfium.PdfDocument(data)
     except pdfium.PdfiumError as err:
@@ -106,8 +148,23 @@ def open_pdf(data: bytes) -> pdfium.PdfDocument:
         raise InputError(_DAMAGED_PDF) from err
     try:
         _check_pdf(doc)
-    except InputError:
+    except BaseException:
         doc.close()
+        raise
+    return doc
+
+
+def open_pdf(data: bytes) -> pdfium.PdfDocument:
+    """Open a PDF after checking encryption, page count, page sizes and image sizes. It takes
+    PDFIUM_LOCK itself, so the caller must not hold it; the caller closes the document under
+    PDFIUM_LOCK. The raw file is read outside the lock: it touches no PDFium state."""
+    with PDFIUM_LOCK:
+        doc = _open_checked(data)
+    try:
+        _check_declared_images(data)
+    except BaseException:
+        with PDFIUM_LOCK:
+            doc.close()
         raise
     return doc
 

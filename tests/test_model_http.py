@@ -14,6 +14,7 @@ from folio_ocr import model_http
 from folio_ocr.model_http import (
     ModelCallError,
     Reply,
+    get,
     is_late,
     open_connection,
     post,
@@ -474,3 +475,45 @@ def test_an_address_whose_socket_cannot_be_made_is_skipped(monkeypatch):
         monkeypatch.setattr(model_http.socket, "getaddrinfo", two_addresses)
         reply = model_http.post(model_http.target(fake.url, None), b"{}", 5.0)
     assert reply.status == 200
+
+
+def _stalled_lookup(monkeypatch, release: threading.Event):
+    def stalled(*_args, **_kwargs):
+        release.wait(10)
+        raise socket.gaierror("no answer")
+
+    monkeypatch.setattr(model_http.socket, "getaddrinfo", stalled)
+
+
+@pytest.mark.parametrize("send", ["post", "get"])
+def test_a_slow_name_lookup_is_cut_by_the_time_limit(monkeypatch, send):
+    release = threading.Event()
+    _stalled_lookup(monkeypatch, release)
+    tgt = target("http://model.example:9/v1", None)
+    started = time.perf_counter()
+    try:
+        with pytest.raises(ModelCallError) as caught:
+            post(tgt, b"{}", 0.5) if send == "post" else get(tgt, 0.5)
+    finally:
+        release.set()
+    assert time.perf_counter() - started < 5
+    assert caught.value.timed_out is True
+    assert str(caught.value) == TIMED_OUT
+
+
+def test_a_lookup_that_fails_in_time_still_names_the_host_name_problem(monkeypatch):
+    def unknown(*_args, **_kwargs):
+        raise socket.gaierror("unknown host")
+
+    monkeypatch.setattr(model_http.socket, "getaddrinfo", unknown)
+    with pytest.raises(ModelCallError) as caught:
+        post(target("http://model.example:9/v1", None), b"{}", 5.0)
+    assert caught.value.timed_out is False
+    assert str(caught.value) == UNRESOLVED
+
+
+def test_a_host_name_the_lookup_cannot_encode_names_the_host_name_problem():
+    with pytest.raises(ModelCallError) as caught:
+        post(target("http://" + "a" * 64 + ".example:9/v1", None), b"{}", 5.0)
+    assert caught.value.timed_out is False
+    assert str(caught.value) == UNRESOLVED

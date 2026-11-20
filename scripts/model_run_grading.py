@@ -70,9 +70,9 @@ def step_calibrate(args, build) -> int:
                                plan=mr.model_plan(session.keys))
     if rc != 0:
         return rc
+    _ungraded_heldout(args)  # the held-out batch is still the fixed one and still ungraded
     cal, cal_sha = common.read_json_file(out, "calibration")
     taus = cal.get("taus") or {}
-    _ungraded_heldout(args)  # the held-out batch is still the fixed one and still ungraded
     if cal.get("dev_manifest_sha256") != dev_sha:
         raise ModelRunError("the dev manifest changed during the calibration; nothing was recorded")
     peak = _peak_fields(work / "vram-calibrate.csv")

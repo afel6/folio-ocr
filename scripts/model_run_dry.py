@@ -35,6 +35,7 @@ import model_run_lines
 import model_run_vram
 from fake_model_server import Answer, FakeModelServer, Seen
 from heldout import HeldoutError
+from model_run_common import say
 from model_run_server import ModelRunError
 from PIL import Image
 from script_errors import describe_os_error
@@ -236,7 +237,8 @@ def _run_steps(plan: list[tuple[str, list]], work: Path) -> None:
             _fill_taus(record["taus"])
         started = time.perf_counter()
         code = model_run.main(argv)
-        print(f"-- {name}: {time.perf_counter() - started:.1f} s", flush=True)
+        say(f"-- {name}: {time.perf_counter() - started:.1f} s")
+        sys.stdout.flush()
         if code != 0:
             raise DryRunError(f"the {name} step failed (exit {code})")
 
@@ -248,9 +250,9 @@ def _run(work: Path, jobs: int) -> int:
     _run_steps(_steps(work, dev, manifest, sha, jobs), work)
     report = work / "results" / "model-run-dry.json"
     raw = report.read_bytes()
-    print(f"report: {report}")
-    print(f"sha256: {hashlib.sha256(raw).hexdigest()}")
-    print("keys: " + ", ".join(sorted(json.loads(raw))))
+    say(f"report: {report}")
+    say(f"sha256: {hashlib.sha256(raw).hexdigest()}")
+    say("keys: " + ", ".join(sorted(json.loads(raw))))
     return 0
 
 

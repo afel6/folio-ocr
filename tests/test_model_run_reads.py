@@ -612,8 +612,9 @@ def test_aggregation_check_reports_when_another_score_beats_exp_min():
 
 def test_aggregation_check_splits_good_and_bad_at_the_accuracy_tool_bound(monkeypatch):
     monkeypatch.setattr(accuracy_eval, "BAD_CER", 0.5)
-    out = mr.aggregation_check([agg_rec(0.3, (-0.1,)), agg_rec(0.9, (-0.2,))])
-    assert (out["good"], out["bad"]) == (1, 1)
+    out = mr.aggregation_check([agg_rec(0.3, (-0.1,)), agg_rec(0.5, (-0.1,)),
+                                agg_rec(0.9, (-0.2,))])
+    assert (out["good"], out["bad"]) == (2, 1)  # a line at the bound itself is good
 
 
 def test_aggregation_check_with_no_bad_lines_has_no_margin():

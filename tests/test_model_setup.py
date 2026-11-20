@@ -170,6 +170,7 @@ def test_is_calibrated_false_when_digest_version_or_name_differ():
 
 
 def test_is_calibrated_defaults_to_the_frozen_table(monkeypatch):
+    monkeypatch.setattr(calibration, "TAUS", _table())  # the package table may hold this model
     assert is_calibrated(INFO, NAME) is False
     key = model_setup(INFO, NAME, "logprobs", "abc").key
     monkeypatch.setattr(calibration, "TAUS", _table(key))

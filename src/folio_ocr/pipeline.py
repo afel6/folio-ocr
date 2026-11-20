@@ -180,10 +180,10 @@ def _read_pdf(data: bytes, languages: str, reader: _Reader) -> tuple[Page, ...]:
     """Page by page: a page kept from its text layer is built under PDFIUM_LOCK; a page sent to
     OCR is only rendered there and read after the lock is released, before the next page is
     rendered (one render in memory at a time). Every PDFium call holds the lock."""
-    with PDFIUM_LOCK:
-        doc = open_pdf(data)
-        count = len(doc)
+    doc = open_pdf(data)
     try:
+        with PDFIUM_LOCK:
+            count = len(doc)
         pages = []
         for i in range(count):
             with PDFIUM_LOCK:
@@ -267,10 +267,10 @@ def _check_page_no(page_no: int, count: int) -> None:
 
 
 def _one_pdf_page(data: bytes, page_no: int, languages: str, reader: _Reader) -> Page:
-    with PDFIUM_LOCK:
-        doc = open_pdf(data)
-        count = len(doc)
+    doc = open_pdf(data)
     try:
+        with PDFIUM_LOCK:
+            count = len(doc)
         _check_page_no(page_no, count)
         with PDFIUM_LOCK:
             found = _read_pdf_page(doc, page_no - 1, languages)
@@ -300,8 +300,8 @@ def page_image(data: bytes, page_no: int) -> Image.Image:
     kind = sniff(data)
     if kind != "pdf":
         return _frame(data, kind, page_no)
+    doc = open_pdf(data)
     with PDFIUM_LOCK:
-        doc = open_pdf(data)
         try:
             _check_page_no(page_no, len(doc))
             page = doc[page_no - 1]

@@ -218,6 +218,22 @@ def test_calibrate_records_nothing_when_the_state_changes_during_the_run(
     assert expected in err and not (tmp_path / "r.json").exists()
 
 
+@pytest.mark.parametrize("written", [None, "{bad", "[]"])
+def test_calibrate_with_a_missing_or_damaged_output_records_nothing(
+        tmp_path, capsys, monkeypatch, heldout_ok, written):
+    order_file(tmp_path), drift_file(tmp_path)
+
+    def main(argv, reader_factory=None, plan=None):
+        if written is not None:
+            (tmp_path / "cal.json").write_text(written, encoding="utf-8")
+        return 0
+
+    monkeypatch.setattr(run_accuracy, "main", main)
+    rc, _, err = run(capsys, calibrate_argv(tmp_path))
+    assert rc == 1 and err == "error: the calibration file is missing or damaged: cal.json\n"
+    assert not (tmp_path / "r.json").exists()
+
+
 # ---------------------------------------------------------------- measure
 
 

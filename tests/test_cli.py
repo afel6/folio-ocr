@@ -14,6 +14,7 @@ from types import SimpleNamespace
 import httpx
 import pytest
 import uvicorn
+from sample_files import OVERSIZED_IMAGE_CASES as BIG_IMAGE_CASES
 
 from folio_ocr import assets, cli, doctor, model_health, pipeline
 from folio_ocr.document import IDENTITY, Document, Engine, Line, Page, Source
@@ -792,3 +793,13 @@ def test_a_failed_save_still_reports_the_page_errors(reader, capsys, tmp_path, m
     lines = err.splitlines()
     assert code == 1 and lines[0].startswith("error: disk full while writing: ")
     assert lines[1:] == [f"a.pdf: page 2: {ERR}", HINT_DOCTOR]
+
+
+@pytest.mark.parametrize(("data", "line"), BIG_IMAGE_CASES)
+def test_pdf_with_an_oversized_image_is_refused_with_one_line(capsys, tmp_path, data, line):
+    path = tmp_path / "a.pdf"
+    path.write_bytes(data)
+    env = {"FOLIO_WEIGHTS_DIR": str(tmp_path), "PATH": ""}
+    code, out, err = run(capsys, "read", "--lang", "en", str(path), environ=env)
+    assert (code, out) == (1, "")
+    assert err.splitlines() == [f"error: {path}: {line}"]

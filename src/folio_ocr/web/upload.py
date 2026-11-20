@@ -156,8 +156,8 @@ def unread_page(index: int) -> Page:
 
 def _page_count(data: bytes, kind: str) -> int:
     if kind == "pdf":
+        doc = ingest.open_pdf(data)
         with ingest.PDFIUM_LOCK:
-            doc = ingest.open_pdf(data)
             try:
                 return len(doc)
             finally:

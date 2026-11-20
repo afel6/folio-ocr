@@ -13,6 +13,7 @@ import docx
 import pytest
 from docx.enum.text import WD_COLOR_INDEX
 from PIL import Image
+from sample_files import OVERSIZED_IMAGE_CASES as BIG_IMAGE_CASES
 from sample_files import encrypted, pdf_bytes, save
 from starlette.testclient import TestClient
 
@@ -765,3 +766,9 @@ def test_a_very_long_page_number_is_an_unknown_page(c):
     doc_id = doc.json()["document_id"]
     r = c.get(f"/api/documents/{doc_id}/pages/{'9' * 5000}/image")
     assert (r.status_code, r.json()) == (404, {"error": "no such page in this document"})
+
+
+@pytest.mark.parametrize(("data", "line"), BIG_IMAGE_CASES)
+def test_upload_of_a_pdf_with_an_oversized_image_is_refused(c, data, line):
+    r = upload(c, data, "a.pdf")
+    assert (r.status_code, r.json()) == (400, {"error": line})

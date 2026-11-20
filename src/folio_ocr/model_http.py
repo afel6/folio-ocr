@@ -10,6 +10,7 @@ import threading
 import time
 import urllib.parse
 from collections.abc import Callable
+from concurrent.futures import Future
 from dataclasses import dataclass, field
 
 _CHUNK = 65536
@@ -126,13 +127,16 @@ def is_late(started: float, now: float, timeout_s: float) -> bool:
 class _Watched:
     """The socket the time-limit timer shuts down. It is kept here rather than read from the
     connection, because http.client drops the connection's reference once the headers of a
-    reply that ends with the connection have been read."""
+    reply that ends with the connection have been read. `woken` is set when the timer fires
+    or the host name lookup answers, so one `_Watched` serves one connection."""
 
     def __init__(self) -> None:
         self.sock: socket.socket | None = None
+        self.woken = threading.Event()
 
 
 def _abort(watched: _Watched) -> None:
+    watched.woken.set()
     sock = watched.sock
     if sock is None:
         return
@@ -143,17 +147,36 @@ def _abort(watched: _Watched) -> None:
         return
 
 
+def _resolve(address: tuple, watched: _Watched) -> list:
+    """The addresses of the host, or _Late when the time-limit timer fires first. A lookup
+    cannot be interrupted, so it runs on its own thread, which is left to finish alone."""
+    answer: Future[list] = Future()
+
+    def lookup() -> None:
+        try:
+            answer.set_result(socket.getaddrinfo(address[0], address[1], 0, socket.SOCK_STREAM))
+        except Exception as exc:  # noqa: BLE001 - raised again by the waiting caller
+            answer.set_exception(exc)
+        finally:
+            watched.woken.set()
+
+    threading.Thread(target=lookup, daemon=True).start()
+    watched.woken.wait()
+    if not answer.done():
+        raise _Late
+    return answer.result()
+
+
 def _address_by_address(
     left: Callable[[], float], watched: _Watched
 ) -> Callable[..., socket.socket]:
-    """socket.create_connection for http.client, except that each address gets only the time
-    still left (the standard one gives every address of a host the full limit)."""
+    """socket.create_connection for http.client, except that the host name lookup ends with
+    the time limit and each address gets only the time still left (the standard one gives
+    every address of a host the full limit)."""
 
     def create(address: tuple, *_args: object, **_kwargs: object) -> socket.socket:
         failure: OSError = OSError("the model server's host name has no address")
-        for family, kind, proto, _, where in socket.getaddrinfo(
-            address[0], address[1], 0, socket.SOCK_STREAM
-        ):
+        for family, kind, proto, _, where in _resolve(address, watched):
             try:
                 sock = socket.socket(family, kind, proto)
             except OSError as exc:  # this address family cannot be used here: try the next
@@ -218,7 +241,8 @@ def post(
     clock: Callable[[], float] = time.perf_counter,
     connect: Callable[[Target, float], http.client.HTTPConnection] = open_connection,
 ) -> Reply:
-    """Send one POST and return the reply; the limit covers connect to the last body byte."""
+    """Send one POST and return the reply; the limit covers the host name lookup and connect
+    to the last body byte."""
     return _send(target, body, timeout_s, clock, connect)
 
 
