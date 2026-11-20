@@ -23,6 +23,15 @@ Commands marked † have not been tested with this version. They are ordinary Py
 Tesseract or Linux package steps. The other commands are folio's own and have been run with
 this version.
 
+## Use cases
+
+- **Digitize printed records.** Turn scanned letters, policies, and reports into TXT or DOCX
+  files you can search or edit alongside the originals.
+- **Review English and Arabic paperwork.** Read printed invoices, forms, or phone photos and
+  compare flagged lines with the page image before copying the text into another system.
+- **Feed reviewed text into a local workflow.** Export JSON with the text, page coordinates,
+  and review flags for a script, search index, or document-processing pipeline.
+
 ## What it is and what it is not
 
 It is:
