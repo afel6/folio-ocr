@@ -14,7 +14,6 @@ from folio_ocr import calibration, pipeline
 PIN_FILE = Path(__file__).parent / "data" / "image_pins.json"
 EXTENSIONS = ("png", "jpg", "jpeg", "tif", "tiff", "webp")
 DOCUMENT_NAMES = ("en-invoice-clean.png", "en-letter-photo-exif.jpg", "en-invoice-scan.jpg")
-INFO_KEYS = ("icc_profile", "transparency")
 SIZE = (300, 200)
 
 
@@ -80,15 +79,11 @@ def frame_count(data: bytes) -> int:
         return getattr(img, "n_frames", 1)
 
 
-def info_keys(data: bytes, n: int) -> list[str]:
-    return [k for k in INFO_KEYS if k in pipeline.page_image(data, n).info]
-
-
 def frames(data: bytes, count: int) -> dict:
     out = {}
     for n in range(1, count + 1):
         img = pipeline.page_image(data, n)
-        info = {k: img.info[k] for k in INFO_KEYS if k in img.info}
+        info = {k: img.info[k] for k in pins.PREVIEW_INFO_KEYS if k in img.info}
         out[str(n)] = {
             "mode": img.mode,
             "size": list(img.size),

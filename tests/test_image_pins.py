@@ -1,13 +1,14 @@
-"""The fixture and crafted images decode and are served exactly as pinned in
-tests/data/image_pins.json."""
+"""Fixture and crafted image pixels survive preview encoding and match pins on the reference build."""
 
 import json
+from io import BytesIO
 
 import image_pins as ipins
 import pdf_pins as pins
 import pytest
+from PIL import Image
 
-from folio_ocr import calibration
+from folio_ocr import calibration, pipeline
 
 PINNED = json.loads(ipins.PIN_FILE.read_text(encoding="utf-8"))
 INPUTS = ipins.inputs()
@@ -41,10 +42,10 @@ def test_image_frames_match_pins(name):
 
 @pytest.mark.parametrize("name", IDS)
 def test_image_served_png_match_pins(name):
-    _skip_other_build()
     data = INPUTS[name]
     got = pins.served_pngs(data, name, ipins.frame_count(data))
-    assert got == PINNED["files"][name]["png"]
+    if pins.build_info() == PINNED["build"]:
+        assert got == PINNED["files"][name]["png"]
 
 
 @pytest.mark.parametrize("name", DOC_NAMES)
@@ -60,14 +61,15 @@ def test_image_documents_match_pins(name, empty_taus):
     assert got == PINNED["files"][name]["documents"]["en"]
 
 
-def test_crafted_images_cover_info_keys():
-    _skip_other_build()
-    empty = pins.sha(repr({}).encode())
-    for key in ("transparency", "icc_profile"):
-        carriers = [
-            n for n, d in INPUTS.items()
-            if any(key in ipins.info_keys(d, k) for k in range(1, ipins.frame_count(d) + 1))
-        ]  # fmt: skip
-        assert carriers, key
-        for n in carriers:
-            assert all(f["info"] != empty for f in PINNED["files"][n]["frame"].values()), n
+@pytest.mark.parametrize(
+    ("name", "key"),
+    [
+        ("crafted-l-trns.png", "transparency"),
+        ("crafted-rgb-trns.png", "transparency"),
+        ("crafted-icc.jpg", "icc_profile"),
+    ],
+)
+def test_worker_keeps_crafted_preview_metadata(name, key):
+    data = INPUTS[name]
+    with Image.open(BytesIO(data)) as source, pipeline.page_image(data, 1) as frame:
+        assert frame.info[key] == source.info[key]

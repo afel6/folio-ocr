@@ -1,4 +1,4 @@
-"""The fixture PDFs read and render exactly as pinned in tests/data/pdf_pins.json."""
+"""Fixture PDF previews preserve rendered pixels and match pins on the reference build."""
 
 import json
 
@@ -40,10 +40,11 @@ def test_renders_match_pins(path):
 
 @pytest.mark.parametrize("path", PDFS, ids=IDS)
 def test_served_png_match_pins(path):
-    _skip_other_build()
     data = path.read_bytes()
+    got = pins.served_pngs(data, path.name, pins.page_count(data))
     expected = PINNED["files"][path.name]["png"]
-    assert pins.served_pngs(data, path.name, pins.page_count(data)) == expected
+    if pins.build_info() == PINNED["build"]:
+        assert got == expected
 
 
 @pytest.mark.parametrize("languages", pins.LANGUAGES)

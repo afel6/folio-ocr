@@ -2,6 +2,8 @@
  "build": {
   "pdfium": "159.0.8149.0@sourcebuild-toolchained",
   "pillow": "13.0.0",
+  "platform": "win32",
+  "png_zlib": "1.3.1.zlib-ng",
   "pypdfium2": "5.15.2",
   "zlib": "1.3.1"
  },

@@ -4,15 +4,18 @@ web API serves, and the no-server Document JSON. `main()` rewrites tests/data/pd
 import hashlib
 import json
 import os
+import sys
 import tempfile
 import zlib
 from contextlib import contextmanager
+from io import BytesIO
 from pathlib import Path
 from unittest import mock
 
 import PIL
 import pypdfium2
 from fastapi.testclient import TestClient
+from PIL import Image, features
 
 from folio_ocr import calibration, pipeline
 from folio_ocr.config import Settings, find_tesseract
@@ -23,6 +26,7 @@ from folio_ocr.web.app import create_app
 FIXTURES = Path(__file__).parent / "fixtures"
 PIN_FILE = Path(__file__).parent / "data" / "pdf_pins.json"
 LANGUAGES = ("en", "en+ar")
+PREVIEW_INFO_KEYS = ("icc_profile", "transparency")
 SETTINGS = Settings.from_env(os.environ)
 WEIGHTS = SETTINGS.weights_dir
 TESSERACT = find_tesseract(SETTINGS)
@@ -46,9 +50,11 @@ def page_count(data: bytes) -> int:
 
 def build_info() -> dict:
     return {
+        "platform": sys.platform,
         "pypdfium2": str(pypdfium2.version.PYPDFIUM_INFO),
         "pdfium": str(pypdfium2.PDFIUM_INFO.version),
         "pillow": PIL.__version__,
+        "png_zlib": features.version_codec("zlib"),
         "zlib": zlib.ZLIB_RUNTIME_VERSION,
     }
 
@@ -62,6 +68,7 @@ def renders(data: bytes, pages: int) -> dict:
 
 
 def served_pngs(data: bytes, name: str, pages: int) -> dict:
+    """Verify each preview round-trips the page pixels and return its encoded hash."""
     with tempfile.TemporaryDirectory() as tmp:
         static = Path(tmp) / "static"
         static.mkdir()
@@ -82,6 +89,17 @@ def served_pngs(data: bytes, name: str, pages: int) -> dict:
             for n in range(1, pages + 1):
                 r = c.get(f"/api/documents/{doc}/pages/{n}/image")
                 r.raise_for_status()
+                assert r.headers["content-type"] == "image/png"
+                with (
+                    Image.open(BytesIO(r.content)) as preview,
+                    pipeline.page_image(data, n) as original,
+                ):
+                    assert preview.format == "PNG"
+                    assert (preview.mode, preview.size) == (original.mode, original.size)
+                    assert preview.tobytes() == original.tobytes()
+                    assert [preview.info.get(k) for k in PREVIEW_INFO_KEYS] == [
+                        original.info.get(k) for k in PREVIEW_INFO_KEYS
+                    ]
                 out[str(n)] = sha(r.content)
             return out
 
