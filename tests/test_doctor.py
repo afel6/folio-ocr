@@ -12,6 +12,7 @@ import pytest
 from folio_ocr import doctor
 from folio_ocr.assets import MANIFEST, Asset
 from folio_ocr.config import Settings
+from folio_ocr.errors import PdfReaderError
 
 DATA = b"data"
 ASSET = Asset(
@@ -82,6 +83,7 @@ def test_line_format_and_order(tmp_path):
         environ=NO_TESSERACT,
         runner=runner,
         assets=(ASSET,),
+        pdf_reader=lambda: doctor.Check("pdf reader", "ok", "starts with its limits"),
     )
     import pypdfium2
 
@@ -89,6 +91,7 @@ def test_line_format_and_order(tmp_path):
     assert lines == [
         "ok   python: 3.13.1",
         f"ok   pdfium: {pypdfium2.PDFIUM_INFO.version}",
+        "ok   pdf reader: starts with its limits",
         f"info assets folder: {s.weights_dir}",
         "ok   asset tessdata/x.traineddata: verified (sha256)",
         f"ok   tesseract: 5.4.0 at {TESS}",
@@ -96,6 +99,23 @@ def test_line_format_and_order(tmp_path):
         "ok   reader tesseract: ok",
         "info model server: configured: model m at host 127.0.0.1",
     ]
+
+
+def test_pdf_reader_line_when_the_reader_starts(monkeypatch):
+    monkeypatch.setattr(doctor.pdf_client, "self_check", lambda: None)
+    check = doctor._pdf_reader()
+    assert (check.name, check.status) == ("pdf reader", "ok")
+    assert f"{doctor.ingest.PDF_MEMORY_MB} MB" in check.detail
+
+
+def test_pdf_reader_line_when_the_reader_cannot_start(monkeypatch):
+    def refuse():
+        raise PdfReaderError("pdf", "no job object")
+
+    monkeypatch.setattr(doctor.pdf_client, "self_check", refuse)
+    check = doctor._pdf_reader()
+    assert (check.name, check.status) == ("pdf reader", "fail")
+    assert check.detail == "no job object; PDFs and images cannot be read"
 
 
 def test_wrong_content_asset_fails(tmp_path):

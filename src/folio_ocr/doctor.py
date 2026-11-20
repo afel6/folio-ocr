@@ -9,9 +9,10 @@ from dataclasses import dataclass
 from pathlib import Path
 from typing import Literal
 
-from folio_ocr import ocr_setup
+from folio_ocr import ingest, ocr_setup, pdf_client
 from folio_ocr.assets import MANIFEST, Asset, verify
 from folio_ocr.config import Settings, find_tesseract, is_loopback
+from folio_ocr.errors import PdfReaderError
 
 _TESSERACT_TIMEOUT_S = 10
 _SETUP_REASONS = {"missing", "wrong size", "sha256 mismatch"}
@@ -39,6 +40,16 @@ def _pdfium() -> Check:
         return Check("pdfium", "ok", str(pypdfium2.PDFIUM_INFO.version))
     except (ImportError, OSError):
         return Check("pdfium", "fail", "cannot load pdfium")
+
+
+def _pdf_reader() -> Check:
+    """Whether a file reader process starts with its memory and time limits."""
+    try:
+        pdf_client.self_check()
+    except PdfReaderError as err:
+        return Check("pdf reader", "fail", f"{err.reason}; PDFs and images cannot be read")
+    limits = f"{ingest.PDF_MEMORY_MB} MB and {ingest.PDF_SECONDS} s per file"
+    return Check("pdf reader", "ok", f"starts with its limits ({limits})")
 
 
 def _assets(settings: Settings, assets: Sequence[Asset]) -> list[Check]:
@@ -158,6 +169,7 @@ def checks(
     runner: Callable[..., subprocess.CompletedProcess] = subprocess.run,
     assets: Sequence[Asset] = MANIFEST,
     model_checks: Callable[[Settings], list[Check]] | None = None,
+    pdf_reader: Callable[[], Check] = _pdf_reader,
 ) -> list[Check]:
     """Run every check and return the results in display order. `model_checks` asks the
     configured model server (self-test, calibration); its lines follow the model server line."""
@@ -166,6 +178,7 @@ def checks(
     return [
         _python(version_info),
         _pdfium(),
+        pdf_reader(),
         Check("assets folder", "info", str(settings.weights_dir)),
         *_assets(settings, assets),
         _tesseract(binary, runner),

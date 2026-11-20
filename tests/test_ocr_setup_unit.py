@@ -373,10 +373,10 @@ def mixed_pdf():
     return buf.getvalue()
 
 
-def test_ocr_pages_are_read_after_pdfium_is_released(ocr_stub):
+def test_ocr_pages_are_read_with_no_reader_process_alive(ocr_stub):
     doc = read_bytes(mixed_pdf(), "m.pdf", languages="en+ar")
     scanned, text = doc.pages
-    assert [(c.page_no, c.pdfium_locked) for c in ocr_stub.pages] == [(1, False)]
+    assert [(c.page_no, c.workers_live) for c in ocr_stub.pages] == [(1, 0)]
     assert scanned.origin == "ocr" and scanned.index == 1
     assert ocr_stub.pages[0].reasons == ("empty_with_ink",)
     assert ocr_stub.pages[0].invalid_lines == 0

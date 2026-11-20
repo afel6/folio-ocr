@@ -246,7 +246,11 @@ def group_boxes(boxes: Sequence[Box], direction: str, factor: float) -> list[lis
 def read_text_layer(
     page: pdfium.PdfPage, dpi: int = RENDER_DPI
 ) -> tuple[tuple[TextChar, ...], ...]:
-    chars = page_chars(page, dpi)
+    return text_lines(page_chars(page, dpi))
+
+
+def text_lines(chars: Sequence[TextChar]) -> tuple[tuple[TextChar, ...], ...]:
+    """The lines of a page's characters, in the reading order of the page's direction."""
     return segment_lines(chars, page_direction(chars))
 
 

@@ -217,6 +217,7 @@ is `fail`. Here it is on a Windows machine with Tesseract and no model server:
 ```text
 ok   python: 3.13.1
 ok   pdfium: 159.0.8149.0@sourcebuild-toolchained
+ok   pdf reader: starts with its limits (1950 MB and 60 s per file)
 info assets folder: %LOCALAPPDATA%\folio-ocr\assets
 ok   asset tessdata/ara.traineddata: verified (sha256)
 ok   asset tessdata/eng.traineddata: verified (sha256)
@@ -225,7 +226,7 @@ ok   asset onnxtr/rep_fast_base-1b89ebf9.onnx: verified (sha256)
 ok   asset onnxtr/crnn_vgg16_bn-743599aa.onnx: verified (sha256)
 ok   tesseract: 5.4.0.20240606 at C:\Program Files\Tesseract-OCR\tesseract.exe
 info reader onnxtr: uncalibrated (no frozen confidence threshold yet: every line it reads is flagged low_confidence)
-info reader tesseract: uncalibrated (no frozen confidence threshold yet: every line it reads is flagged low_confidence)
+ok   reader tesseract: ok
 info model server: not configured (set FOLIO_MODEL_URL to use one)
 ```
 
@@ -236,6 +237,10 @@ of four states:
 - `bad_data`: they are present but cannot be used;
 - `uncalibrated`: it reads, but every line it reads needs review;
 - `ok`: a confidence cut-off exists for this exact setup.
+
+The PDF and image reader runs in a separate process on Windows and Linux. The 60-second
+file-work budget applies to each reader process. Startup has its own time limit, and pages
+that go to OCR can start a fresh reader. The budget excludes OCR and model requests.
 
 With a model server configured, doctor adds two more lines. `model self-test` sends two
 built-in test lines and passes or fails. `reader model` reports `ok` or `uncalibrated`. The
@@ -413,11 +418,10 @@ In plain words:
 
 ## Web app: `folio serve`
 
-> **PLACEHOLDER: the web app is being built and is not finished in this version.** This
-> section will describe how to start it and how to use upload, the page viewer, editing,
-> confirming and export once the web app is complete.
-
-Already decided:
+Run `folio serve` and open the address it prints. Choose the document languages and upload a
+PDF or image with **Add and read**. Select a flagged line to review it next to the page
+image. Edit and **Save** the text or **Confirm** it as shown. Export the document as TXT,
+Word (DOCX), or JSON before closing the service.
 
 - It listens on this machine only: `127.0.0.1`, port 8000 (`FOLIO_HOST`, `FOLIO_PORT`).
 - **Warning: under `folio serve --allow-remote`, anyone who can reach the port on the network
@@ -432,14 +436,10 @@ Already decided:
 
 ## Results
 
-> **PLACEHOLDER. Pending: the one-time held-out grade of the offline readers (OnnxTR,
-> Tesseract) and the language-model run on the test laptop.** No figure below has been
-> measured yet.
-
-Each target is the pass mark the test is graded against, not a promise about your documents.
-Results will be given as a point estimate with a 95 % confidence interval, computed by
-resampling whole documents. Each test set is graded once. A cell with too few badly read lines
-to judge reads "not measured".
+The offline missed-error results come from the
+[one-time held-out run](eval/results/grade-07ee31ad0cf1-20261120T164035Z.json).
+Confidence intervals use resampling of whole documents. The language-model evaluation on the
+RTX 5070 Ti laptop is pending.
 
 Character error rate (CER) on printed test documents:
 
@@ -456,17 +456,22 @@ Character error rate (CER) on printed test documents:
 The Arabic image rows are graded with a model server. With a model server, mixed pages count in
 the Arabic rows. Without one, their CER is reported only.
 
-Missed-error rate: lines with more than 2 % CER that were accepted without review. The target
-is ≤ 10 % as a point estimate, with the 95 % CI reported beside it.
+The missed-error rate is the share of lines with more than 2 % CER that escaped review. It
+includes undetected lines with no unread-region marker. The target is ≤ 10 % as a point
+estimate, with the 95 % confidence interval reported beside it.
 
 | Reader setup | Documents | Point estimate | 95 % CI | Bad lines / documents | Good lines flagged | Result |
 |---|---|---|---|---|---|---|
-| OnnxTR, way up by Tesseract | English (`--lang en`) | pending | pending | pending | pending | pending |
-| OnnxTR, way up by vote (no Tesseract) | English (`--lang en`) | pending | pending | pending | pending | pending |
-| Tesseract | English (default `--lang en+ar`) | pending | pending | pending | pending | pending |
-| Tesseract | Arabic and mixed | pending | pending | pending | pending | pending |
+| OnnxTR, orientation by Tesseract | English (`--lang en`) | — | — | 121 / 30 | 99.7 % | Not measured (no frozen threshold) |
+| OnnxTR, orientation by vote | English (`--lang en`) | — | — | 121 / 30 | 99.7 % | Not measured (no frozen threshold) |
+| Tesseract | English (default `--lang en+ar`) | 0.9 % | 0.0–2.8 % | 116 / 31 | 93.7 % | Pass |
+| Tesseract | Arabic (default `--lang en+ar`) | 0.1 % | 0.0–0.4 % | 805 / 32 | 97.4 % | Pass |
 | Language model (Ollama, qwen3-vl 8B) | English | pending | pending | pending | pending | pending |
 | Language model (Ollama, qwen3-vl 8B) | Arabic and mixed | pending | pending | pending | pending | pending |
+
+Tesseract met the missed-error target at a threshold of 0.968 while sending most correct
+lines to review. Its one missed error per language was a line the reader did not find.
+"Bad lines / documents" counts the bad lines and the documents that contained them.
 
 Coverage, speed and handwriting:
 

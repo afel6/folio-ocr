@@ -18,7 +18,7 @@ sys.path.insert(0, sys.argv[1])
 from sample_files import image_pdf
 
 from folio_ocr.errors import InputError
-from folio_ocr.pipeline import page_image
+from folio_ocr.ingest import open_pdf
 
 
 def peak_mb():
@@ -56,7 +56,7 @@ else:
     data = image_pdf(0, 0, mask=("SMask", side, side), pixels=True)
 before = peak_mb()
 try:
-    page_image(data, 1)
+    open_pdf(data)
 except InputError as error:
     assert str(error) == expected, str(error)
 else:

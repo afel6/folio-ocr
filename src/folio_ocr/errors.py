@@ -32,3 +32,16 @@ class SetupNeededError(WeightsError):
 class ModelServerError(FolioError):
     """The configured model server failed or answered outside its contract.
     The HTTP API answers 502."""
+
+
+class PdfReaderError(FolioError):
+    """No reader process with memory and time limits could be started, so PDFs (or images)
+    cannot be read here. `reason` says why, for `folio doctor`. The HTTP API answers 503."""
+
+    def __init__(self, kind: str, reason: str) -> None:
+        if kind == "pdf":
+            line = "PDFs cannot be read here: folio could not start its PDF reader with limits"
+        else:
+            line = "images cannot be read here: folio could not start its image reader with limits"
+        super().__init__(line)
+        self.reason = reason

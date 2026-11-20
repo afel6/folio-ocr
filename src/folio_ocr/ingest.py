@@ -7,10 +7,8 @@ import io
 import math
 import re
 import struct
-import threading
 import warnings
 
-import numpy as np
 import pypdfium2 as pdfium
 import pypdfium2.raw as pdfium_raw
 from PIL import Image, ImageOps, UnidentifiedImageError
@@ -22,8 +20,10 @@ MAX_UPLOAD_BYTES = 25 * 1024 * 1024
 MAX_PDF_PAGES = 20  # also the cap on the frames (pages) of a TIFF
 MAX_PIXELS = 50_000_000
 RENDER_DPI = 300
-# PDFium is not thread-safe, not even across documents: hold this lock around every call.
-PDFIUM_LOCK = threading.Lock()
+# Limits of the reader process that opens each file (folio_ocr.pdf_client): its committed
+# memory, twice the largest any normal file needed, and its seconds of work.
+PDF_MEMORY_MB = 1950
+PDF_SECONDS = 60
 
 _NOT_SUPPORTED = "the file is not a PDF, PNG, JPEG, TIFF or WebP file"
 _ENCRYPTED = "the PDF is encrypted; remove its password and try again"
@@ -33,6 +33,13 @@ _HOLDS_TOO_BIG = "holds an image too large to read (over 50 megapixels)"
 _IMAGES_UNCHECKED = "the PDF's images could not be checked safely; it was not read"
 _DECODE = "the image could not be decoded; it may be damaged"
 _FORMS = 128  # Form XObject nesting walked for images; PDFium draws far fewer levels
+_TOO_MANY_PAGES = f"the PDF has more than {MAX_PDF_PAGES} pages"
+_TOO_MANY_FRAMES = f"the TIFF has more than {MAX_PDF_PAGES} pages"
+# Every refusal line of the checks below that names no page (the page lines are in pdf_replies).
+REFUSALS = frozenset(
+    {_ENCRYPTED, _DAMAGED_PDF, _IMAGE_TOO_BIG, f"the PDF {_HOLDS_TOO_BIG}", _IMAGES_UNCHECKED}
+    | {_DECODE, _TOO_MANY_PAGES, _TOO_MANY_FRAMES}
+)
 
 _PILLOW_FORMAT = {"png": "PNG", "jpeg": "JPEG", "tiff": "TIFF", "webp": "WEBP"}
 _TIFF_MAGIC = (b"II*\x00", b"MM\x00*", b"II+\x00", b"MM\x00+")
@@ -82,6 +89,11 @@ def sanitise_filename(name: str) -> str:
     return cleaned or "document"
 
 
+def page_damaged(page_no: int) -> str:
+    """The refusal line for a PDF page (from 1) that PDFium cannot load, list or render."""
+    return f"page {page_no} of the PDF could not be read; it may be damaged"
+
+
 def render_size(width_pt: float, height_pt: float, dpi: int = RENDER_DPI) -> tuple[int, int]:
     """Pixel size of a page of the given size in points when rendered at `dpi`."""
     scale = dpi / 72  # the same float step pypdfium2 uses, so sizes agree to the pixel
@@ -106,9 +118,7 @@ def _check_page_images(doc: pdfium.PdfDocument, index: int) -> None:
             if _image_pixels(*image.get_px_size()) > MAX_PIXELS:
                 raise InputError(f"page {index + 1} {_HOLDS_TOO_BIG}")
     except pdfium.PdfiumError as err:
-        raise InputError(
-            f"page {index + 1} of the PDF could not be read; it may be damaged"
-        ) from err
+        raise InputError(page_damaged(index + 1)) from err
     finally:
         page.close()
 
@@ -117,7 +127,7 @@ def _check_pdf(doc: pdfium.PdfDocument) -> None:
     if pdfium_raw.FPDF_GetSecurityHandlerRevision(doc.raw) != -1:
         raise InputError(_ENCRYPTED)
     if len(doc) > MAX_PDF_PAGES:
-        raise InputError(f"the PDF has more than {MAX_PDF_PAGES} pages")
+        raise InputError(_TOO_MANY_PAGES)
     for i in range(len(doc)):
         try:
             width, height = render_size(*doc.get_page_size(i))
@@ -155,16 +165,13 @@ def _open_checked(data: bytes) -> pdfium.PdfDocument:
 
 
 def open_pdf(data: bytes) -> pdfium.PdfDocument:
-    """Open a PDF after checking encryption, page count, page sizes and image sizes. It takes
-    PDFIUM_LOCK itself, so the caller must not hold it; the caller closes the document under
-    PDFIUM_LOCK. The raw file is read outside the lock: it touches no PDFium state."""
-    with PDFIUM_LOCK:
-        doc = _open_checked(data)
+    """Open a PDF after checking encryption, page count, page sizes and image sizes. PDFium is
+    not thread-safe, so only the reader process (folio_ocr.pdf_worker) calls this."""
+    doc = _open_checked(data)
     try:
         _check_declared_images(data)
     except BaseException:
-        with PDFIUM_LOCK:
-            doc.close()
+        doc.close()
         raise
     return doc
 
@@ -185,7 +192,7 @@ def _check_frames(image: Image.Image, kind: str) -> None:
             break
         index += 1
         if index >= MAX_PDF_PAGES:
-            raise InputError(f"the TIFF has more than {MAX_PDF_PAGES} pages")
+            raise InputError(_TOO_MANY_FRAMES)
     image.seek(0)
 
 
@@ -232,10 +239,14 @@ def page_pixels(frame: Image.Image) -> Image.Image:
     if frame.mode == "1":
         return frame.convert("L")
     if frame.mode in ("I", "F") or frame.mode.startswith("I;16"):
-        values = np.asarray(frame, dtype=np.float64)
+        import numpy as np  # here only, so the reader process starts without numpy
+
+        values = np.array(frame, dtype=np.float64)  # a writable copy, scaled in place
         sixteen_bit = frame.mode.startswith("I;16") or values.max(initial=0.0) > 255
         top = 65535.0 if sixteen_bit else 255.0
-        return Image.fromarray(np.clip(values * (255.0 / top), 0, 255).astype(np.uint8), "L")
+        values *= 255.0 / top
+        np.clip(values, 0, 255, out=values)
+        return Image.fromarray(values.astype(np.uint8), "L")
     if frame.mode in _ALPHA_MODES or "transparency" in frame.info:
         rgba = frame.convert("RGBA")
         return Image.alpha_composite(Image.new("RGBA", rgba.size, "white"), rgba).convert("RGB")

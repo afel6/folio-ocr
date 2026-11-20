@@ -9,7 +9,7 @@ from datetime import UTC, datetime
 from python_multipart.exceptions import MultipartParseError
 from python_multipart.multipart import MultipartParser, parse_options_header
 
-from folio_ocr import ingest, ocr_setup
+from folio_ocr import ingest, ocr_setup, pdf_client
 from folio_ocr.document import IDENTITY, Document, Page, Source
 from folio_ocr.errors import InputError
 from folio_ocr.flags import LANGUAGES
@@ -155,18 +155,9 @@ def unread_page(index: int) -> Page:
 
 
 def _page_count(data: bytes, kind: str) -> int:
-    if kind == "pdf":
-        doc = ingest.open_pdf(data)
-        with ingest.PDFIUM_LOCK:
-            try:
-                return len(doc)
-            finally:
-                doc.close()
-    img = ingest.open_image(data, kind)
-    try:
-        return ingest.frame_count(img)
-    finally:
-        img.close()
+    """Pages of the file, after the file checks run in a reader process."""
+    with pdf_client.opened(data, kind) as opened:
+        return opened.count
 
 
 def new_document(upload: Upload) -> Document:

@@ -15,7 +15,7 @@ import pytest
 from PIL import Image
 from sample_files import encrypted, pdf_bytes, png_header, tiff
 
-from folio_ocr import document, ingest
+from folio_ocr import document, ingest, pdf_client, pdf_worker
 from folio_ocr.document import Engine, TextChar
 from folio_ocr.errors import InputError
 from folio_ocr.ingest import MAX_UPLOAD_BYTES
@@ -227,12 +227,22 @@ def test_owner_password_only_pdf_refused():
     _refused(encrypted(), ENCRYPTED)
 
 
-def test_huge_page_refused_without_rendering(monkeypatch):
+def _no_render(monkeypatch):
     def boom(*_a, **_k):
         raise AssertionError("rendered")
 
     monkeypatch.setattr(pdfium.PdfPage, "render", boom)
     monkeypatch.setattr(pdfium_raw, "FPDF_RenderPageBitmap", boom)
+
+
+def test_huge_page_refused_without_rendering(monkeypatch):
+    _no_render(monkeypatch)
+    with pytest.raises(InputError) as info:
+        ingest.open_pdf(pdf_bytes([(14400, 14400)]))
+    assert str(info.value) == PIXELS_PAGE
+
+
+def test_huge_page_is_refused_by_read_bytes():
     _refused(pdf_bytes([(14400, 14400)]), PIXELS_PAGE)
 
 
@@ -412,44 +422,29 @@ def test_line_flags_never_repeat():
 # damaged pages
 
 
-def test_page_render_failure(monkeypatch):
-    def boom(*_a, **_k):
-        raise pdfium.PdfiumError("x")
-
-    monkeypatch.setattr(pdfium.PdfPage, "render", boom)
-    _refused((FIXTURES / "en-invoice.pdf").read_bytes(), PAGE_DAMAGED, name="a.pdf")
+def _boom(*_a, **_k):
+    raise pdfium.PdfiumError("x")
 
 
-def test_page_load_failure(monkeypatch):
-    def boom(*_a, **_k):
-        raise pdfium.PdfiumError("x")
+def _damaged_answer(monkeypatch, op, patch):
+    monkeypatch.setattr(*patch)
+    state = {"pdf": ingest.open_pdf((FIXTURES / "en-invoice.pdf").read_bytes())}
+    try:
+        with pytest.raises(InputError) as info:
+            pdf_worker._answer(state, {"op": op, "index": 0}, None)
+    finally:
+        state["pdf"].close()
+    assert str(info.value) == PAGE_DAMAGED
 
-    monkeypatch.setattr(pdfium.PdfDocument, "__getitem__", boom)
-    _refused((FIXTURES / "en-invoice.pdf").read_bytes(), PAGE_DAMAGED, name="a.pdf")
+
+@pytest.mark.parametrize("op", ["page", "render"])
+def test_worker_page_render_failure(monkeypatch, op):
+    _damaged_answer(monkeypatch, op, (pdfium.PdfPage, "render", _boom))
 
 
-# --- PDFium is not thread-safe: every call runs under one lock --------------------------
-
-
-def test_pdfium_runs_under_the_lock(monkeypatch):
-    from folio_ocr.ingest import PDFIUM_LOCK
-
-    calls = []
-    open_doc, render = pdfium.PdfDocument, pdfium.PdfPage.render
-
-    def open_spy(*args, **kwargs):
-        calls.append(PDFIUM_LOCK.locked())
-        return open_doc(*args, **kwargs)
-
-    def render_spy(self, *args, **kwargs):
-        calls.append(PDFIUM_LOCK.locked())
-        return render(self, *args, **kwargs)
-
-    monkeypatch.setattr(pdfium, "PdfDocument", open_spy)
-    monkeypatch.setattr(pdfium.PdfPage, "render", render_spy)
-    read_path(FIXTURES / "en-invoice.pdf", languages="en")
-    assert calls and all(calls)
-    assert not PDFIUM_LOCK.locked()
+@pytest.mark.parametrize("op", ["page", "render"])
+def test_worker_page_load_failure(monkeypatch, op):
+    _damaged_answer(monkeypatch, op, (pdfium.PdfDocument, "__getitem__", _boom))
 
 
 def test_concurrent_reads_give_the_same_pages():
@@ -479,8 +474,15 @@ def test_rendered_page_image_owns_its_pixels(monkeypatch):
         return close(self)
 
     monkeypatch.setattr(pdfium.PdfBitmap, "close", close_spy)
-    doc = read_path(FIXTURES / "ar-invoice-scanned.pdf", languages="ar")
-    assert closed and doc.pages[0].width > 0
+    doc = pdfium.PdfDocument(str(FIXTURES / "ar-invoice-scanned.pdf"))
+    try:
+        page = doc[0]
+        image = pdf_worker._render(page)
+        page.close()
+    finally:
+        doc.close()
+    assert closed and image.size[0] > 0
+    assert image.tobytes()  # still readable after the bitmap and document are closed
 
 
 def test_mpo_second_picture_is_not_a_page():
@@ -554,40 +556,40 @@ def _merged(*names):
 
 
 def _trace(monkeypatch):
-    """Record "render n" / "ocr n" in order, and whether the PDFium lock was held at each."""
+    """Record "render" / "ocr n" in order, and how many reader processes were alive at each OCR."""
     from folio_ocr import pipeline
 
-    events, held = [], []
-    render, ocr_page = pipeline._render, pipeline.ocr_page
+    events, live = [], []
+    page, ocr_page = pdf_client.OpenFile.page, pipeline.ocr_page
 
-    def render_spy(page):
+    def page_spy(self, index):
         events.append("render")
-        return render(page)
+        return page(self, index)
 
     def ocr_spy(page_no, *args, **kwargs):
         events.append(f"ocr {page_no}")
-        held.append(ingest.PDFIUM_LOCK.locked())
+        live.append(pdf_client.live_workers())
         return ocr_page(page_no, *args, **kwargs)
 
-    monkeypatch.setattr(pipeline, "_render", render_spy)
+    monkeypatch.setattr(pdf_client.OpenFile, "page", page_spy)
     monkeypatch.setattr(pipeline, "ocr_page", ocr_spy)
-    return events, held
+    return events, live
 
 
 def test_each_ocr_page_is_read_before_the_next_page_is_rendered(monkeypatch):
-    events, held = _trace(monkeypatch)
+    events, live = _trace(monkeypatch)
     doc = read_bytes(
         _merged("ar-invoice-scanned.pdf", "ar-invoice-scanned.pdf"), "s.pdf", languages="ar"
     )
     assert events == ["render", "ocr 1", "render", "ocr 2"]
-    assert held == [False, False] and not ingest.PDFIUM_LOCK.locked()
+    assert live == [0, 0] and pdf_client.live_workers() == 0
     assert [p.index for p in doc.pages] == [1, 2]
 
 
 def test_pages_stay_in_order_when_a_middle_page_keeps_its_text_layer(monkeypatch):
-    events, held = _trace(monkeypatch)
+    events, live = _trace(monkeypatch)
     data = _merged("ar-invoice-scanned.pdf", "en-invoice.pdf", "ar-invoice-scanned.pdf")
     doc = read_bytes(data, "m.pdf", languages="en+ar")
     assert [(p.index, p.origin) for p in doc.pages] == [(1, "ocr"), (2, "text_layer"), (3, "ocr")]
     assert events == ["render", "ocr 1", "render", "render", "ocr 3"]
-    assert held == [False, False]
+    assert live == [0, 0]

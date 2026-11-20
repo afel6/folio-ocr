@@ -3,15 +3,14 @@ as extracted and never repaired; doubtful lines are flagged and unread ink is re
 
 from collections.abc import Sequence
 
-import pypdfium2 as pdfium
 from PIL import Image
 
 from folio_ocr.charsets import line_script
 from folio_ocr.coverage import uncovered_ink
-from folio_ocr.document import IDENTITY, Line, Page, TextChar, line_id
+from folio_ocr.document import IDENTITY, Box, Line, Page, TextChar, line_id
 from folio_ocr.flags import UNREAD_REGIONS, clean_text, line_flags, review_status
 from folio_ocr.ingest import RENDER_DPI
-from folio_ocr.text_layer import image_boxes, line_box, line_text
+from folio_ocr.text_layer import line_box, line_text
 from folio_ocr.text_layer_check import LineCheck, TextLayerCheck
 
 
@@ -39,7 +38,7 @@ def text_layer_line(
 
 def text_layer_page(
     page_no: int,
-    page: pdfium.PdfPage,
+    images: Sequence[Box],
     image: Image.Image,
     segments: Sequence[Sequence[TextChar]],
     report: TextLayerCheck,
@@ -47,13 +46,13 @@ def text_layer_page(
 ) -> Page:
     """The page whose text layer is kept. `image` is its render at RENDER_DPI, which is also the
     straightened frame: text-layer pages are never deskewed, so the transform is identity.
-    Images drawn on the page and ink outside every line box are unread regions."""
+    `images` (the boxes of the images drawn on the page, from `text_layer.image_boxes`) and ink
+    outside every line box are unread regions."""
     pairs = zip(segments, report.lines, strict=True)
     lines = tuple(
         text_layer_line(page_no, k, chars, check, languages)
         for k, (chars, check) in enumerate(pairs, start=1)
     )
-    images = image_boxes(page, RENDER_DPI)
     ink = uncovered_ink(image, [*(line.box for line in lines), *images])
     unread = tuple(sorted((*images, *ink), key=lambda b: (b[1], b[0])))
     return Page(

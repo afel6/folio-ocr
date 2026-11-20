@@ -19,7 +19,7 @@ from starlette.staticfiles import StaticFiles
 
 from folio_ocr import assets, export, geometry, model_health, ocr_setup, pipeline
 from folio_ocr.config import Settings
-from folio_ocr.errors import InputError, ModelServerError, WeightsError
+from folio_ocr.errors import InputError, ModelServerError, PdfReaderError, WeightsError
 from folio_ocr.model_reader import ModelReader
 from folio_ocr.web.guard import Guard, allowed_hosts, stderr_line
 from folio_ocr.web.store import ApiError, Store
@@ -69,6 +69,7 @@ def _add_error_handlers(app: FastAPI) -> None:
     app.add_exception_handler(ApiError, lambda request, exc: _reply(exc.status, str(exc)))
     fixed(InputError, 400)
     fixed(WeightsError, 503)  # includes SetupNeededError
+    fixed(PdfReaderError, 503)
     fixed(ModelServerError, 502)
     app.add_exception_handler(RequestValidationError, lambda request, exc: _reply(400, BAD_BODY))
 

@@ -7,7 +7,7 @@ from dataclasses import dataclass, field
 
 import pytest
 
-from folio_ocr import ingest
+from folio_ocr import pdf_client
 from folio_ocr.document import IDENTITY, Page
 from folio_ocr.ocr_setup import OcrSetup
 
@@ -18,7 +18,7 @@ class PageCall:
     size: tuple[int, int]
     reasons: tuple[str, ...]
     invalid_lines: int | None
-    pdfium_locked: bool
+    workers_live: int  # reader processes alive when OCR ran
 
 
 @dataclass
@@ -38,9 +38,7 @@ def install(monkeypatch: pytest.MonkeyPatch) -> OcrCalls:
 
     def ocr_page(page_no, image, *, ocr, languages, render_dpi, reasons=(), invalid_lines=None):
         calls.pages.append(
-            PageCall(
-                page_no, image.size, tuple(reasons), invalid_lines, ingest.PDFIUM_LOCK.locked()
-            )
+            PageCall(page_no, image.size, tuple(reasons), invalid_lines, pdf_client.live_workers())
         )
         width, height = image.size
         return Page(

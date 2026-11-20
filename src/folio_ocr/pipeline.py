@@ -11,22 +11,18 @@ from dataclasses import dataclass, replace
 from datetime import UTC, datetime
 from pathlib import Path
 
-import pypdfium2 as pdfium
 from PIL import Image
 
+from folio_ocr import pdf_client
 from folio_ocr.coverage import has_ink
 from folio_ocr.document import Document, Engine, Page, Source
 from folio_ocr.errors import InputError
 from folio_ocr.flags import LANGUAGES
 from folio_ocr.ingest import (
     MAX_UPLOAD_BYTES,
-    PDFIUM_LOCK,
     RENDER_DPI,
     check_size,
-    frame_count,
-    load_frame,
-    open_image,
-    open_pdf,
+    page_damaged,
     sanitise_filename,
     sniff,
 )
@@ -34,7 +30,6 @@ from folio_ocr.model_pages import ModelDocument, ModelPage
 from folio_ocr.model_reader import ModelReader
 from folio_ocr.ocr import ocr_page
 from folio_ocr.ocr_setup import OcrSetup, engine, prepare
-from folio_ocr.text_layer import read_text_layer
 from folio_ocr.text_layer_check import check_text_layer
 from folio_ocr.text_layer_page import text_layer_page
 
@@ -146,6 +141,14 @@ class _Reader:
             **model,
         )
 
+    def reads_at_once(self, found: "_Kept | _Pending") -> bool:
+        """True for a page whose reading waits on nothing outside: one kept from its text
+        layer when no model server re-reads it."""
+        return isinstance(found, _Kept) and self.model is None
+
+    def read(self, found: "_Kept | _Pending") -> Page:
+        return self.page(found) if isinstance(found, _Pending) else self.kept(found)
+
     def kept(self, kept: "_Kept") -> Page:
         """A page kept from its text layer; the model re-reads its doubtful lines."""
         if self.model is None:
@@ -177,64 +180,50 @@ class _Pending:
 
 
 def _read_pdf(data: bytes, languages: str, reader: _Reader) -> tuple[Page, ...]:
-    """Page by page: a page kept from its text layer is built under PDFIUM_LOCK; a page sent to
-    OCR is only rendered there and read after the lock is released, before the next page is
-    rendered (one render in memory at a time). Every PDFium call holds the lock."""
-    doc = open_pdf(data)
-    try:
-        with PDFIUM_LOCK:
-            count = len(doc)
-        pages = []
-        for i in range(count):
-            with PDFIUM_LOCK:
-                found = _read_pdf_page(doc, i, languages)
-            pages.append(reader.page(found) if isinstance(found, _Pending) else reader.kept(found))
-        return tuple(pages)
-    finally:
-        with PDFIUM_LOCK:
-            doc.close()
+    """Page by page in a reader process. Pages kept from their text layer are built while it
+    runs; it is closed before a page is read by OCR or the model server, and a new one opens
+    the file again for the next page, so no reader process waits on OCR or the network and
+    one render at a time is held."""
+    pages: list[Page] = []
+    count = None
+    while count is None or len(pages) < count:
+        found = None
+        with pdf_client.opened(data, "pdf") as pdf:
+            count = pdf.count
+            while len(pages) < count:
+                found = _read_pdf_page(pdf, len(pages), languages)
+                if not reader.reads_at_once(found):
+                    break
+                pages.append(reader.kept(found))
+                found = None
+        if found is not None:
+            pages.append(reader.read(found))
+    return tuple(pages)
 
 
-def _render(page: pdfium.PdfPage) -> Image.Image:
-    """Grayscale render at RENDER_DPI that owns its pixels, so no pdfium bitmap outlives the
-    lock."""
-    bitmap = page.render(scale=RENDER_DPI / 72, grayscale=True)
-    try:
-        return bitmap.to_pil().copy()
-    finally:
-        bitmap.close()
-
-
-def _read_pdf_page(doc: pdfium.PdfDocument, i: int, languages: str) -> _Kept | _Pending:
+def _read_pdf_page(pdf: pdf_client.OpenFile, i: int, languages: str) -> _Kept | _Pending:
     """Page i + 1: kept from its text layer, or rendered for OCR (R4 routing)."""
-    damaged = f"page {i + 1} of the PDF could not be read; it may be damaged"
-    try:
-        page = doc[i]
-    except pdfium.PdfiumError as err:
-        raise InputError(damaged) from err
-    try:
-        image = _render(page)
-        segments = read_text_layer(page, RENDER_DPI)
-        report = check_text_layer(segments, has_ink=has_ink(image))
-        if report.to_ocr:
-            return _Pending(i + 1, image, RENDER_DPI, report.reasons, report.invalid_lines)
-        return _Kept(text_layer_page(i + 1, page, image, segments, report, languages), image)
-    except pdfium.PdfiumError as err:
-        raise InputError(damaged) from err
-    finally:
-        page.close()
+    seen = pdf.page(i)
+    report = check_text_layer(seen.lines, has_ink=has_ink(seen.image))
+    if report.to_ocr:
+        return _Pending(i + 1, seen.image, RENDER_DPI, report.reasons, report.invalid_lines)
+    if seen.images is None:
+        raise InputError(page_damaged(i + 1))
+    page = text_layer_page(i + 1, seen.images, seen.image, seen.lines, report, languages)
+    return _Kept(page, seen.image)
 
 
 def _read_image(data: bytes, kind: str, reader: _Reader) -> tuple[Page, ...]:
-    """Frames are decoded and read one at a time, so at most one frame is held in memory."""
-    image = open_image(data, kind)
-    try:
-        return tuple(
-            reader.page(_Pending(i + 1, load_frame(image, i), None))
-            for i in range(frame_count(image))
-        )
-    finally:
-        image.close()
+    """Frames are decoded one at a time, each by a reader process closed before the frame is
+    read, so at most one frame is held in memory."""
+    pages: list[Page] = []
+    count = 1
+    while len(pages) < count:
+        with pdf_client.opened(data, kind) as image:
+            count = image.count
+            frame = image.frame(len(pages))
+        pages.append(reader.page(_Pending(len(pages) + 1, frame, None)))
+    return tuple(pages)
 
 
 def read_page(
@@ -267,27 +256,17 @@ def _check_page_no(page_no: int, count: int) -> None:
 
 
 def _one_pdf_page(data: bytes, page_no: int, languages: str, reader: _Reader) -> Page:
-    doc = open_pdf(data)
-    try:
-        with PDFIUM_LOCK:
-            count = len(doc)
-        _check_page_no(page_no, count)
-        with PDFIUM_LOCK:
-            found = _read_pdf_page(doc, page_no - 1, languages)
-        return reader.page(found) if isinstance(found, _Pending) else reader.kept(found)
-    finally:
-        with PDFIUM_LOCK:
-            doc.close()
+    with pdf_client.opened(data, "pdf") as pdf:
+        _check_page_no(page_no, pdf.count)
+        found = _read_pdf_page(pdf, page_no - 1, languages)
+    return reader.read(found)
 
 
 def _frame(data: bytes, kind: str, page_no: int) -> Image.Image:
     """Frame `page_no` (from 1) of an image file, decoded; ValueError when it has no such frame."""
-    image = open_image(data, kind)
-    try:
-        _check_page_no(page_no, frame_count(image))
-        return load_frame(image, page_no - 1)
-    finally:
-        image.close()
+    with pdf_client.opened(data, kind) as image:
+        _check_page_no(page_no, image.count)
+        return image.frame(page_no - 1)
 
 
 def _one_image_page(data: bytes, kind: str, page_no: int, reader: _Reader) -> Page:
@@ -300,18 +279,6 @@ def page_image(data: bytes, page_no: int) -> Image.Image:
     kind = sniff(data)
     if kind != "pdf":
         return _frame(data, kind, page_no)
-    doc = open_pdf(data)
-    with PDFIUM_LOCK:
-        try:
-            _check_page_no(page_no, len(doc))
-            page = doc[page_no - 1]
-            try:
-                return _render(page)
-            finally:
-                page.close()
-        except pdfium.PdfiumError as err:
-            raise InputError(
-                f"page {page_no} of the PDF could not be read; it may be damaged"
-            ) from err
-        finally:
-            doc.close()
+    with pdf_client.opened(data, "pdf") as pdf:
+        _check_page_no(page_no, pdf.count)
+        return pdf.render(page_no - 1)
