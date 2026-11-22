@@ -8,7 +8,8 @@ time runs out and stays set until a reply is read in full, and the time spent is
 when the reply is complete. Only time inside a request counts, not the wait for a slot, the
 reading of pages afterwards, or the start of the process, which has a limit of its own of
 PDF_SECONDS (no file byte is sent before it says it is ready, so no file can slow it).
-At most MAX_WORKERS processes live at once; more callers wait.
+At most MAX_WORKERS processes live at once; more callers wait for a free slot, and a caller
+inside `limit_slot_wait` (a web request) gets ReaderBusyError when its wait runs out.
 This bounds what a file can cost; it is not a sandbox for code run inside PDFium."""
 
 import os
@@ -18,16 +19,19 @@ import threading
 import time
 from collections.abc import Callable, Iterator
 from contextlib import contextmanager, suppress
+from contextvars import ContextVar
 
 from PIL import Image
 
 from folio_ocr import ingest, pdf_frames, pdf_replies
-from folio_ocr.errors import FolioError, InputError, PdfReaderError
+from folio_ocr.errors import FolioError, InputError, PdfReaderError, ReaderBusyError
 from folio_ocr.pdf_replies import PdfPage
 
 MAX_WORKERS = 2
 _HEADER_LIMIT = 8 * 2**20  # a reply's JSON: about 48,000 characters of text on one page
 _SLOTS = threading.BoundedSemaphore(MAX_WORKERS)
+_SLOT_TIMEOUT: ContextVar[float | None] = ContextVar("folio_reader_slot_timeout", default=None)
+_RUNTIME_ENV = frozenset({"SYSTEMROOT", "WINDIR", "TEMP", "TMP", "TMPDIR"})
 _live = 0
 _LIVE_LOCK = threading.Lock()
 
@@ -54,8 +58,8 @@ def _command() -> list[str]:
 
 
 def _environment() -> dict[str, str]:
-    """The environment without folio's settings, so the model server key never reaches it."""
-    return {k: v for k, v in os.environ.items() if not k.upper().startswith("FOLIO_")}
+    """Keep only OS and temp-directory settings needed by the packaged Python runtime."""
+    return {key: value for key, value in os.environ.items() if key.upper() in _RUNTIME_ENV}
 
 
 class _Worker:
@@ -240,9 +244,22 @@ class OpenFile:
 
 
 @contextmanager
+def limit_slot_wait(seconds: float) -> Iterator[None]:
+    """Bound native reader-slot waits in this web request, including in its worker thread."""
+    token = _SLOT_TIMEOUT.set(seconds)
+    try:
+        yield
+    finally:
+        _SLOT_TIMEOUT.reset(token)
+
+
+@contextmanager
 def _running(kind: str) -> Iterator[_Worker]:
-    """A started reader process in a free slot (callers wait for one); ended on every path."""
-    with _SLOTS:
+    """A started reader process in a free slot, ended on every path. Callers wait for a slot;
+    ReaderBusyError when the wait set by `limit_slot_wait` runs out first."""
+    if not _SLOTS.acquire(timeout=_SLOT_TIMEOUT.get()):
+        raise ReaderBusyError()
+    try:
         worker = _Worker(kind)
         _count_live(1)
         try:
@@ -251,13 +268,16 @@ def _running(kind: str) -> Iterator[_Worker]:
         finally:
             worker.close()
             _count_live(-1)
+    finally:
+        _SLOTS.release()
 
 
 @contextmanager
 def opened(data: bytes, kind: str) -> Iterator[OpenFile]:
     """Open `data` (of `kind` from `ingest.sniff`) in a reader process, waiting for a free slot.
     The process ends when the block ends. InputError: the file is refused or broke a limit;
-    PdfReaderError: no reader process with limits could be started."""
+    PdfReaderError: no reader process with limits could be started; ReaderBusyError: no slot
+    came free within the wait set by `limit_slot_wait`."""
     with _running(kind) as worker:
         yield OpenFile(worker, data)
 

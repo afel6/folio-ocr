@@ -1,9 +1,11 @@
-"""Windows Job Object that caps the committed memory of the file reader process.
+"""Windows Job Objects that end the programs folio starts when folio ends.
 
-The job is set up before the process runs: the process starts suspended, joins the job, and only
-then runs, so the Python interpreter that a virtual environment's python.exe starts as its child
-is in the job too. Closing the job kills every process in it, also when folio itself ends.
-A process that hits the cap posts a message to the job's completion port."""
+The file reader's job caps the committed memory of its process. The process starts suspended, joins
+the job, and only then runs, so the Python interpreter that a virtual environment's python.exe
+starts as its child is in the job too. A process that hits the cap posts a message to the job's
+completion port. Each Tesseract run gets a separate job without a memory cap so stopping
+one run also ends its descendants.
+Closing a job kills every process in it, also when folio itself is killed."""
 
 import ctypes
 import sys
@@ -102,15 +104,18 @@ def _fail(step: str) -> OSError:
 
 
 class JobObject:
-    """A job whose processes each get at most `memory_bytes` of committed memory."""
+    """A job whose processes end when it closes; with `memory_bytes` each also gets at most that
+    much committed memory and the job reports when one hits it. Without it, no memory limit."""
 
-    def __init__(self, memory_bytes: int) -> None:
+    def __init__(self, memory_bytes: int | None) -> None:
         self._job = _K32.CreateJobObjectW(None, None)
         if not self._job:
             raise _fail("be created")
         self._port = None
         try:
             self._limit(memory_bytes)
+            if memory_bytes is None:
+                return
             self._port = _K32.CreateIoCompletionPort(_INVALID_HANDLE, None, 0, 1)
             if not self._port:
                 raise _fail("get a completion port")
@@ -123,26 +128,32 @@ class JobObject:
             self.close()
             raise
 
-    def _limit(self, memory_bytes: int) -> None:
+    def _limit(self, memory_bytes: int | None) -> None:
         limits = _ExtendedLimits()
-        limits.Basic.LimitFlags = _LIMIT_PROCESS_MEMORY | _LIMIT_KILL_ON_JOB_CLOSE
-        limits.ProcessMemoryLimit = memory_bytes
+        limits.Basic.LimitFlags = _LIMIT_KILL_ON_JOB_CLOSE
+        if memory_bytes is not None:
+            limits.Basic.LimitFlags |= _LIMIT_PROCESS_MEMORY
+            limits.ProcessMemoryLimit = memory_bytes
         if not _K32.SetInformationJobObject(
             self._job, _EXTENDED_LIMITS, ctypes.byref(limits), ctypes.sizeof(limits)
         ):
-            raise _fail("set the memory limit")
+            raise _fail("set its limits")
 
     def adopt(self, pid: int) -> None:
         """Put the suspended process `pid` in the job, then let it run."""
+        self.take(pid)
+        _resume(pid)
+
+    def take(self, pid: int) -> None:
+        """Put the process `pid`, suspended or running, in the job."""
         process = _K32.OpenProcess(_PROCESS_SET_QUOTA | _PROCESS_TERMINATE, False, pid)
         if not process:
-            raise _fail("open the reader process")
+            raise _fail("open the process")
         try:
             if not _K32.AssignProcessToJobObject(self._job, process):
-                raise _fail("take the reader process")
+                raise _fail("take the process")
         finally:
             _K32.CloseHandle(process)
-        _resume(pid)
 
     def memory_limit_hit(self) -> bool:
         """True when a process of the job has hit its memory limit since the last call."""
@@ -207,3 +218,14 @@ def _resume_thread(thread_id: int) -> int:
         return 0 if _K32.ResumeThread(thread) == _RESUME_FAILED else 1
     finally:
         _K32.CloseHandle(thread)
+
+
+def end_with_folio(pid: int) -> JobObject:
+    """Give a program its own kill-on-close job. The caller must close the job."""
+    job = JobObject(None)
+    try:
+        job.take(pid)
+    except BaseException:
+        job.close()
+        raise
+    return job

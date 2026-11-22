@@ -8,12 +8,14 @@ import math
 import re
 import shutil
 import subprocess
+import sys
 import threading
 import time
 from collections.abc import Callable
+from contextlib import suppress
 from dataclasses import dataclass
 from pathlib import Path
-from typing import Any
+from typing import TYPE_CHECKING, Any
 
 from PIL import Image
 
@@ -21,6 +23,9 @@ from folio_ocr import assets
 from folio_ocr.document import Box
 from folio_ocr.errors import FolioError
 from folio_ocr.reading import Reading
+
+if TYPE_CHECKING:
+    from folio_ocr.job_object import JobObject
 
 LANGUAGES = "ara+eng"
 ARGUMENTS = ("--psm", "13", "--oem", "1")  # one raw text line, the LSTM engine
@@ -109,6 +114,75 @@ def _start_failure(exc: OSError) -> TesseractFailure:
     return TesseractFailure("Tesseract could not be started")
 
 
+def _run_ending_with_folio(
+    argv: list[str], *, input: bytes | None, capture_output: bool, timeout: float, check: bool
+) -> subprocess.CompletedProcess:
+    """`subprocess.run(argv, input=input, capture_output=True, timeout=timeout, check=False)`, with
+    the program put in a Windows job that ends it when folio ends. `_execute`, the only caller,
+    always passes capture_output=True and check=False."""
+    with subprocess.Popen(
+        argv,
+        stdin=subprocess.PIPE if input is not None else None,
+        stdout=subprocess.PIPE,
+        stderr=subprocess.PIPE,
+    ) as proc:
+        job = None
+        timer = None
+        expired = threading.Event()
+
+        def stop() -> None:
+            expired.set()
+            if job is not None:
+                job.terminate()
+            else:
+                with suppress(OSError):
+                    proc.kill()
+
+        try:
+            job = _end_with_folio(proc)
+            if input is not None:
+                # Windows communicate() can block writing stdin before it checks the timeout.
+                timer = threading.Timer(timeout, stop)
+                timer.daemon = True
+                timer.start()
+            out, err = proc.communicate(input, timeout=timeout)
+        except BaseException:
+            proc.kill()
+            raise
+        finally:
+            if timer is not None:
+                timer.cancel()
+                if timer.ident is not None:
+                    timer.join()
+            if job is not None:
+                job.close()  # Stop descendants before Popen closes their output pipes.
+        if expired.is_set():
+            raise subprocess.TimeoutExpired(argv, timeout)
+    return subprocess.CompletedProcess(argv, proc.returncode, out, err)
+
+
+def _end_with_folio(proc: subprocess.Popen) -> JobObject | None:
+    """Put the running program in the job that ends it when folio ends. A program that already
+    ended has nothing left to end; any other refusal is a start failure."""
+    from folio_ocr import job_object  # Windows only
+
+    try:
+        return job_object.end_with_folio(proc.pid)
+    except OSError:
+        if proc.poll() is None:
+            raise TesseractFailure("Tesseract could not be started") from None
+        return None
+
+
+# ponytail: three known ceilings. (a) The program runs for a moment before it joins the job, so a
+# folio that dies in that moment leaves it to finish its line (a suspended start closes that gap but
+# costs a ~130 ms thread snapshot per line). (b) On Linux a killed folio leaves Tesseract to finish
+# its line (PR_SET_PDEATHSIG needs preexec_fn, unsafe in a threaded server). (c) `folio doctor`
+# checks `tesseract --version` through plain `subprocess.run` (its own runner default in doctor.py),
+# a run of milliseconds with a 10 s limit.
+_RUN_PROGRAM = _run_ending_with_folio if sys.platform == "win32" else subprocess.run
+
+
 def _execute(
     argv: list[str],
     input_: bytes | None,
@@ -136,7 +210,7 @@ def run(
     png: bytes,
     timeout_s: float,
     *,
-    runner: Callable[..., Any] = subprocess.run,
+    runner: Callable[..., Any] = _RUN_PROGRAM,
     clock: Callable[[], float] = time.perf_counter,
 ) -> bytes:
     """Tesseract's TSV output for one PNG; raises TesseractFailure."""
@@ -191,7 +265,7 @@ def osd(
     png: bytes,
     timeout_s: float,
     *,
-    runner: Callable[..., Any] = subprocess.run,
+    runner: Callable[..., Any] = _RUN_PROGRAM,
     clock: Callable[[], float] = time.perf_counter,
 ) -> Osd | None:
     """Tesseract's orientation answer for one page PNG; None only when Tesseract says the page
@@ -247,7 +321,7 @@ def read_line(
     png: bytes,
     timeout_s: float,
     *,
-    runner: Callable[..., Any] = subprocess.run,
+    runner: Callable[..., Any] = _RUN_PROGRAM,
     clock: Callable[[], float] = time.perf_counter,
 ) -> Reading:
     """Run and parse; a failure comes back as a Reading carrying the error."""
@@ -258,7 +332,7 @@ def read_line(
 
 
 def tesseract_version(
-    binary: Path, timeout_s: float = 10.0, *, runner: Callable[..., Any] = subprocess.run
+    binary: Path, timeout_s: float = 10.0, *, runner: Callable[..., Any] = _RUN_PROGRAM
 ) -> str:
     _require_absolute(binary)
     done = _execute(

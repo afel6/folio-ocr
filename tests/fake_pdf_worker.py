@@ -74,7 +74,7 @@ def main(behaviour: str) -> int:
     if behaviour == "exit_before_ready":
         return 5
     if behaviour == "sleep_before_ready":
-        with open(os.environ["FAKE_PID_FILE"], "w") as pid_file:
+        with open(sys.argv[2], "w") as pid_file:
             pid_file.write(str(os.getpid()))
         time.sleep(30)
         return 0

@@ -164,6 +164,9 @@ def test_a_refusal_from_the_real_reader_is_shown():
 def test_start_environment_has_no_folio_setting(monkeypatch):
     monkeypatch.setenv("FOLIO_MODEL_API_KEY", "x")
     monkeypatch.setenv("FOLIO_MODEL_URL", "http://example.invalid")
+    monkeypatch.setenv("OPENAI_API_KEY", "fake-key")
+    monkeypatch.setenv("AWS_SECRET_ACCESS_KEY", "fake-key")
+    monkeypatch.setenv("PYTHONPATH", "untrusted-import-path")
     assert not [k for k in pdf_client._environment() if k.upper().startswith("FOLIO_")]
     real, calls = subprocess.Popen, []
 
@@ -179,6 +182,7 @@ def test_start_environment_has_no_folio_setting(monkeypatch):
     assert args[0] == expected
     assert kwargs["stderr"] == subprocess.DEVNULL
     assert not [k for k in kwargs["env"] if k.upper().startswith("FOLIO_")]
+    assert not {"OPENAI_API_KEY", "AWS_SECRET_ACCESS_KEY", "PYTHONPATH"} & kwargs["env"].keys()
 
 
 def test_the_reader_does_not_see_the_model_key(monkeypatch):
@@ -266,15 +270,16 @@ PDF_503 = "PDFs cannot be read here: folio could not start its PDF reader with l
 
 
 def test_a_reader_that_never_gets_ready_runs_out_of_the_start_time(monkeypatch, tmp_path):
-    use_fake(monkeypatch, "sleep_before_ready")
     pid_file = tmp_path / "pid"
-    monkeypatch.setenv("FAKE_PID_FILE", str(pid_file))
+    monkeypatch.setattr(
+        pdf_client, "_command", lambda: [*fake_command("sleep_before_ready"), str(pid_file)]
+    )
     monkeypatch.setattr(ingest, "PDF_SECONDS", 1)
     started = time.monotonic()
     with pytest.raises(PdfReaderError) as err, pdf_client.opened(b"x", "pdf"):
         pass
     assert str(err.value) == PDF_503
-    assert time.monotonic() - started <= 3
+    assert 0.8 <= time.monotonic() - started <= 3
     assert pdf_client.live_workers() == 0
     # On a busy machine the reader may be killed before it could even write its pid.
     assert not pid_file.exists() or not pid_alive(int(pid_file.read_text()))

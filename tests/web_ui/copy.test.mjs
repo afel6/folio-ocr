@@ -65,6 +65,9 @@ test('plain messages', () => {
   assert.equal(msg.modelNoAnswer(2), 'The reading model didn’t answer, so page 2 wasn’t read. Try again later, or ask your administrator to check the reading model.');
   assert.equal(msg.cantRead(2, 'No picture'), 'Can’t read page 2: No picture.');
   assert.equal(msg.weights(2, 'Files missing; run folio setup.'), 'Can’t read page 2: Files missing; run folio setup. Ask your administrator to fix this.');
+  assert.equal(msg.addBusy('a.pdf'), 'Can’t add a.pdf: folio is busy reading other files. Try again in a moment.');
+  assert.equal(msg.addTooSlow('a.pdf'), 'Can’t add a.pdf: the upload took too long. Check your connection and try again.');
+  assert.equal(msg.readersBusy(2), 'Can’t read page 2: folio is busy reading other files. Try again in a moment.');
   assert.equal(msg.refused(), 'folio refused this request because it came from another page. Open folio from its own address and try again.');
   assert.equal(msg.saved(5), 'Line 5 saved.');
   assert.equal(msg.confirmed(5), 'Line 5 confirmed.');
@@ -132,4 +135,43 @@ test('errorMessage rules', () => {
   eq(errorMessage(http(400, 'Bad text'), { action: 'save', line: 5 }), seg(msg.saveFailed(5, 'Bad text')));
   eq(errorMessage(http(500, 'Oops'), { action: 'export', file: 'a.pdf' }), seg(msg.exportFailed('a.pdf', 'Oops')));
   eq(errorMessage(http(405), { action: 'list' }), seg(msg.generic(405)));
+});
+
+const BUSY = 'folio is busy reading other files; try again shortly';
+const nearMisses = [
+  BUSY.toUpperCase(), BUSY[0].toUpperCase() + BUSY.slice(1), `${BUSY}.`, `${BUSY} `, `${BUSY} now`, 'folio is busy', 'Out of memory',
+];
+
+test('a busy reply on upload says folio is busy', () => {
+  eq(errorMessage(http(503, BUSY), { action: 'upload', file: 'a.pdf' }), [
+    'Can’t add a.pdf: folio is busy reading other files. Try again in a moment.']);
+});
+
+test('a busy reply on read says folio is busy, not that the weights are missing', () => {
+  eq(errorMessage(http(503, BUSY), { action: 'read', page: 2 }), [
+    'Can’t read page 2: folio is busy reading other files. Try again in a moment.']);
+});
+
+test('other 503 replies keep their usual messages, near misses of the busy line included', () => {
+  for (const line of nearMisses) {
+    eq(errorMessage(http(503, line), { action: 'read', page: 2 }), seg(msg.weights(2, line)), line);
+    eq(errorMessage(http(503, line), { action: 'upload', file: 'a.pdf' }), seg(msg.generic(503)), line);
+  }
+  eq(errorMessage(http(503), { action: 'upload', file: 'a.pdf' }), seg(msg.generic(503)));
+});
+
+test('the busy line under another status is not a busy reply', () => {
+  eq(errorMessage(http(400, BUSY), { action: 'read', page: 2 }), seg(msg.cantRead(2, BUSY)));
+  eq(errorMessage(http(400, BUSY), { action: 'upload', file: 'a.pdf' }), seg(msg.badFile('a.pdf', BUSY)));
+});
+
+test('a timed-out upload says the upload took too long, whatever the server line', () => {
+  const ctx = { action: 'upload', file: 'a.pdf' };
+  const expected = 'Can’t add a.pdf: the upload took too long. Check your connection and try again.';
+  for (const err of [http(408), http(408, 'Request timeout'), http(408, BUSY)]) eq(errorMessage(err, ctx), [expected]);
+});
+
+test('a 408 on read is a generic error', () => {
+  eq(errorMessage(http(408, 'Request timeout'), { action: 'read', page: 2 }), seg(msg.generic(408)));
+  eq(errorMessage(http(408), { action: 'read', page: 2 }), seg(msg.generic(408)));
 });

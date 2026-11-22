@@ -55,6 +55,30 @@ def test_a_job_caps_memory_reports_it_and_kills_on_close():
 
 
 @pytest.mark.skipif(not WINDOWS, reason="job objects are Windows only")
+def test_a_job_without_a_memory_cap_only_ends_its_processes_on_close():
+    import ctypes
+
+    from folio_ocr import job_object
+    from folio_ocr.job_object import JobObject
+
+    job = JobObject(None)
+    try:
+        assert job._port is None
+        limits = job_object._ExtendedLimits()
+        job_object._K32.QueryInformationJobObject(
+            job._job,
+            job_object._EXTENDED_LIMITS,
+            ctypes.byref(limits),
+            ctypes.sizeof(limits),
+            None,
+        )
+        assert limits.Basic.LimitFlags == job_object._LIMIT_KILL_ON_JOB_CLOSE
+        assert limits.ProcessMemoryLimit == 0
+    finally:
+        job.close()
+
+
+@pytest.mark.skipif(not WINDOWS, reason="job objects are Windows only")
 def test_adopting_a_dead_process_raises_oserror():
     from folio_ocr.job_object import JobObject
 

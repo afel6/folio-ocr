@@ -7,6 +7,7 @@ import { getState, setState, subscribe } from './store.js';
 import { draftChanged, showError, writeHash } from './session.js';
 import { goPage, goStart, loadHealth, loadList, openDoc, refreshDoc } from './docs.js';
 import { readPage, resumeReading, stopReading } from './reads.js';
+import { onImageError } from './images.js';
 import { deleteDoc, exportDoc, upload } from './files.js';
 import { cancelEdit, confirm, draftInput, next, openEditor, save, selectLine } from './lines.js';
 import * as chrome from './ui-chrome.js';
@@ -56,7 +57,7 @@ const actions = {
     setState({ alert: null });
     $(getState().screen === 'doc' ? 'doc-title' : 'start-title').focus();
   },
-  imageError: (docId, n) => setState((s) => ({ imageFailed: { ...s.imageFailed, [`${docId}:${n}`]: true } })),
+  imageError: onImageError,
 };
 
 let renderFailed = false;

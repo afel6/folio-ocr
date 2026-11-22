@@ -137,6 +137,9 @@ test('pageNotices rows', () => {
   eq(t(page(1, 'reading'), { readingHere: true }), []);
   eq(t(page(1, 'read', [line('p1-l1')]), { imageFailed: true }),
     [['The image of this page can’t be shown.'], ['All lines on this page are checked.']]);
+  eq(t(page(1, 'read', [line('p1-l1')]), { imageFailed: 'busy' }),
+    [['folio is busy reading other files, so the image of this page can’t be shown right now.'], ['All lines on this page are checked.']]);
+  eq(t(page(1, 'read', [line('p1-l1')]), { imageFailed: false }), [['All lines on this page are checked.']]);
   eq(t(page(1, 'failed', [], { error: 'No reader answered' })), [[
     'This page wasn’t read: No reader answered. ', { button: 'readAgain', label: 'Read again' },
     ' Try again later; if it keeps happening, ask your administrator to run ', { code: 'folio doctor' }, '.']]);

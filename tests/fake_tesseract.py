@@ -1,7 +1,7 @@
 """A stand-in for the Tesseract program, driven by environment variables.
 
 FAKE_TESSERACT_LOG   file that gets one JSON line per run: argv, and
-                     stdin_len, stdin_sha256 for a line run
+                     stdin_len, stdin_sha256, pid for a line run
 FAKE_TESSERACT_TSV   file whose bytes are printed (default: data/tesseract/en-line.tsv)
 FAKE_TESSERACT_EXIT  exit code (default 0)
 FAKE_TESSERACT_SLEEP seconds to wait before printing"""
@@ -37,6 +37,7 @@ def main() -> None:
             "argv": sys.argv[1:],
             "stdin_len": len(data),
             "stdin_sha256": hashlib.sha256(data).hexdigest(),
+            "pid": os.getpid(),
         }
     )
     time.sleep(float(os.environ.get("FAKE_TESSERACT_SLEEP", "0")))
