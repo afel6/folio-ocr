@@ -18,7 +18,7 @@ export function init(actions) {
   $('read-page').addEventListener('click', () => current && actions.readPage(current.page));
   $('stop-reading').addEventListener('click', () => actions.stopReading());
   $('page-img').addEventListener('error', () => {
-    if (current) actions.imageError(current.docId, current.page);
+    if (current) actions.imageError(current.docId, current.page, drawn.img);
   });
   $('overlay').addEventListener('click', (e) => {
     const box = e.target.closest('g.box');
@@ -172,7 +172,7 @@ function renderNotices(state, page, key, { readingHere, queued }) {
   const notices = logic.pageNotices(page, {
     queued,
     readingHere,
-    imageFailed: !!state.imageFailed[key],
+    imageFailed: state.imageFailed[key] ?? false,
     modelConfigured: !!state.health?.model?.configured,
   });
   const signature = JSON.stringify(notices);

@@ -1,5 +1,5 @@
 // Every word the review screen shows, as pure functions. No DOM, no network.
-import { ApiError } from './errors.js';
+import { ApiError, isReadersBusy } from './errors.js';
 
 const NUM = new Intl.NumberFormat('en');
 const TIME = new Intl.DateTimeFormat('en', { timeStyle: 'short' });
@@ -74,6 +74,8 @@ export const msg = {
   storeFull: (file) => `Can’t add ${file}: folio is full. Delete a document first to make room; export it before if you need it.`,
   evicted: (name) => `${quoted(name)} was removed to make room. None of its lines had been checked or changed.`,
   badFile: (file, line) => `Can’t add ${file}: ${withDot(line)}`,
+  addBusy: (file) => `Can’t add ${file}: folio is busy reading other files. Try again in a moment.`,
+  addTooSlow: (file) => `Can’t add ${file}: the upload took too long. Check your connection and try again.`,
   readingStatus: (n, total) => `Reading page ${fmtNum(n)} of ${fmtNum(total)}…`,
   readingBar: (n) => `Reading page ${fmtNum(n)}…`,
   progressLabel: (n) => `Reading page ${fmtNum(n)}`,
@@ -81,6 +83,7 @@ export const msg = {
     `Page ${fmtNum(n)} read: ${plural(lines, 'line')}, ${fmtNum(toCheck)} to check.${hasNotes ? ' See the notes about this page.' : ''}`,
   readBusy: () => ['Another page is being read right now, maybe in another window. Try again when it finishes. ', { button: 'tryAgain', label: 'Try again' }],
   modelNoAnswer: (n) => `The reading model didn’t answer, so page ${fmtNum(n)} wasn’t read. Try again later, or ask your administrator to check the reading model.`,
+  readersBusy: (n) => `Can’t read page ${fmtNum(n)}: folio is busy reading other files. Try again in a moment.`,
   cantRead: (n, line) => `Can’t read page ${fmtNum(n)}: ${withDot(line)}`,
   weights: (n, line) => `Can’t read page ${fmtNum(n)}: ${withDot(line)} Ask your administrator to fix this.`,
   refused: () => 'folio refused this request because it came from another page. Open folio from its own address and try again.',
@@ -116,15 +119,21 @@ function readError(err, ctx) {
   if (status === 409) return msg.readBusy();
   if (status === 502) return msg.modelNoAnswer(ctx.page);
   if (status === 400 && serverLine) return msg.cantRead(ctx.page, serverLine);
+  if (isReadersBusy(err)) return msg.readersBusy(ctx.page);
   if (status === 503 && serverLine) return msg.weights(ctx.page, serverLine);
   return null;
 }
 
+function uploadError(err, file) {
+  if (err.status === 409) return msg.storeFull(file);
+  if (err.status === 408) return msg.addTooSlow(file);
+  if (isReadersBusy(err)) return msg.addBusy(file);
+  return err.status === 400 && err.serverLine ? msg.badFile(file, err.serverLine) : null;
+}
+
 function actionError(err, ctx) {
   switch (ctx.action) {
-    case 'upload':
-      if (err.status === 409) return msg.storeFull(ctx.file);
-      return err.status === 400 && err.serverLine ? msg.badFile(ctx.file, err.serverLine) : null;
+    case 'upload': return uploadError(err, ctx.file);
     case 'read': return readError(err, ctx);
     case 'save': return msg.saveFailed(ctx.line, err.serverLine);
     case 'export': return msg.exportFailed(ctx.file, err.serverLine);

@@ -14,7 +14,7 @@ let state = {
   inFlight: null,
   paused: false,
   readCounts: {},
-  imageFailed: {},
+  imageFailed: {}, // by "docId:page": true, or IMAGE_BUSY when every reader was busy
   status: '',
   alert: null,
   dialog: null,

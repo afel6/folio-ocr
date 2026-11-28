@@ -18,9 +18,13 @@ function concat(parts, sep = ' ') {
   return out;
 }
 
+/** The image-failure mark for a page whose image folio couldn't send because every reader was busy. */
+export const IMAGE_BUSY = 'busy';
+
 const FIXED = {
   queued: ['Waiting to be read.'],
   imageFailed: ['The image of this page can’t be shown.'],
+  imageBusy: ['folio is busy reading other files, so the image of this page can’t be shown right now.'],
   unread: ['This page isn’t read yet. ', { button: 'readThis', label: 'Read this page' }],
   elsewhere: ['This page is being read in another window. ', { button: 'refresh', label: 'Refresh' }],
   modelDown: ['The reading model didn’t answer, so some lines weren’t read. They’re marked “Not read”. Try “Read again” later.'],
@@ -68,7 +72,7 @@ function statusNotices(page, ctx) {
 
 /** Notices for the top of the review panel, in reading order; each is a segment list. */
 export function pageNotices(page, ctx) {
-  const out = ctx.imageFailed ? [FIXED.imageFailed] : [];
+  const out = ctx.imageFailed ? [ctx.imageFailed === IMAGE_BUSY ? FIXED.imageBusy : FIXED.imageFailed] : [];
   out.push(...statusNotices(page, ctx));
   const lines = page.lines ?? [];
   if (lines.length > 0 && lines.every((l) => l.flags.includes('needs_model_server'))) out.push(FIXED.noReader);

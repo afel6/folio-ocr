@@ -3,11 +3,13 @@
 import dataclasses
 import io
 import threading
-from collections.abc import Callable
+from collections.abc import AsyncIterator, Callable
 from contextlib import asynccontextmanager
 from pathlib import Path
 from urllib.parse import quote
 
+from anyio import CapacityLimiter, fail_after
+from anyio.lowlevel import RunVar
 from fastapi import FastAPI, Request
 from fastapi.concurrency import run_in_threadpool
 from fastapi.exceptions import RequestValidationError
@@ -18,9 +20,15 @@ from starlette.responses import FileResponse
 from starlette.routing import Match, Mount
 from starlette.staticfiles import StaticFiles
 
-from folio_ocr import assets, export, geometry, model_health, ocr_setup, pipeline
+from folio_ocr import assets, export, geometry, model_health, ocr_setup, pdf_client, pipeline
 from folio_ocr.config import Settings
-from folio_ocr.errors import InputError, ModelServerError, PdfReaderError, WeightsError
+from folio_ocr.errors import (
+    InputError,
+    ModelServerError,
+    PdfReaderError,
+    ReaderBusyError,
+    WeightsError,
+)
 from folio_ocr.model_reader import ModelReader
 from folio_ocr.web.guard import Guard, allowed_hosts, stderr_line
 from folio_ocr.web.store import ApiError, Store
@@ -81,6 +89,7 @@ def _add_error_handlers(app: FastAPI) -> None:
     fixed(InputError, 400)
     fixed(WeightsError, 503)  # includes SetupNeededError
     fixed(PdfReaderError, 503)
+    fixed(ReaderBusyError, 503)
     fixed(ModelServerError, 502)
     app.add_exception_handler(RequestValidationError, lambda request, exc: _reply(400, BAD_BODY))
 
@@ -148,13 +157,71 @@ def _add_status_routes(app: FastAPI, settings: Settings, tesseract, model) -> No
         return [_summary(d) for d in app.state.store.documents()]
 
 
+_READERS: RunVar[CapacityLimiter] = RunVar("folio_readers")
+_UPLOADS: RunVar[CapacityLimiter] = RunVar("folio_uploads")
+_READER_WAIT_S = 5.0
+_UPLOAD_IDLE_S = 30.0  # the longest pause between body bytes
+_UPLOAD_TOTAL_S = 600.0  # the whole body: 25 MB at about 44 KB/s or faster gets in
+UPLOAD_TOO_SLOW = "the upload took too long; try again"
+
+
+def _limiter(slot: RunVar[CapacityLimiter]) -> CapacityLimiter:
+    try:
+        return slot.get()
+    except LookupError:
+        limiter = CapacityLimiter(pdf_client.MAX_WORKERS)
+        slot.set(limiter)
+        return limiter
+
+
+@asynccontextmanager
+async def _admission(slot: RunVar[CapacityLimiter]):
+    """Wait off the thread pool for capacity to receive an upload or run a reader."""
+    limiter = _limiter(slot)
+    try:
+        with fail_after(_READER_WAIT_S):
+            await limiter.acquire()
+    except TimeoutError:
+        raise ReaderBusyError() from None
+    try:
+        yield
+    finally:
+        limiter.release()
+
+
+async def _paced(chunks: AsyncIterator[bytes]) -> AsyncIterator[bytes]:
+    """The body's chunks; TimeoutError when no new bytes come for _UPLOAD_IDLE_S."""
+    while True:
+        with fail_after(_UPLOAD_IDLE_S):
+            chunk = await anext(chunks, None)
+        if chunk is None:
+            return
+        yield chunk
+
+
+def _page_png(page_image, data: bytes, page) -> bytes:
+    straight, _ = geometry.straighten(page_image(data, page.index), page.rotation_applied)
+    png = io.BytesIO()
+    straight.save(png, "PNG")
+    return png.getvalue()
+
+
 def _add_upload_routes(app: FastAPI) -> None:
     @app.post("/api/documents")
     async def upload(request: Request) -> dict:
-        body = await read_body(request.stream(), request.headers.get("content-length"))
-        form = await run_in_threadpool(parse_form, request.headers.get("content-type", ""), body)
-        doc = await run_in_threadpool(new_document, form)
-        app.state.store.add(form.data, doc)
+        async with _admission(_UPLOADS):
+            try:
+                with fail_after(_UPLOAD_TOTAL_S):
+                    body = await read_body(
+                        _paced(request.stream()), request.headers.get("content-length")
+                    )
+            except TimeoutError:
+                raise ApiError(408, UPLOAD_TOO_SLOW) from None
+            form = await run_in_threadpool(parse_form, request.headers.get("content-type", ""), body)
+            async with _admission(_READERS):
+                with pdf_client.limit_slot_wait(_READER_WAIT_S):
+                    doc = await run_in_threadpool(new_document, form)
+                app.state.store.add(form.data, doc)
         return {"document_id": doc.id, "page_count": doc.source.page_count}
 
     @app.delete("/api/documents/{doc_id}")
@@ -167,26 +234,28 @@ def _add_page_routes(app: FastAPI, settings: Settings, tesseract, model, read_pa
     store: Store = app.state.store
 
     @app.get("/api/documents/{doc_id}/pages/{n}/image")
-    def image(doc_id: str, n: str) -> Response:
+    async def image(doc_id: str, n: str) -> Response:
         entry, page = store.page(doc_id, n)
-        straight, _ = geometry.straighten(page_image(entry.data, page.index), page.rotation_applied)
-        png = io.BytesIO()
-        straight.save(png, "PNG")
-        return Response(png.getvalue(), media_type="image/png")
+        async with _admission(_READERS):
+            with pdf_client.limit_slot_wait(_READER_WAIT_S):
+                png = await run_in_threadpool(_page_png, page_image, entry.data, page)
+        store.page(doc_id, n)  # deleted or evicted meanwhile: 404, no image
+        return Response(png, media_type="image/png")
 
     @app.post("/api/documents/{doc_id}/pages/{n}/read")
     def read(doc_id: str, n: str) -> JSONResponse:
         entry, no = store.begin_read(doc_id, n)
         try:
-            page, engine = read_page(
-                entry.data,
-                no,
-                languages=entry.doc.languages,
-                weights_dir=settings.weights_dir,
-                tesseract_path=tesseract,
-                line_timeout_s=settings.line_timeout_s,
-                model=model,
-            )
+            with pdf_client.limit_slot_wait(_READER_WAIT_S):
+                page, engine = read_page(
+                    entry.data,
+                    no,
+                    languages=entry.doc.languages,
+                    weights_dir=settings.weights_dir,
+                    tesseract_path=tesseract,
+                    line_timeout_s=settings.line_timeout_s,
+                    model=model,
+                )
         except BaseException:
             store.abort_read()
             raise
