@@ -1,5 +1,7 @@
 # folio-ocr
 
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE) ![Python 3.12+](https://img.shields.io/badge/python-3.12%2B-blue.svg) ![Version 0.1.0](https://img.shields.io/badge/version-0.1.0-blue.svg)
+
 folio-ocr reads English and Arabic company documents into text on your own machines. It
 handles born-digital PDFs, scanned PDFs, scans and phone photos. Every line comes with its
 box on the page and its review flags. A line read by OCR or by a model gets a confidence score
