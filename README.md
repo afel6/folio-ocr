@@ -12,6 +12,23 @@ No OCR tool reads everything correctly, and folio does not pretend to. It flags 
 cannot vouch for and every region nobody read, so a person checks those. Its accuracy is
 measured, never promised.
 
+## Try it in 2 minutes
+
+```bash
+folio setup
+folio read invoice.pdf
+folio read scan.jpg --lang en --out results --format docx
+```
+
+A real run on the test documents:
+
+```text
+en-invoice.pdf: 24 lines found, 24 read, 0 need review, 0 unread pages
+en-invoice-scan.jpg: 23 lines found, 23 read, 23 need review, 0 unread pages
+```
+
+**Results at a glance:** Tesseract passed the missed-error target — 0.9% missed-error rate for English and 0.1% for Arabic, against a 10% target. The language-model evaluation is still pending; see [Results](#results) for the full table, including what has not been measured yet.
+
 - Licence: MIT ([LICENSE](LICENSE)). Third-party licences: [THIRD_PARTY.md](THIRD_PARTY.md).
 - **Admins** set it up: [Install](#install), [`folio setup`](#download-the-model-files-folio-setup),
   [Tesseract](#optional-tesseract), [model server](#optional-connect-a-language-model),
